@@ -1,3 +1,0 @@
-source .env
-export GITHUB_TOKEN
-npx release-it
