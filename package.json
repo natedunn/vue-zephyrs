@@ -1,14 +1,14 @@
 {
-  "name": "Vue Zephyrs",
-  "version": "0.0.1",
-  "private": true,
+  "name": "vue-zephyrs",
+  "version": "0.0.2",
+  "private": false,
   "scripts": {
-    "build": "vue-cli-service build --report --target lib --name my-lib ./src/index.js",
+    "build": "vue-cli-service build --report --target lib --name vue-zephyrs ./src/index.js",
     "lint": "vue-cli-service lint",
     "docs:build": "vuepress build docs",
     "docs:dev": "vuepress dev docs"
   },
-  "main": "dist/my-lib.umd.min.js",
+  "main": "dist/vue-zephyrs.umd.min.js",
   "files": [
     "src",
     "dist/*.{js,css}"

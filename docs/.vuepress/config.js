@@ -30,7 +30,7 @@ module.exports = {
   configureWebpack: {
     resolve: {
       alias: {
-        'my-lib': resolve(__dirname, '../../src')
+        'vue-zephyrs': resolve(__dirname, '../../src')
       }
     }
   }

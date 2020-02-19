@@ -1,4 +1,4 @@
-import * as mylib from 'my-lib'
+import * as mylib from 'vue-zephyrs'
 
 export default ({
   Vue, // the version of Vue being used in the VuePress app

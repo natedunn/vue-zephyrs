@@ -1,24 +1,26 @@
 <!DOCTYPE html>
 <html>
-  <head><title>Demo app</title></head>
+  <head>
+    <title>Demo app</title>
+  </head>
   <body>
     <div id="app">
-      <p>Component A: <component-a/></p>
-      <p>Component B: <component-b @click="onClick"/></p>
+      <p>Component A: <component-a /></p>
+      <p>Component B: <component-b @click="onClick" /></p>
     </div>
   </body>
 
   <script src="https://unpkg.com/vue"></script>
-  <script src="dist/my-lib.umd.js"></script>
+  <script src="dist/vue-zephyrs.umd.js"></script>
   <script>
-      console.log(window['my-lib'])
-      var app = new Vue({
-        el: '#app',
-        methods: {
-          onClick (message) {
-            alert(message)
-          }
+    console.log(window["vue-zephyrs"]);
+    var app = new Vue({
+      el: "#app",
+      methods: {
+        onClick(message) {
+          alert(message);
         }
-      })
-    </script>
+      }
+    });
+  </script>
 </html>
