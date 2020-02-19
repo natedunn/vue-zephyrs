@@ -1,5 +1,5 @@
-import Button from './Button.vue'
+import ZButton from './ZButton.vue'
 
 export {
-  Button,
+  ZButton,
 }
