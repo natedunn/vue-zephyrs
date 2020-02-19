@@ -6,7 +6,8 @@
     "build": "vue-cli-service build --report --target lib --name vue-zephyrs ./src/index.js",
     "lint": "vue-cli-service lint",
     "docs:build": "vuepress build docs",
-    "docs:dev": "vuepress dev docs"
+    "docs:dev": "vuepress dev docs",
+    "release": "sh release"
   },
   "main": "dist/vue-zephyrs.umd.min.js",
   "files": [
@@ -29,6 +30,7 @@
     "eslint-plugin-vue": "^6.2.1",
     "moment": "^2.24.0",
     "node-sass": "^4.13.1",
+    "release-it": "^12.5.0",
     "sass-loader": "^8.0.0",
     "vue-template-compiler": "^2.6.11",
     "vuepress": "^1.2.0"
