@@ -2,8 +2,8 @@ const { resolve } = require('path')
 
 module.exports = {
   base: '/',
-  title: 'My Library',
-  description: 'Just playing around',
+  title: 'Vue Zephyrs',
+  description: 'The best Vue component library for Tailwind CSS users.',
   themeConfig: {
     nav: [
       { text: 'Home', link: '/' },
@@ -22,8 +22,7 @@ module.exports = {
         title: 'Components',
         collapsable: false,
         children: [
-          'components/component-a',
-          'components/component-b'
+          'components/button',
         ]
       }
     ]
