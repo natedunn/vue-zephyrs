@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  padding-top: 0 !important;
+  margin-top: theme("spacing.10") !important;
+  margin-bottom: theme("spacing.4") !important;
+}
+
+.theme-default-content:not(.custom) {
+  max-width: 100% !important;
+}
+
+.theme-default-content blockquote p:not(:last-of-type),
+.theme-default-content > p {
+  padding-bottom: theme("spacing.4");
+}

@@ -1,4 +1,4 @@
-import * as components from './components'
+import * as components from './elements'
 
 const install = (Vue, options = {}) => {
   for (let key in components) {

@@ -1,5 +1,5 @@
-import MyUtil from './MyUtil'
+import Util from './Util'
 
 export {
-  MyUtil
+  Util
 }
