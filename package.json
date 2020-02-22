@@ -1,6 +1,6 @@
 {
   "name": "vue-zephyrs",
-  "version": "0.0.6-alpha.0",
+  "version": "0.0.7-alpha",
   "private": false,
   "description": "A Vue component library for Vue & Tailwind CSS.",
   "repository": {
