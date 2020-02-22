@@ -1,13 +1,23 @@
 {
   "name": "vue-zephyrs",
-  "version": "0.0.6",
+  "version": "0.0.6-alpha",
   "private": false,
+  "description": "A Vue component library for Vue & Tailwind CSS.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/natedunn/vue-zephyrs"
+  },
+  "author": {
+    "name": "Nate Dunn",
+    "email": "hello@natedunn.net",
+    "url": "https://twitter.com/natedunn"
+  },
   "scripts": {
     "build": "vue-cli-service build --report --target lib --name vue-zephyrs ./src/index.js",
     "lint": "vue-cli-service lint",
     "docs:build": "vuepress build docs",
     "docs:dev": "vuepress dev docs",
-    "release": "source .env && export GITHUB_TOKEN && npx release-it --npm.tag=beta --github.preRelease"
+    "release": "source .env && export GITHUB_TOKEN && npx release-it --preRelease=beta"
   },
   "main": "dist/vue-zephyrs.umd.min.js",
   "files": [
