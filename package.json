@@ -17,7 +17,7 @@
     "lint": "vue-cli-service lint",
     "docs:build": "vuepress build docs",
     "docs:dev": "vuepress dev docs",
-    "release": "source .env && export GITHUB_TOKEN && npx release-it --preRelease=beta"
+    "release": "source .env && export GITHUB_TOKEN && npx release-it --preRelease=alpha"
   },
   "main": "dist/vue-zephyrs.umd.min.js",
   "files": [
