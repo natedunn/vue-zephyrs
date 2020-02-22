@@ -5,7 +5,7 @@
   "description": "A Vue component library for Vue & Tailwind CSS.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/natedunn/vue-zephyrs"
+    "url": "https://github.com/natedunn/vue-zephyrs.git"
   },
   "author": {
     "name": "Nate Dunn",
