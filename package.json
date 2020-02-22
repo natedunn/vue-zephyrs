@@ -1,11 +1,14 @@
 {
-  "name": "vue-zephyrs",
+  "name": "@natedunn/vue-zephyrs",
   "version": "0.0.8-alpha",
   "private": false,
   "description": "A Vue component library for Vue & Tailwind CSS.",
   "repository": {
     "type": "git",
     "url": "https://github.com/natedunn/vue-zephyrs.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
   },
   "author": {
     "name": "Nate Dunn",
