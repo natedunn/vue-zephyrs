@@ -1,13 +1,13 @@
 {
   "name": "vue-zephyrs",
-  "version": "0.0.5-alpha",
+  "version": "0.0.5",
   "private": false,
   "scripts": {
     "build": "vue-cli-service build --report --target lib --name vue-zephyrs ./src/index.js",
     "lint": "vue-cli-service lint",
     "docs:build": "vuepress build docs",
     "docs:dev": "vuepress dev docs",
-    "release": "source .env && export GITHUB_TOKEN && npx release-it"
+    "release": "source .env && export GITHUB_TOKEN && npx release-it --npm.tag=beta --github.preRelease"
   },
   "main": "dist/vue-zephyrs.umd.min.js",
   "files": [
