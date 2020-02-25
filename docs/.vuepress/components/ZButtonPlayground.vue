@@ -2,13 +2,14 @@
   <playground>
     <template v-slot:preview>
       <z-button
-          @click="testClick"
-          @focus="testFocus"
-          @blur="testBlur"
           :className="className"
           :themeDisabled="themeDisabled"
           :disabled="disabled"
           :removeClass="removeClass"
+          :variant="variant"
+          @click="testClick"
+          @focus="testFocus"
+          @blur="testBlur"
         >
           {{ text }}
         </z-button>
@@ -71,6 +72,7 @@ export default {
       className: "font-bold",
       disabled: false,
       removeClass: "",
+      variant: "secondary",
       themeDisabled: false,
       // Test purposes
       focused: false
@@ -83,6 +85,7 @@ export default {
       :themeDisabled="${this.themeDisabled}"
       :disabled="${this.disabled}"
       :removeClass="${this.removeClass}"
+      :variant="${this.variant}"
     >
       ${this.text}
     </z-button>`;

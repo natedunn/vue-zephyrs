@@ -23,7 +23,7 @@ export default {
       type: Boolean,
       default: false
     },
-    variation: {
+    variant: {
       type: String,
       default: "primary",
       validator: value => {
@@ -67,7 +67,7 @@ export default {
       return [
         this.checkBase(),
         this.checkDisabled(),
-        this.checkVariation(),
+        this.checkVariant(),
         this.className
       ]
         .flat(Infinity)
@@ -82,9 +82,9 @@ export default {
     checkDisabled() {
       return this.disabled ? ZButton.state.disabled.split(" ") : null;
     },
-    checkVariation() {
+    checkVariant() {
       if (this.checkDisabled()) return null;
-      return ZButton.variant[this.variation] || null;
+      return ZButton.variant[this.variant] || null;
     },
     onBlur(event) {
       this.$emit("blur", event);
