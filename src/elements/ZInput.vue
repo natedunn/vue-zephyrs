@@ -2,7 +2,7 @@
   <Fragment>
     <label
       v-if="label && !labelDisabled"
-      class="block mb-1 text-sm font-bold text-gray-600"
+      class="block mb-2 text-sm font-bold text-gray-900"
       :for="inputId"
       >{{ label }}</label
     >

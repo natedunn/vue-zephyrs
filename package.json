@@ -35,9 +35,12 @@
   "dependencies": {
     "lodash": "^4.17.15",
     "postcss-preset-env": "^6.7.0",
+    "strip-indent": "^3.0.0",
     "tailwindcss": "^1.2.0",
     "vue": "^2.6.11",
-    "vue-fragment": "^1.5.1"
+    "vue-fragment": "^1.5.1",
+    "vue-multipane": "^0.9.5",
+    "vue-prism-component": "^1.1.1"
   },
   "devDependencies": {
     "@babel/core": "^7.7.7",

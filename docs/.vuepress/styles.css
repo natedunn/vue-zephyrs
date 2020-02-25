@@ -3,14 +3,26 @@
 @tailwind utilities;
 
 h1,
+.h1,
 h2,
+.h2,
 h3,
+.h3,
 h4,
+.h4,
 h5,
-h6 {
+.h5,
+h6,
+.h6 {
   padding-top: 0 !important;
   margin-top: theme("spacing.10") !important;
   margin-bottom: theme("spacing.4") !important;
+}
+
+.theme-default-content pre,
+.theme-default-content pre[class*="language-"] {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
 }
 
 .theme-default-content:not(.custom) {

@@ -1,12 +1,17 @@
 <template>
-  <div class="relative overflow-y-scroll">
-    <div
-      class="w-full top-0 sticky py-4 px-4 font-bold text-gray-100 bg-gray-800"
-    >
-      Playground Options
-    </div>
-    <div class="py-6 px-5">
-      <slot></slot>
+  <div
+    class="flex-auto overflow-y-scroll rounded border border-gray-300"
+    :style="{ width: '30%', maxWidth: '100%' }"
+  >
+    <div class="relative">
+      <div
+        class="w-full top-0 sticky py-4 px-8 font-bold text-gray-100 bg-gray-800"
+      >
+        Options
+      </div>
+      <div class="py-10 px-8">
+        <slot></slot>
+      </div>
     </div>
   </div>
 </template>

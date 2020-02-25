@@ -1,7 +1,7 @@
 <template>
-  <span class="block font-bold mb-4 pb-2 border-b border-gray-300">
+  <div class="mb-8">
     <slot></slot>
-  </span>
+  </div>
 </template>
 
 <script>

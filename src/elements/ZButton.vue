@@ -25,7 +25,14 @@ export default {
     },
     variation: {
       type: String,
-      default: "primary"
+      default: "primary",
+      validator: value => {
+        return Object.keys(ZButton.variant).includes(value);
+      }
+    },
+    removeClass: {
+      type: [Array, String],
+      default: () => []
     },
     // Built-in HTML attributes
     disabled: {
@@ -53,29 +60,31 @@ export default {
         return this.className || null;
       }
 
+      const removeClass = Array.isArray(this.removeClass)
+        ? this.removeClass
+        : this.removeClass.split(" ");
+
       return [
         this.checkBase(),
         this.checkDisabled(),
         this.checkVariation(),
         this.className
-      ];
+      ]
+        .flat(Infinity)
+        .filter(Boolean)
+        .filter(className => !removeClass.includes(className));
     }
   },
   methods: {
     checkBase() {
-      return ZButton.base;
+      return ZButton.base.split(" ");
     },
     checkDisabled() {
-      return this.disabled ? ZButton.state.disabled : null;
+      return this.disabled ? ZButton.state.disabled.split(" ") : null;
     },
     checkVariation() {
       if (this.checkDisabled()) return null;
-      switch (this.variation) {
-        case "primary":
-          return ZButton.variant.primary;
-        default:
-          return null;
-      }
+      return ZButton.variant[this.variation] || null;
     },
     onBlur(event) {
       this.$emit("blur", event);

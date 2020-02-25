@@ -1,13 +1,16 @@
 <template>
-  <div
-    class="flex w-full border border-gray-700 rounded overflow-hidden playground-wrapper"
-  >
+  <Multipane class="flex w-full playground-wrapper">
     <slot></slot>
-  </div>
+  </Multipane>
 </template>
 
 <script>
-export default {};
+import { Multipane } from "vue-multipane";
+export default {
+  components: {
+    Multipane
+  }
+};
 </script>
 
 <style>
@@ -16,8 +19,8 @@ export default {};
     max-height: 38rem;
     /* max-height: 20rem; */
   }
-  .playground-wrapper > * {
+  /* .playground-wrapper > * {
     width: 50%;
-  }
+  } */
 }
 </style>
