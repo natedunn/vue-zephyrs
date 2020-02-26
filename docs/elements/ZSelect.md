@@ -9,27 +9,11 @@ lang: en-US
 
 ## Playground
 
-<z-select>
-  <option>Option 1</option>
-  <option>Option 3</option>
-  <option>Action embrasser conseil conversation moment beau.</option>
-</z-select>
+<z-select-playground />
 
 ## How to Use
 
-There are two ways to pass options to a `<z-select>` element. You can use the component's slot to pass direct options and values:
-
-```js
-<z-select>
-  <option value="A very long value">
-    This is a a very long string of text that will overflow.
-  </option>
-  <option value="1">Option 1</option>
-  <option value="2">Option 2</option>
-</z-select>
-```
-
-Or you can pass an an array:
+There are two ways to pass options to a `<z-select>` element. The best way is to pass an array of options through props:
 
 ```js
 const options = [
@@ -42,6 +26,19 @@ const options = [
 ];
 
 <z-select :options="options" />
+```
+<br/>
+
+You can also directly pass `<option>` elements into the default slot. Be sure to include an object as the value as exampled:
+
+```js
+<z-select>
+  <option value="{ value: true, text: "Option 1" }">
+    This is a a very long string of text that will overflow.
+  </option>
+  <option value="{ value: false, text: "Option 1" }">Option 1</option>
+  <option value="{ value: 'A string', text: "Option 1" }">Option 2</option>
+</z-select>
 ```
 
 ## Component-specific Props

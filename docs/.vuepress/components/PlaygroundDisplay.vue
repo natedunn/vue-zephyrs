@@ -14,7 +14,7 @@
           <slot name="preview"></slot>
         </div>
         <div
-          v-if="codeIsOpen"
+          v-if="codeIsOpen && code"
           class="flex flex-col px-8 py-8 bg-gray-200 border-t border-gray-300 justify-center "
         >
           <Prism language="js">{{ code }}</Prism>
@@ -41,7 +41,7 @@ export default {
   },
   computed: {
     code() {
-      return strip(this.$slots.code[0].text).trim();
+      return this.$slots.code ? strip(this.$slots.code[0].text).trim() : null;
     }
   },
   methods: {
