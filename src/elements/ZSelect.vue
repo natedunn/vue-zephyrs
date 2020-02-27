@@ -1,9 +1,6 @@
 <template>
   <div class="inline-block relative w-64">
-    <select
-      class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
-      v-model="currentValue"
-    >
+    <select :class="selectClasses" v-model="currentValue">
       <slot>
         <!-- If passed by `options` prop -->
         <option v-for="option in options" :key="option.value" :value="option">
@@ -28,6 +25,7 @@
 </template>
 
 <script>
+import { ZSelect } from "../../theme";
 export default {
   props: {
     options: {
@@ -44,6 +42,11 @@ export default {
       currentValue: "",
       sloted: null
     };
+  },
+  computed: {
+    selectClasses() {
+      return ZSelect.select.base;
+    }
   },
   watch: {
     value(value) {
