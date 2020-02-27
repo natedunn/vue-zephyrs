@@ -6,7 +6,7 @@
           :themeDisabled="themeDisabled"
           :disabled="disabled"
           :removeClass="removeClass"
-          :variant="variant"
+          :variant="{ variant: variantSelected.value, subVariant: subVariantSelected.value }"
           @click="testClick"
           @focus="testFocus"
           @blur="testBlur"
@@ -38,6 +38,12 @@
           <a class="text-base" href="#component-specific-props">Read more</a></pg-header
         >
         <pg-option>
+          <z-select label="variant" :options="variantOptions" v-model="variantSelected" />
+        </pg-option>
+        <pg-option>
+          <z-select label="subVariant" :options="subVariantOptions" v-model="subVariantSelected" />
+        </pg-option>
+        <pg-option>
           <z-input label="className" v-model="className" />
         </pg-option>
         <pg-option>
@@ -62,20 +68,23 @@
 </template>
 
 <script>
+import { ZButton } from "../../../theme";
 import { MultipaneResizer } from "vue-multipane";
 export default {
   components: { MultipaneResizer },
   data() {
     return {
-      // name: "z-button",
+      // Component state
       text: "Button",
-      className: "font-bold",
+      className: "foo",
       disabled: false,
       removeClass: "",
-      variant: "secondary",
       themeDisabled: false,
-      // Test purposes
-      focused: false
+      // Just-for-playgrounds state
+      focused: false,
+      variantOptions: {},
+      variantSelected: null,
+      subVariantSelected: null
     };
   },
   computed: {
@@ -85,10 +94,26 @@ export default {
       :themeDisabled="${this.themeDisabled}"
       :disabled="${this.disabled}"
       :removeClass="${this.removeClass}"
-      :variant="${this.variant}"
+      :variant="${this.variantSelected.value}.${this.subVariantSelected.value}"
     >
       ${this.text}
     </z-button>`;
+    },
+    variant() {
+      return {
+        variant: "primary",
+        subVariant: "full"
+      };
+    },
+    subVariantOptions() {
+      if (this.variantSelected) {
+        return Object.keys(ZButton.variant[this.variantSelected.value]).map(
+          subVariant => ({
+            value: subVariant,
+            text: subVariant
+          })
+        );
+      }
     }
   },
   methods: {
@@ -100,6 +125,37 @@ export default {
     },
     testBlur() {
       this.focused = false;
+    },
+    getVariantOptions() {
+      return Object.keys(ZButton.variant).map(variant => ({
+        value: variant,
+        text: variant
+      }));
+    }
+  },
+  created() {
+    this.variantSelected = {
+      value: Object.keys(ZButton.variant)[0],
+      text: Object.keys(ZButton.variant)[0]
+    };
+    this.subVariantSelected = {
+      value: Object.keys(ZButton.variant[this.variantSelected.value])[0],
+      text: Object.keys(ZButton.variant[this.variantSelected.value])[0]
+    };
+    this.variantOptions = this.getVariantOptions();
+  },
+  watch: {
+    variantSelected() {
+      if (
+        !ZButton.variant[this.variantSelected.value][
+          this.subVariantSelected.value
+        ]
+      ) {
+        this.subVariantSelected = {
+          value: Object.keys(ZButton.variant[this.variantSelected.value])[0],
+          text: Object.keys(ZButton.variant[this.variantSelected.value])[0]
+        };
+      }
     }
   }
 };
