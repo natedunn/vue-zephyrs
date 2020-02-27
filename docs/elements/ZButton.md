@@ -13,32 +13,21 @@ lang: en-US
 
 ## How to use
 
-Text here.
-
 > Note: Due to [accessibility reasons](https://a11y-101.com/design/button-vs-link) you cannot change the tag of this button component.
 
 ## Theme Defaults
 
-```js
-{
-  'base': `inline-block py-2 px-3 rounded hover:${config.colors.primaryHover} focus:${config.colors.primaryHover}`,
-  'variant': {
-    'primary': `${config.colors.primary} text-white`
-  },
-  'state': {
-    'disabled': `bg-gray-300 text-gray-500 cursor-not-allowed`,
-  }
-}
-```
+<z-theme-default export="ZButton" />
 
 ## Props
 
 ### Component-specific Props
 
-| Name          |  Type   | Description                              | Default |
-| ------------- | :-----: | ---------------------------------------- | ------- |
-| className     | String  | Append class to existing class list      | null    |
-| themeDisabled | Boolean | Completely turn off Tailwind CSS classes | false   |
+| Name          |      Type      | Description                              | Default                                    |
+| ------------- | :------------: | ---------------------------------------- | ------------------------------------------ |
+| className     |     String     | Append class to existing class list      | null                                       |
+| themeDisabled |    Boolean     | Completely turn off Tailwind CSS classes | false                                      |
+| variant       | String, Object | Choose variant and sub-variant           | `{variant: "primary", subVariant: "full"}` |
 
 ### HTML-specific Props
 
