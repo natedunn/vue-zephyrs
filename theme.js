@@ -5,6 +5,27 @@ export const config = {
     'secondary': 'bg-green-500',
     'secondaryHover': 'bg-green-600',
   }
+// Format
+export const ZComponent = {
+  // If element has multiple elements, name element here. Otherwise, remove.
+  element: {
+    // Always here
+    base: '',
+    // These are auto-read per component
+    'variant': {
+      'primary': {
+        'outline': '',
+        'filled': '',
+      },
+      'custom': ''
+    },
+    // State
+    'state': {
+      'disabled': '',
+      'error': ''
+    }
+  },
+  otherElement: {}
 }
 
 export const ZButton = {
