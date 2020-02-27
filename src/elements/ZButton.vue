@@ -5,6 +5,7 @@
     @focus="onFocus"
     :class="classes"
     :disabled="disabled"
+    :variant="variant"
     :type="type"
   >
     <slot></slot>
@@ -24,10 +25,23 @@ export default {
       default: false
     },
     variant: {
-      type: String,
-      default: "primary",
+      type: [String, Object],
+      default: () => {
+        return {
+          variant: "primary",
+          subVariant: "full"
+        };
+      },
       validator: value => {
-        return Object.keys(ZButton.variant).includes(value);
+        const newValue =
+          typeof value === "string"
+            ? value.split(".")
+            : [value.variant, value.subVariant];
+
+        return (
+          Object.keys(ZButton.variant).includes(newValue[0]) &&
+          Object.keys(ZButton.variant[newValue[0]]).includes(newValue[1])
+        );
       }
     },
     removeClass: {
@@ -84,7 +98,14 @@ export default {
     },
     checkVariant() {
       if (this.checkDisabled()) return null;
-      return ZButton.variant[this.variant] || null;
+      const { variant, subVariant } = this.variant;
+      if (typeof this.variant === "string") {
+        return (
+          this.variant.split(".").reduce((o, i) => o[i], ZButton.variant) ||
+          null
+        );
+      }
+      return ZButton.variant[variant][subVariant].split(" ");
     },
     onBlur(event) {
       this.$emit("blur", event);
