@@ -3,9 +3,12 @@
     @click="onClick"
     @blur="onBlur"
     @focus="onFocus"
-    :class="classes"
+    @mouseover="onMouseOver"
+    @mouseleave="onMouseLeave"
+    @mousedown="onMouseDown"
+    @mouseup="onMouseUp"
+    :class="buttonClasses"
     :disabled="disabled"
-    :variant="variant"
     :type="type"
   >
     <slot></slot>
@@ -13,8 +16,18 @@
 </template>
 
 <script>
-import { ZButton } from "../../theme";
+import Theme from "../../z.theme";
+const { Button } = Theme.newElements;
 export default {
+  data() {
+    return {
+      isClicked: false,
+      isFocused: false,
+      componentVariant: "",
+      variants: {},
+      events: []
+    };
+  },
   props: {
     className: {
       type: String,
@@ -26,23 +39,13 @@ export default {
     },
     variant: {
       type: [String, Object],
-      default: () => {
-        return {
-          variant: "primary",
-          subVariant: "full"
-        };
-      },
-      validator: value => {
-        const newValue =
-          typeof value === "string"
-            ? value.split(".")
-            : [value.variant, value.subVariant];
-
-        return (
-          Object.keys(ZButton.variant).includes(newValue[0]) &&
-          Object.keys(ZButton.variant[newValue[0]]).includes(newValue[1])
-        );
-      }
+      default: "fill.primary"
+      // validator: () => {}, // ? Can we validate based on string/object in theme.js?
+    },
+    status: {
+      type: String,
+      default: `default`
+      // validator: value => ["loading", "disabled"].includes(value)
     },
     removeClass: {
       type: [Array, String],
@@ -69,48 +72,183 @@ export default {
     }
   },
   computed: {
-    classes() {
+    buttonClasses() {
       if (this.themeDisabled) {
         return this.className || null;
       }
 
       const removeClass = Array.isArray(this.removeClass)
         ? this.removeClass
-        : this.removeClass.split(" ");
+        : this.$utils.splitString(this.removeClass);
 
-      return [
-        this.checkBase(),
-        this.checkDisabled(),
-        this.checkVariant(),
-        this.className
-      ]
+      return [this.getThemeClasses()]
+        .map(item => {
+          return typeof item === "string"
+            ? this.$utils.splitString(item)
+            : item;
+        })
         .flat(Infinity)
         .filter(Boolean)
+        .filter(function(el) {
+          return el != null;
+        })
         .filter(className => !removeClass.includes(className));
     }
   },
   methods: {
-    checkBase() {
-      return ZButton.base.split(" ");
+    getThemeClasses() {
+      // Get/set variables
+      const themeVariants = Button.button.variants;
+      const { status, variant: variants, events } = this;
+      let value = "";
+      let variantBase = "";
+
+      // Functions
+      function isolateObject(string, object, limit = true) {
+        const keys = string.split(".");
+        let newObject = {};
+        newObject[keys[0]] = object[keys[0]];
+
+        const finalObject = keys.reduce((o, i) => o[i], newObject);
+
+        // if (limit) {
+        //   Object.keys(finalObject).forEach(key => {
+        //     if (typeof finalObject[key] === "object") {
+        //       finalObject[key] = "Unreachable Object";
+        //     }
+        //   });
+        // }
+
+        return newObject;
+      }
+
+      function arrayMerge(firstArray, secondArray) {
+        firstArray.push(secondArray);
+        return firstArray;
+      }
+
+      function checkEvents(variantBase, variantEnd) {
+        return events
+          .map(event => {
+            return (
+              variantBase[variantEnd][`$${event}`] || variantBase[`$${event}`]
+            );
+          })
+          .flat(Infinity)
+          .filter(Boolean);
+      }
+      function findAllBases(obj) {
+        const foundBases = Object.entries(obj).reduce(
+          (acc, [key, value]) =>
+            key === "base"
+              ? acc.concat(value)
+              : typeof value === "object"
+              ? acc.concat(findAllBases(value, "base"))
+              : acc,
+          []
+        );
+        const rootBase = themeVariants["base"] || null;
+        return rootBase ? rootBase + " " + foundBases : foundBases;
+      }
+
+      function checkDefault(variantBase) {
+        if (typeof variantBase === "string") return variantBase;
+        return variantBase["default"];
+      }
+
+      function checkStatuses(variantBase, variantEnd, status) {
+        if (variantBase[variantEnd][`_${status}`]) {
+          return variantBase[variantEnd][`_${status}`];
+        } else {
+          return checkDefault(variantBase[`_${status}`]);
+        }
+      }
+
+      // NEW --------
+
+      function isType(item, string) {
+        return typeof item === string ? true : false;
+      }
+
+      // END NEW ----
+
+      // Get each variant (seperated by +)
+      const variantClasses = variants.split("+").map(variantString => {
+        if (variantString.includes(".")) {
+          // old
+          // var variantStart = variant.substring(0, variant.lastIndexOf("."));
+          // var variantEnd = variant.substring(variant.lastIndexOf(".") + 1);
+
+          // new variables?
+          var variantObj = isolateObject(variantString, themeVariants);
+          const variants = variantString.split(".");
+          const end = variants[variants.length - 1];
+          const start = variantString.replace(`.${end}`, "");
+
+          // NEW -------
+
+          if (typeof this.$utils.stringToDot(variantString, variantObj) === 'string') {
+            value = this.$utils.stringToDot(variantString, variantObj);
+          } else {
+            if(this.$utils.stringToDot(
+                `${variantString}.${status}`,
+                variantObj
+              ) )
+          }
+
+          console.log(
+            this.$utils.stringToDot(`${variantString}.${status}`, variantObj)
+          );
+
+          if (
+            isType(this.$utils.stringToDot(variantString, variantObj), "object")
+          ) {
+            value = this.$utils.stringToDot(
+              `${variantString}._${status}`,
+              variantObj
+            );
+          } else {
+            value = this.$utils.stringToDot(variantString, variantObj);
+          }
+
+          // 1. check for event, override
+
+          // END NEW -------
+
+          // variantBase =
+          //   this.$utils.stringToDot(variantStart, variantObj) || null;
+
+          // // If there is a status override...
+          // value = status
+          //   ? checkStatuses(variantBase, variantEnd, status)
+          //   : checkDefault(variantBase[variantEnd]);
+        }
+
+        // if (!variant.includes(".")) {
+        //   variantBase = this.$utils.stringToDot(variant, themeVariants) || null;
+        //   value = checkDefault(variantBase);
+        // }
+
+        // // Return base classes && variant values || click event values
+        // return arrayMerge(
+        //   findAllBases(variantObj),
+        //   checkEvents(variantBase, variantEnd).length
+        //     ? checkEvents(variantBase, variantEnd)
+        //     : value
+        // );
+      });
+
+      return arrayMerge(variantClasses, this.className);
     },
     checkDisabled() {
-      return this.disabled ? ZButton.state.disabled.split(" ") : null;
-    },
-    checkVariant() {
-      if (this.checkDisabled()) return null;
-      const { variant, subVariant } = this.variant;
-      if (typeof this.variant === "string") {
-        return (
-          this.variant.split(".").reduce((o, i) => o[i], ZButton.variant) ||
-          null
-        );
-      }
-      return ZButton.variant[variant][subVariant].split(" ");
+      return this.disabled ? Button.state.disabled.split(" ") : null;
     },
     onBlur(event) {
+      this.isFocused = false;
       this.$emit("blur", event);
     },
     onFocus(event) {
+      this.isFocused = true;
       this.$emit("focus", event);
     },
     onClick(event) {
@@ -121,6 +259,18 @@ export default {
     },
     focus() {
       this.$el.focus();
+    },
+    onMouseDown() {
+      this.events.push("click");
+    },
+    onMouseUp() {
+      this.events = this.events.filter(event => event !== "click");
+    },
+    onMouseOver() {
+      this.events.push("hover");
+    },
+    onMouseLeave() {
+      this.events = this.events.filter(event => event !== "hover");
     }
   }
 };

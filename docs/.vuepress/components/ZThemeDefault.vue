@@ -6,23 +6,22 @@
 import "prismjs";
 import Prism from "vue-prism-component";
 import Strip from "strip-indent";
-import * as ThemeDefault from "../../../theme";
+import Theme from "../../../z.theme";
 export default {
   components: {
     Prism,
     Strip
   },
   props: {
-    export: {
+    input: {
       type: String,
-      required: true
+      default: ""
     }
   },
   computed: {
     code() {
-      return ThemeDefault.ZButton
-        ? Strip(JSON.stringify(ThemeDefault[this.export], null, 1)).trim()
-        : null;
+      const code = this.input.split(".").reduce((o, i) => o[i], Theme) || null;
+      return Theme ? JSON.stringify(code, null, 1) : null;
     }
   }
 };

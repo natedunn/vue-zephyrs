@@ -9,7 +9,8 @@ lang: en-US
 
 ## Playground
 
-<z-button-playground />
+<!-- <z-button-playground /> -->
+<z-button variant="fill.primary">Testing</z-button>
 
 ## How to use
 
@@ -17,7 +18,7 @@ lang: en-US
 
 ## Theme Defaults
 
-<z-theme-default export="ZButton" />
+<!-- <z-theme-default input="elements" /> -->
 
 ## Props
 

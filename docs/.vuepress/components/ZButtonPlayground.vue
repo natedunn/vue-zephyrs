@@ -5,9 +5,10 @@
           :className="className"
           :themeDisabled="themeDisabled"
           :disabled="disabled"
+          status="disabled"
           :removeClass="removeClass"
-          :variant="{ variant: variantSelected.value, subVariant: subVariantSelected.value }"
-          @click="testClick"
+          variant="full.primary"
+          @click=""
           @focus="testFocus"
           @blur="testBlur"
         >
@@ -37,12 +38,12 @@
           >Component Props
           <a class="text-base" href="#component-specific-props">Read more</a></pg-header
         >
-        <pg-option>
+        <!-- <pg-option>
           <z-select label="variant" :options="variantOptions" v-model="variantSelected" />
         </pg-option>
         <pg-option>
           <z-select label="subVariant" :options="subVariantOptions" v-model="subVariantSelected" />
-        </pg-option>
+        </pg-option> -->
         <pg-option>
           <z-input label="className" v-model="className" />
         </pg-option>
@@ -68,8 +69,9 @@
 </template>
 
 <script>
-import { ZButton } from "../../../theme";
 import { MultipaneResizer } from "vue-multipane";
+import Theme from "../../../z.theme";
+const { Button } = Theme.newElements;
 export default {
   components: { MultipaneResizer },
   data() {
@@ -94,7 +96,7 @@ export default {
       :themeDisabled="${this.themeDisabled}"
       :disabled="${this.disabled}"
       :removeClass="${this.removeClass}"
-      :variant="${this.variantSelected.value}.${this.subVariantSelected.value}"
+      :variant="${this.variant}"
     >
       ${this.text}
     </z-button>`;
@@ -104,17 +106,17 @@ export default {
         variant: "primary",
         subVariant: "full"
       };
-    },
-    subVariantOptions() {
-      if (this.variantSelected) {
-        return Object.keys(ZButton.variant[this.variantSelected.value]).map(
-          subVariant => ({
-            value: subVariant,
-            text: subVariant
-          })
-        );
-      }
     }
+    // subVariantOptions() {
+    //   if (this.variantSelected) {
+    //     return Object.keys(Button.variant[this.variantSelected.value]).map(
+    //       subVariant => ({
+    //         value: subVariant,
+    //         text: subVariant
+    //       })
+    //     );
+    //   }
+    // }
   },
   methods: {
     testClick(event) {
@@ -125,38 +127,38 @@ export default {
     },
     testBlur() {
       this.focused = false;
-    },
-    getVariantOptions() {
-      return Object.keys(ZButton.variant).map(variant => ({
-        value: variant,
-        text: variant
-      }));
     }
+    // getVariantOptions() {
+    //   return Object.keys(Button.variant).map(variant => ({
+    //     value: variant,
+    //     text: variant
+    //   }));
+    // }
   },
   created() {
-    this.variantSelected = {
-      value: Object.keys(ZButton.variant)[0],
-      text: Object.keys(ZButton.variant)[0]
-    };
-    this.subVariantSelected = {
-      value: Object.keys(ZButton.variant[this.variantSelected.value])[0],
-      text: Object.keys(ZButton.variant[this.variantSelected.value])[0]
-    };
-    this.variantOptions = this.getVariantOptions();
+    // this.variantSelected = {
+    //   value: Object.keys(Button.variant)[0],
+    //   text: Object.keys(Button.variant)[0]
+    // };
+    // this.subVariantSelected = {
+    //   value: Object.keys(Button.variant[this.variantSelected.value])[0],
+    //   text: Object.keys(Button.variant[this.variantSelected.value])[0]
+    // };
+    // this.variantOptions = this.getVariantOptions();
   },
   watch: {
-    variantSelected() {
-      if (
-        !ZButton.variant[this.variantSelected.value][
-          this.subVariantSelected.value
-        ]
-      ) {
-        this.subVariantSelected = {
-          value: Object.keys(ZButton.variant[this.variantSelected.value])[0],
-          text: Object.keys(ZButton.variant[this.variantSelected.value])[0]
-        };
-      }
-    }
+    // variantSelected() {
+    //   if (
+    //     !Button.variant[this.variantSelected.value][
+    //       this.subVariantSelected.value
+    //     ]
+    //   ) {
+    //     this.subVariantSelected = {
+    //       value: Object.keys(Button.variant[this.variantSelected.value])[0],
+    //       text: Object.keys(Button.variant[this.variantSelected.value])[0]
+    //     };
+    //   }
+    // }
   }
 };
 </script>

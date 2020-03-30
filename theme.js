@@ -34,7 +34,7 @@ export const ZButton = {
   'base': `inline-block py-2 px-3 rounded `,
   'variant': {
     'primary': {
-      'full': `bg-${config.colors.primary} hover:bg-${config.colors.primaryHover} focus:bg-${config.colors.primaryHover} text-white`,
+      'full': `bg-${config.colors.primary} dark-mode:bg-red-500 hover:bg-${config.colors.primaryHover} focus:bg-${config.colors.primaryHover} text-white`,
       'outline': `border border-${config.colors.primary} text-${config.colors.primary}`,
     },
     'secondary': {
@@ -46,17 +46,17 @@ export const ZButton = {
   }
 }
 
-export const ZH = {
-  base: 'font-bold',
-  'variant': {
-    'h1': 'text-5xl',
-    'h2': 'text-4xl',
-    'h3': 'text-3xl',
-    'h4': 'text-2xl',
-    'h5': 'text-xl',
-    'h6': 'text-lg',
-  }
-}
+// export const ZH = {
+//   base: 'font-bold',
+//   'variant': {
+//     'h1': 'text-5xl',
+//     'h2': 'text-4xl',
+//     'h3': 'text-3xl',
+//     'h4': 'text-2xl',
+//     'h5': 'text-xl',
+//     'h6': 'text-lg',
+//   }
+// }
 
 export const ZInput = {
   'base': 'appearance-none inline-block text-gray-700 border border-gray-400 rounded py-2 px-3 leading-tight focus:outline-none focus:bg-white focus:border-blue-500 focus:outline-none focus:shadow-outline',

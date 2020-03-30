@@ -1,15 +1,28 @@
+import Vue from 'vue';
+import Theme from '../z.theme.js';
 import * as components from './elements'
+import * as Utils from './utils'
 
 const install = (Vue, options = {}) => {
   for (let key in components) {
     let _key = options.prefix ? options.prefix + key : key
     Vue.component(_key, components[key])
   }
+
 }
 
 // auto install
 if (typeof window !== 'undefined' && window.Vue) {
   install(window.Vue)
 }
+
+Vue.use({
+  install () {
+    Vue.helpers = Utils;
+    Vue.prototype.$utils = Utils;
+  }
+});
+
+Vue.prototype.$theme = Theme;
 
 export { install }

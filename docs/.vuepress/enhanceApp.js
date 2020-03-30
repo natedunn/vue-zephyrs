@@ -1,6 +1,6 @@
 // Below (maybe) fix: https://github.com/vuejs/vuepress/issues/1173
 import pageComponents from '@internal/page-components'
-import * as mylib from 'vue-zephyrs'
+import * as Zephyrs from 'vue-zephyrs'
 import './styles.css';
 
 export default ({
@@ -13,5 +13,5 @@ export default ({
   for (const [name, component] of Object.entries(pageComponents)) {
     Vue.component(name, component)
   }
-  Vue.use(mylib)
+  Vue.use(Zephyrs)
 }

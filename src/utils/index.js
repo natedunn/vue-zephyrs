@@ -1,5 +1,9 @@
 import Util from './Util'
+import splitString from './splitString'
+import stringToDot from './stringToDot';
 
 export {
-  Util
+  Util,
+  splitString,
+  stringToDot
 }
