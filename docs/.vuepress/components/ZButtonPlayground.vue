@@ -4,10 +4,9 @@
       <z-button
           :className="className"
           :themeDisabled="themeDisabled"
-          :disabled="disabled"
-          status="disabled"
+          :status="status ? 'disabled' : null"
           :removeClass="removeClass"
-          variant="full.primary"
+          :variant="variant"
           @click=""
           @focus="testFocus"
           @blur="testBlur"
@@ -45,6 +44,9 @@
           <z-select label="subVariant" :options="subVariantOptions" v-model="subVariantSelected" />
         </pg-option> -->
         <pg-option>
+          <z-input label="variant" v-model="variant" />
+        </pg-option>
+        <pg-option>
           <z-input label="className" v-model="className" />
         </pg-option>
         <pg-option>
@@ -61,7 +63,7 @@
           <a class="text-base" href="#html-specific-props">Read more</a></pg-header
         </pg-header>
         <pg-option>
-          <z-checkbox v-model="disabled" id="disabled">Disabled</z-checkbox>
+          <z-checkbox v-model="status" id="disabled">Disabled</z-checkbox>
         </pg-option>
       </pg-section>
     </template>
@@ -79,14 +81,13 @@ export default {
       // Component state
       text: "Button",
       className: "foo",
-      disabled: false,
+      // disabled: false,
+      status: null,
       removeClass: "",
       themeDisabled: false,
       // Just-for-playgrounds state
       focused: false,
-      variantOptions: {},
-      variantSelected: null,
-      subVariantSelected: null
+      variant: "fill.primary"
     };
   },
   computed: {
@@ -100,23 +101,7 @@ export default {
     >
       ${this.text}
     </z-button>`;
-    },
-    variant() {
-      return {
-        variant: "primary",
-        subVariant: "full"
-      };
     }
-    // subVariantOptions() {
-    //   if (this.variantSelected) {
-    //     return Object.keys(Button.variant[this.variantSelected.value]).map(
-    //       subVariant => ({
-    //         value: subVariant,
-    //         text: subVariant
-    //       })
-    //     );
-    //   }
-    // }
   },
   methods: {
     testClick(event) {
@@ -128,37 +113,6 @@ export default {
     testBlur() {
       this.focused = false;
     }
-    // getVariantOptions() {
-    //   return Object.keys(Button.variant).map(variant => ({
-    //     value: variant,
-    //     text: variant
-    //   }));
-    // }
-  },
-  created() {
-    // this.variantSelected = {
-    //   value: Object.keys(Button.variant)[0],
-    //   text: Object.keys(Button.variant)[0]
-    // };
-    // this.subVariantSelected = {
-    //   value: Object.keys(Button.variant[this.variantSelected.value])[0],
-    //   text: Object.keys(Button.variant[this.variantSelected.value])[0]
-    // };
-    // this.variantOptions = this.getVariantOptions();
-  },
-  watch: {
-    // variantSelected() {
-    //   if (
-    //     !Button.variant[this.variantSelected.value][
-    //       this.subVariantSelected.value
-    //     ]
-    //   ) {
-    //     this.subVariantSelected = {
-    //       value: Object.keys(Button.variant[this.variantSelected.value])[0],
-    //       text: Object.keys(Button.variant[this.variantSelected.value])[0]
-    //     };
-    //   }
-    // }
   }
 };
 </script>

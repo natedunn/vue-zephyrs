@@ -9,12 +9,7 @@ lang: en-US
 
 ## Playground
 
-<!-- <z-button-playground /> -->
-<z-button variant="fill.primary">Testing</z-button>
-
-## How to use
-
-> Note: Due to [accessibility reasons](https://a11y-101.com/design/button-vs-link) you cannot change the tag of this button component.
+<z-button-playground />
 
 ## Theme Defaults
 
@@ -24,11 +19,11 @@ lang: en-US
 
 ### Component-specific Props
 
-| Name          |      Type      | Description                              | Default                                    |
-| ------------- | :------------: | ---------------------------------------- | ------------------------------------------ |
-| className     |     String     | Append class to existing class list      | null                                       |
-| themeDisabled |    Boolean     | Completely turn off Tailwind CSS classes | false                                      |
-| variant       | String, Object | Choose variant and sub-variant           | `{variant: "primary", subVariant: "full"}` |
+| Name          |      Type      | Description                              | Default        |
+| ------------- | :------------: | ---------------------------------------- | -------------- |
+| className     |     String     | Append class to existing class list      | null           |
+| themeDisabled |    Boolean     | Completely turn off Tailwind CSS classes | false          |
+| variant       | String, Object | Choose variant and sub-variant           | `fill.primary` |
 
 ### HTML-specific Props
 
@@ -57,6 +52,24 @@ lang: en-US
 
 ### Secondary Variant
 
+<z-button variant="fill.secondary">Secondary</z-button>
+<br/>
+<br/>
+
 ```js
-<z-button variation="secondary">Testing</z-button>
+<z-button variant="fill.secondary">Secondary</z-button>
 ```
+
+### Disabled
+
+<z-button variant="fill.primary" status="disabled">Secondary</z-button>
+<br/>
+<br/>
+
+```js
+<z-button variant="fill.primary" status="disabled">Secondary</z-button>
+```
+
+## Quick notes
+
+- Due to [accessibility reasons](https://a11y-101.com/design/button-vs-link) you cannot change the tag of this button component.

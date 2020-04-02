@@ -9,41 +9,34 @@ const newElements = {
   Button: {
     // elements
     button: {
-      variants: {
-        size: {
-          _default: 'py-2 px-3',
-          sm: 'py-1 px-2',
-          lg: 'py-3 px-4',
-        },
-        fill: {
-          base: 'inline-block rounded',
-          // sub-variants
-          primary: {
-            test: `fill-primary-test`,
-            default: `bg-blue-500 hover:bg-blue-600 focus:bg-blue-600 text-white`,
-            disabled: {
-              default: 'test',
-              click: `clicked-disabled`
-            }
-          },
-          secondary: {
-            default: `bg-green-500 hover:bg-green-600 focus:bg-green-600 text-white`,
-            $click: `bg-green-700 focus:bg-green-600 text-white`,
-          },
-          _disabled: {
-            default: `general-disabled bg-gray-300 hover:bg-gray-300 text-gray-500 cursor-not-allowed`,
-            $click: `clicked bg-gray-300 hover:bg-gray-300 text-gray-500 cursor-not-allowed`
-          },
-          _loading: `bg-purple-300 hover:bg-purple-300 text-purple-500 cursor-not-allowed`,
-        },
-        outline: {
-          base: 'button-outline',
-          primary: {
-            default: 'outline-primary-default',
-            other: 'outline-primary-other'
-          }
-        }
+      size: {
+        _default: 'py-2 px-3',
+        sm: 'py-1 px-2',
+        lg: 'py-3 px-4',
       },
+      fill: {
+        _base: 'inline-block rounded font-bold',
+        // sub-variants
+        primary: {
+          _default: `bg-blue-500 hover:bg-blue-600 text-white focus:bg-blue-600 `,
+          $click: `bg-blue-700 text-white`,
+        },
+        secondary: {
+          _default: `bg-green-500 hover:bg-green-600 focus:bg-green-600 text-white`,
+          $click: `bg-green-700 focus:bg-green-600 text-white`,
+        },
+        disabled: {
+          _default: `bg-gray-300 hover:bg-gray-300 text-gray-500 cursor-not-allowed`,
+          $click: `bg-gray-300 hover:bg-gray-300 text-gray-500 cursor-not-allowed`
+        },
+      },
+      outline: {
+        base: 'button-outline',
+        primary: {
+          default: 'outline-primary-default',
+          other: 'outline-primary-other'
+        }
+      }
     }
   },
 }
