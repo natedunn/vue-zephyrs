@@ -41,6 +41,12 @@ const elements = {
       }
     }
   },
+  Card: {
+    wrap: {},
+    header: {},
+    body: {},
+    footer: {}
+  }
 }
 
 module.exports = {

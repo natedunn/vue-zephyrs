@@ -45,6 +45,13 @@ module.exports = {
           'elements/ZInput',
           'elements/ZSelect',
         ]
+      },
+      {
+        title: 'Components',
+        collapsable: false,
+        children: [
+          'components/ZCard',
+        ]
       }
     ]
   },
