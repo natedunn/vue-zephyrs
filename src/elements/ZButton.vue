@@ -44,7 +44,7 @@ export default {
     status: {
       type: String,
       default: null,
-      validator: value => ["disabled"].includes(value)
+      validator: value => ["disabled", ""].includes(value)
     },
     size: {
       type: String,
