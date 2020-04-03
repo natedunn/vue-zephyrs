@@ -20,7 +20,7 @@ export default {
   },
   computed: {
     code() {
-      const code = this.input.split(".").reduce((o, i) => o[i], Theme) || null;
+      const code = this.$utils.stringToDot(this.input, Theme) || null;
       return Theme ? JSON.stringify(code, null, 1) : null;
     }
   }
