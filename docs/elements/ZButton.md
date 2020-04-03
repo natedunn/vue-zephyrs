@@ -11,6 +11,55 @@ lang: en-US
 
 <z-button-playground />
 
+## Examples
+
+### Secondary Variant
+
+<z-button variant="fill.secondary">Secondary</z-button>
+<br/>
+
+```js
+<z-button variant="fill.secondary">Secondary</z-button>
+```
+
+### Disabled
+
+<z-button variant="fill.primary" status="disabled">Secondary</z-button>
+<br/>
+
+```js
+<z-button variant="fill.primary" status="disabled">
+  Secondary
+</z-button>
+```
+
+### Group
+
+<div class="flex justify-start items-center">
+  <z-button variant="fill.primary" removeClass="rounded-r-md">First</z-button>
+  <z-button variant="fill.secondary" removeClass="rounded-l-md rounded-r-md" status="disabled">Second</z-button>
+  <z-button variant="fill.secondary" removeClass="rounded-l-md">Third</z-button>
+</div>
+<br/>
+
+```js
+<div class="flex justify-start items-center">
+  <z-button variant="fill.primary" removeClass="rounded-r-md">
+    First
+  </z-button>
+  <z-button
+    variant="fill.secondary"
+    removeClass="rounded-l-md rounded-r-md"
+    status="disabled"
+  >
+    Second
+  </z-button>
+  <z-button variant="fill.secondary" removeClass="rounded-l-md">
+    Third
+  </z-button>
+</div>
+```
+
 ## Theme Defaults
 
 <!-- <z-theme-default input="elements" /> -->
@@ -47,28 +96,6 @@ lang: en-US
 | click | ClickEvent | Emitted when the button is clicked             |
 | focus | FocusEvent | Emitted when the button is focused             |
 | blur  | BlurEvent  | Emitted when the button is blurred (unfocused) |
-
-## Examples
-
-### Secondary Variant
-
-<z-button variant="fill.secondary">Secondary</z-button>
-<br/>
-<br/>
-
-```js
-<z-button variant="fill.secondary">Secondary</z-button>
-```
-
-### Disabled
-
-<z-button variant="fill.primary" status="disabled">Secondary</z-button>
-<br/>
-<br/>
-
-```js
-<z-button variant="fill.primary" status="disabled">Secondary</z-button>
-```
 
 ## Quick notes
 
