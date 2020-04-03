@@ -60,10 +60,6 @@ lang: en-US
 </div>
 ```
 
-## Theme Defaults
-
-<!-- <z-theme-default input="elements" /> -->
-
 ## Props
 
 ### Component-specific Props
@@ -96,6 +92,10 @@ lang: en-US
 | click | ClickEvent | Emitted when the button is clicked             |
 | focus | FocusEvent | Emitted when the button is focused             |
 | blur  | BlurEvent  | Emitted when the button is blurred (unfocused) |
+
+## Theme Defaults
+
+<z-theme-default input="elements.Button" />
 
 ## Quick notes
 
