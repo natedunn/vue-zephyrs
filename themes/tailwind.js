@@ -19,8 +19,8 @@ const elements = {
         // sub-variants
         primary: {
           _base: `flex items-center justify-center border border-transparent leading-6 text-white`,
-          _default: `hover:bg-blue-600 focus:bg-blue-600 bg-blue-500`,
-          $click: `bg-blue-500`,
+          _default: `hover:bg-blue-600 focus:bg-blue-600 bg-blue-500 active:bg-blue-500`,
+          // $click: `bg-blue-500`,
         },
         secondary: {
           _base: `flex items-center justify-center border border-transparent leading-6 font-medium text-white`,
