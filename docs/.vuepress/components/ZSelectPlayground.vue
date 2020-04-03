@@ -3,13 +3,12 @@
     <template v-slot:preview>
       <div class="py-12">
         <z-select :options="options" v-model="value" />
-        <span
-          v-if="value"
-          class="block mt-4 text-sm py-2 px-3 rounded bg-gray-200 border border-gray-300"
-        >
-          Value: {{ value.value }}
-          <br />
-          Text: {{ value.text }}
+        <span v-if="value && value.value !== 'default'" class="block mt-4">
+          <Prism
+            class="mt-4"
+            language="js"
+            :code="JSON.stringify(value, null, 1)"
+          />
         </span>
       </div>
     </template>
@@ -20,20 +19,34 @@
 </template>
 
 <script>
+import "prismjs";
+import Prism from "vue-prism-component";
+import Strip from "strip-indent";
 export default {
+  components: {
+    Prism,
+    Strip
+  },
   data() {
     return {
       options: [
         {
-          value: false,
-          text: "This will return a boolean"
+          value: "default",
+          text: "Test Me"
         },
         {
-          value: "Hello I am a string",
-          text: "This returns a string"
+          value: false,
+          text: "This value is a boolean"
+        },
+        {
+          value: "Hello, I am a string!",
+          text: "This value is a string"
         }
       ],
-      value: null
+      value: {
+        value: "default",
+        text: "Test Me"
+      }
     };
   }
 };
