@@ -2,22 +2,23 @@
   <playground>
     <template v-slot:preview>
       <z-button
-          :className="className"
-          :themeDisabled="themeDisabled"
-          :status="status ? 'disabled' : null"
-          :removeClass="removeClass"
-          :variant="variant"
-          @click=""
-          @focus="testFocus"
-          @blur="testBlur"
-        >
-          {{ text }}
-        </z-button>
-        <span
-          v-if="focused"
-          class="inline-block mt-4 border border-green-500 bg-green-200 py-2 px-4 rounded"
-          >Button is focused!</span
-        >
+        :className="className"
+        :themeDisabled="themeDisabled"
+        :status="status.value"
+        :removeClass="removeClass"
+        :variant="variant"
+        @click=""
+        @focus="testFocus"
+        @blur="testBlur"
+      >
+        {{ text }}
+      </z-button>
+      <span
+        v-if="focused"
+        class="inline-block mt-4 border border-gray-300 bg-green-200 py-2 px-4 rounded"
+      >
+        Button is focused!
+      </span>
     </template>
     <template v-slot:code>
       {{ code }}
@@ -35,7 +36,9 @@
       <pg-section>
         <pg-header
           >Component Props
-          <a class="text-base" href="#component-specific-props">Read more</a></pg-header
+          <a class="text-base" href="#component-specific-props"
+            >Read more</a
+          ></pg-header
         >
         <!-- <pg-option>
           <z-select label="variant" :options="variantOptions" v-model="variantSelected" />
@@ -59,11 +62,14 @@
         </pg-option>
       </pg-section>
       <pg-section>
-        <pg-header>HTML Props
-          <a class="text-base" href="#html-specific-props">Read more</a></pg-header
+        <pg-header>
+          HTML Props
+          <a class="text-base" href="#html-specific-props">
+            Read more
+          </a>
         </pg-header>
         <pg-option>
-          <z-checkbox v-model="status" id="disabled">Disabled</z-checkbox>
+          <z-select :options="statusOptions" v-model="status" />
         </pg-option>
       </pg-section>
     </template>
@@ -73,7 +79,7 @@
 <script>
 import { MultipaneResizer } from "vue-multipane";
 import Theme from "../../../z.theme";
-const { Button } = Theme.newElements;
+const { Button } = Theme.elements;
 export default {
   components: { MultipaneResizer },
   data() {
@@ -82,7 +88,11 @@ export default {
       text: "Button",
       className: "foo",
       // disabled: false,
-      status: null,
+      status: { value: null, text: "Default" },
+      statusOptions: [
+        { value: null, text: "Default" },
+        { value: "disabled", text: "Disabled" }
+      ],
       removeClass: "",
       themeDisabled: false,
       // Just-for-playgrounds state
