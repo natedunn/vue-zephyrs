@@ -40,12 +40,6 @@
             >Read more</a
           ></pg-header
         >
-        <!-- <pg-option>
-          <z-select label="variant" :options="variantOptions" v-model="variantSelected" />
-        </pg-option>
-        <pg-option>
-          <z-select label="subVariant" :options="subVariantOptions" v-model="subVariantSelected" />
-        </pg-option> -->
         <pg-option>
           <z-input label="variant" v-model="variant" />
         </pg-option>
@@ -60,14 +54,6 @@
             themeDisabled
           </z-checkbox>
         </pg-option>
-      </pg-section>
-      <pg-section>
-        <pg-header>
-          HTML Props
-          <a class="text-base" href="#html-specific-props">
-            Read more
-          </a>
-        </pg-header>
         <pg-option>
           <z-select :options="statusOptions" v-model="status" />
         </pg-option>
@@ -88,9 +74,9 @@ export default {
       text: "Button",
       className: "foo",
       // disabled: false,
-      status: { value: null, text: "Default" },
+      status: { value: "", text: "Default" },
       statusOptions: [
-        { value: null, text: "Default" },
+        { value: "", text: "Default" },
         { value: "disabled", text: "Disabled" }
       ],
       removeClass: "",
@@ -105,7 +91,7 @@ export default {
       return `<z-button
       :className="${this.className}"
       :themeDisabled="${this.themeDisabled}"
-      :disabled="${this.disabled}"
+      :status="${this.status.value}"
       :removeClass="${this.removeClass}"
       :variant="${this.variant}"
     >
