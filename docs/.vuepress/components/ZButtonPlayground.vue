@@ -55,7 +55,7 @@
           </z-checkbox>
         </pg-option>
         <pg-option>
-          <z-select :options="statusOptions" v-model="status" />
+          <z-select label="status" :options="statusOptions" v-model="status" />
         </pg-option>
       </pg-section>
     </template>
