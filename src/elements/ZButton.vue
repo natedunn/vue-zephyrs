@@ -17,7 +17,7 @@
 
 <script>
 import Theme from "../../z.theme";
-const { Button } = Theme.newElements;
+const { Button } = Theme.elements;
 export default {
   data() {
     return {
