@@ -35,8 +35,8 @@ function themeClasses (element, status, variants, events) {
             : acc,
       []
     );
-    const rootBase = element["_base"] || null;
-    return rootBase ? rootBase + " " + foundBases : foundBases;
+    foundBases.push(element['_base'] || null);
+    return foundBases;
   }
 
   function getAutoClasses (obj) {
