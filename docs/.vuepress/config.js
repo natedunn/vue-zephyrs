@@ -50,7 +50,7 @@ module.exports = {
         title: 'Components',
         collapsable: false,
         children: [
-          'components/ZCard',
+          'components/ZPanel',
         ]
       }
     ]

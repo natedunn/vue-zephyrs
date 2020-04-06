@@ -1,5 +1,5 @@
-import ZCard from './ZCard.vue'
+import ZPanel from './ZPanel.vue'
 
 export {
-  ZCard,
+  ZPanel,
 }

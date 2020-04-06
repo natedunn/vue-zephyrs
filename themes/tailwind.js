@@ -41,11 +41,32 @@ const elements = {
       }
     }
   },
-  Card: {
-    wrap: {},
-    header: {},
-    body: {},
-    footer: {}
+  Panel: {
+    // wrapper: {
+    //   _default: "shadow-md border rounded-md",
+    //   shadow: "shadow-md",
+    //   outline: "border",
+    //   well: "bg-gray-100"
+    // },
+    // header: {
+    //   _default: 'font-bold py-4 px-4 border-b flex items-center justify-between'
+    // },
+    // body: {
+    //   _default: 'py-4 px-4'
+    // },
+    // footer: {
+    //   _default: 'py-4 px-4 border-t flex items-center justify-between'
+    // }
+    panel: {
+      _default: "py-4 px-4 border rounded-md",
+      wrapper: "border rounded-md overflow-hidden",
+      header: "font-bold py-4 px-4 border-b flex items-center justify-between",
+      body: "py-4 px-4",
+      footer: "py-4 px-4 border-t flex items-center justify-between",
+      shadow: "shadow-lg",
+      outline: "border",
+      well: "bg-gray-100",
+    }
   }
 }
 
