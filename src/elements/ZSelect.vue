@@ -4,10 +4,11 @@
       v-if="label && !labelDisabled"
       class="block mb-2 text-sm font-bold text-gray-900"
       :for="inputId"
-      >{{ label }}</label
     >
+      {{ label }}
+    </label>
     <div class="relative">
-      <select :class="selectClasses" v-model="currentValue">
+      <select :class="selectClasses" v-model="currentValue" :id="inputId">
         <slot>
           <!-- If passed by `options` prop -->
           <option v-for="option in options" :key="option.value" :value="option">
@@ -62,6 +63,12 @@ export default {
   computed: {
     selectClasses() {
       return ZSelect.select.base;
+    },
+    inputId() {
+      if (this.id) return this.id;
+      if (this.label && !this.labelDisabled)
+        return this.$utils.slugify(this.label);
+      return null;
     }
   },
   watch: {

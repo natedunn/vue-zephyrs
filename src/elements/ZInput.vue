@@ -19,7 +19,6 @@
 <script>
 import { Fragment } from "vue-fragment";
 import { ZInput } from "../../theme";
-import Util from "../utils/Util";
 export default {
   components: {
     Fragment
@@ -97,7 +96,7 @@ export default {
       return ZInput.base;
     },
     slugify(string) {
-      return Util.slugify(string);
+      return this.$utils.slugify(string);
     }
   },
   watch: {

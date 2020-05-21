@@ -24,7 +24,6 @@
 
 <script>
 import { Fragment } from "vue-fragment";
-import Util from "../utils/Util";
 export default {
   components: { Fragment },
   props: {
@@ -71,7 +70,7 @@ export default {
       this.currentValue = !this.currentValue;
     },
     slugify(string) {
-      return Util.slugify(string);
+      return this.$utils.slugify(string);
     }
   },
   watch: {

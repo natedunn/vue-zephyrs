@@ -1,11 +1,11 @@
-import Util from './Util'
+import slugify from './slugify'
 import splitString from './splitString'
 import stringToDot from './stringToDot';
 import themeClasses from './themeClasses';
 import filterClasses from './filterClasses';
 
 export {
-  Util,
+  slugify,
   splitString,
   stringToDot,
   themeClasses,
