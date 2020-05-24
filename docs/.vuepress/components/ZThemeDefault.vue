@@ -6,7 +6,6 @@
 import "prismjs";
 import Prism from "vue-prism-component";
 import Strip from "strip-indent";
-import Theme from "../../../z.theme";
 export default {
   components: {
     Prism,
@@ -20,8 +19,8 @@ export default {
   },
   computed: {
     code() {
-      const code = this.$utils.stringToDot(this.input, Theme) || null;
-      return Theme ? JSON.stringify(code, null, 1) : null;
+      const code = this.$utils.stringToDot(this.$theme, this.input) || null;
+      return this.$theme ? JSON.stringify(code, null, 1) : null;
     }
   }
 };
