@@ -1,44 +1,33 @@
-const colors = {
-  'primary': 'blue-500',
-  'primaryHover': 'blue-600',
-  'secondary': 'green-500',
-  'secondaryHover': 'green-600'
-}
-
 const elements = {
   Button: {
     // elements
     button: {
-      size: {
-        _default: 'text-base py-2 px-3',
-        sm: 'py-1 px-2',
-        lg: 'py-3 px-4',
+      _base: 'inline-flex items-center border-2 justify-center rounded-l-md rounded-r-md leading-6 font-bold focus:shadow-outline focus:outline-none',
+      status: {
+        loading: 'bg-gray-300 hover:bg-gray-300 text-gray-600 cursor-wait',
+        disabled: 'bg-gray-300 hover:bg-gray-300 text-gray-500 cursor-not-allowed',
       },
-      fill: {
-        _base: 'inline-block rounded-l-md rounded-r-md font-bold focus:outline-none focus:shadow-outline focus:border-blue-300',
-        // sub-variants
-        primary: {
-          _base: `flex items-center justify-center border border-transparent leading-6 text-white`,
-          _default: `hover:bg-blue-600 focus:bg-blue-600 bg-blue-500 active:bg-blue-500`,
-          // $click: `bg-blue-500`,
+      variant: {
+        fill: {
+          _base: 'border-transparent',
+          _default: 'text-white hover:bg-blue-600 focus:bg-blue-600 bg-blue-500 active:bg-blue-500', // same as 'primary'
+          primary: 'text-white bg-blue-500 dark:bg-red-500 hover:bg-blue-600 focus:bg-blue-600 active:bg-blue-500',
+          secondary: 'text-white hover:bg-green-600 focus:bg-green-600 bg-green-500 active:bg-green-700',
+          disabled: 'bg-gray-300 hover:bg-gray-300 text-gray-500 cursor-not-allowed',
         },
-        secondary: {
-          _base: `flex items-center justify-center border border-transparent leading-6 font-medium text-white`,
-          _default: `hover:bg-green-600 focus:bg-green-600 bg-green-500`,
-          $click: `bg-green-500`,
-        },
-        disabled: {
-          _default: `bg-gray-300 hover:bg-gray-300 text-gray-500 cursor-not-allowed`,
-          $click: `bg-gray-300 hover:bg-gray-300 text-gray-500 cursor-not-allowed`
-        },
-      },
-      outline: {
-        base: 'button-outline',
-        primary: {
-          default: 'outline-primary-default',
-          other: 'outline-primary-other'
+        outline: {
+          _default: 'border-blue-500 text-blue-500 hover:bg-blue-100 active:bg-blue-200 active:border-blue-600 active:text-blue-800', // same as 'primary'
+          primary: 'border-blue-500 text-blue-500 hover:bg-blue-100 active:bg-blue-200 active:border-blue-600 active:text-blue-800',
+          secondary: 'border-green-500 text-green-500 hover:bg-green-100 active:bg-green-200 active:border-green-600 active:text-green-600'
         }
-      }
+      },
+      size: {
+        _default: 'text-base py-2 px-3', // same as 'md'
+        xs: 'text-xs px-1',
+        sm: 'text-sm py-1 px-2',
+        md: 'text-base py-2 px-3',
+        lg: 'text-lg py-3 px-4',
+      },
     }
   },
   Panel: {
@@ -70,9 +59,14 @@ const elements = {
   }
 }
 
+const components = {
+  Spinner: {
+    spinner: {}
+  }
+}
+
 module.exports = {
-  colors,
   elements,
-  // components,
+  components,
   // layouts,
 }
