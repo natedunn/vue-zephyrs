@@ -1,13 +1,10 @@
 module.exports = {
-  theme: {
-    extend: {
-      screens: {
-        'dark-mode': { raw: '(prefers-color-scheme: dark)' }
-      }
-    },
-  },
   variants: {
-    backgroundColor: ['responsive', 'hover', 'focus', 'active']
+    backgroundColor: ['dark', 'dark-hover', 'dark-group-hover', 'dark-even', 'dark-odd', 'responsive', 'hover', 'focus', 'active'],
+    textColor: ['dark', 'dark-hover', 'dark-active', 'dark-placeholder', 'active'],
+    borderColor: ['responsive', 'hover', 'focus', 'active']
   },
-  plugins: [],
+  plugins: [
+    require('tailwindcss-dark-mode')()
+  ],
 }
