@@ -19,8 +19,9 @@ export default {
   },
   computed: {
     code() {
-      const code = this.$utils.stringToDot(this.$theme, this.input) || null;
-      return this.$theme ? JSON.stringify(code, null, 1) : null;
+      const { $utils, $theme, input } = this;
+      const code = $utils.stringToDot($theme, input) || null;
+      return $theme ? JSON.stringify(code, null, 1) : null;
     }
   }
 };
