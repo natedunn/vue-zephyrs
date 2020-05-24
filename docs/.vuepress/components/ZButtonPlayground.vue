@@ -1,24 +1,33 @@
 <template>
   <playground>
     <template v-slot:preview>
-      <z-button
-        :className="className"
-        :themeDisabled="themeDisabled"
-        :status="status.value"
-        :removeClass="removeClass"
-        :variant="variant"
-        @click=""
-        @focus="testFocus"
-        @blur="testBlur"
-      >
-        {{ text }}
-      </z-button>
-      <span
-        v-if="focused"
-        class="inline-block mt-4 border border-gray-300 bg-green-200 py-2 px-4 rounded"
-      >
-        Button is focused!
-      </span>
+      <div class="flex flex-col items-center w-full">
+        <div>
+          <z-button
+            :variant="variant"
+            :size="size.value"
+            :className="className"
+            :removeClass="removeClass"
+            :status="status.value"
+            :loadingText="loadingText"
+            :isThemeDisabled="themeDisabled"
+            @click="!status.value ? testClick() : null"
+            @focus="testFocus"
+            @blur="testBlur"
+          >
+            {{ text }}
+            <Fragment v-if="count > 0">
+              (clicked {{ count }} time{{ count > 1 ? "s" : "" }})
+            </Fragment>
+          </z-button>
+        </div>
+        <span
+          v-if="focused"
+          class="inline-block mt-4 border border-gray-300 bg-green-200 py-2 px-4 rounded"
+        >
+          Button is focused!
+        </span>
+      </div>
     </template>
     <template v-slot:code>
       {{ code }}
@@ -50,12 +59,22 @@
           <z-input label="removeClass" v-model="removeClass" />
         </pg-option>
         <pg-option>
-          <z-checkbox v-model="themeDisabled" id="themeDisabled">
+          <z-checkbox v-model="themeDisabled" id="theme-disabled">
             themeDisabled
           </z-checkbox>
         </pg-option>
         <pg-option>
-          <z-select label="status" :options="statusOptions" v-model="status" />
+          <z-select label="Button Size" :options="sizeOptions" v-model="size" />
+        </pg-option>
+        <pg-option>
+          <z-select
+            label="Button Status"
+            :options="statusOptions"
+            v-model="status"
+          />
+        </pg-option>
+        <pg-option>
+          <z-input label="loadingText" v-model="loadingText" />
         </pg-option>
       </pg-section>
     </template>
@@ -63,37 +82,46 @@
 </template>
 
 <script>
+import { Fragment } from "vue-fragment";
 import { MultipaneResizer } from "vue-multipane";
-import Theme from "../../../z.theme";
-const { Button } = Theme.elements;
 export default {
-  components: { MultipaneResizer },
+  components: { MultipaneResizer, Fragment },
   data() {
     return {
       // Component state
       text: "Button",
       className: "foo",
       // disabled: false,
-      status: { value: "", text: "Default" },
+      status: { value: null, text: "Default" },
       statusOptions: [
-        { value: "", text: "Default" },
-        { value: "disabled", text: "Disabled" }
+        { value: null, text: "Default" },
+        { value: "disabled", text: "Disabled" },
+        { value: "loading", text: "Loading" }
+      ],
+      size: { value: "md", text: "md" },
+      sizeOptions: [
+        { value: "sm", text: "sm" },
+        { value: "md", text: "md" },
+        { value: "lg", text: "lg" }
       ],
       removeClass: "",
       themeDisabled: false,
+      loadingText: "",
       // Just-for-playgrounds state
       focused: false,
-      variant: "fill.primary"
+      variant: "fill.primary",
+      count: 0
     };
   },
   computed: {
     code() {
       return `<z-button
+      :variant="${this.variant}"
       :className="${this.className}"
       :themeDisabled="${this.themeDisabled}"
-      :status="${this.status.value}"
       :removeClass="${this.removeClass}"
-      :variant="${this.variant}"
+      :status="${this.status.value}"
+      :loadingText="${this.loadingText}"
     >
       ${this.text}
     </z-button>`;
@@ -101,7 +129,7 @@ export default {
   },
   methods: {
     testClick(event) {
-      alert("This is a playground of the @click event working");
+      this.count++;
     },
     testFocus() {
       this.focused = true;

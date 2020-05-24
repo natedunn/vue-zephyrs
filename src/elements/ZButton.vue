@@ -8,17 +8,30 @@
     @mousedown="onMouseDown"
     @mouseup="onMouseUp"
     :class="buttonClasses"
-    :disabled="disabled"
-    :type="type"
   >
-    <slot></slot>
+    <z-spinner
+      v-if="status ? status.includes('loading') : false"
+      class="mr-2"
+    ></z-spinner>
+    <div v-else-if="hasImage"></div>
+    <Fragment
+      v-if="(status ? status.includes('loading') : false) && loadingText"
+    >
+      {{ loadingText }}
+    </Fragment>
+    <slot v-else></slot>
   </button>
 </template>
 
 <script>
-import Theme from "../../z.theme";
-const { Button } = Theme.elements;
+import { Fragment } from "vue-fragment";
+import ZSpinner from "../components/ZSpinner";
 export default {
+  // inheritAttrs: false,
+  components: {
+    Fragment,
+    ZSpinner
+  },
   data() {
     return {
       isClicked: false,
@@ -33,18 +46,27 @@ export default {
       type: String,
       default: null
     },
-    themeDisabled: {
+    isThemeDisabled: {
       type: Boolean,
       default: false
+    },
+    theme: {
+      type: String,
+      default: null
     },
     variant: {
       type: [String, Object],
       default: "fill.primary"
     },
     status: {
-      type: String,
+      type: [String, Array],
       default: null,
-      validator: value => ["disabled", ""].includes(value)
+      validator: value => {
+        const validated = ["disabled", "loading"];
+        return typeof value === "string"
+          ? validated.includes(value)
+          : validated.some(r => value.includes(r));
+      }
     },
     size: {
       type: String,
@@ -54,53 +76,72 @@ export default {
       type: [Array, String],
       default: () => []
     },
-    // Built-in HTML attributes
-    disabled: {
-      type: Boolean,
-      default: false
-    },
-    type: {
+    loadingText: {
       type: String,
-      default: null,
-      validator: value => ["submit", "reset", "button", null].includes(value)
+      default: null
     },
-    autocomplete: {
-      type: String,
-      default: "on",
-      validator: value => ["on", "off"].includes(value)
-    },
-    autofocus: {
+    hasImage: {
       type: Boolean,
       default: false
     }
+    // Built-in HTML attributes
+    // disabled: {
+    //   type: Boolean,
+    //   default: false
+    // },
+    // type: {
+    //   type: String,
+    //   default: null,
+    //   validator: value => ["submit", "reset", "button", null].includes(value)
+    // },
+    // autocomplete: {
+    //   type: String,
+    //   default: "on",
+    //   validator: value => ["on", "off"].includes(value)
+    // },
+    // autofocus: {
+    //   type: Boolean,
+    //   default: false
+    // }
   },
   computed: {
     buttonClasses() {
       const {
-        themeDisabled,
+        isThemeDisabled,
         className,
+        variant,
         $utils,
+        $theme,
+        size,
         removeClass,
         status,
-        size,
-        events
+        statusClasses
+        // events
       } = this;
-      const { button } = Button;
+      const { button } = $theme.components.Button;
 
-      if (themeDisabled) return className || null;
+      if (isThemeDisabled) return className || null;
 
-      // todo: this should be better, replaced
-      const variant = `${this.variant}+size.${size}`;
+      const classes = [
+        statusClasses(button, "disabled"),
+        statusClasses(button, "loading"),
+        !status ? $utils.getThemeClasses(button, `variant.${variant}`) : null,
+        $utils.getThemeClasses(button, `size.${size}`),
+        className
+      ];
 
-      return $utils
-        .filterClasses(
-          $utils.themeClasses(button, status, variant, events),
-          removeClass
-        )
-        .concat(className);
+      return $utils.filterClasses(classes, removeClass);
+    },
+    reducedAttrs() {
+      return Object.assign({}, this.$attrs);
     }
   },
   methods: {
+    statusClasses(element, statusToCheck) {
+      return this.status && this.status.includes(statusToCheck)
+        ? this.$utils.getThemeClasses(element, `status.${statusToCheck}`)
+        : false;
+    },
     onBlur(event) {
       this.isFocused = false;
       this.$emit("blur", event);
