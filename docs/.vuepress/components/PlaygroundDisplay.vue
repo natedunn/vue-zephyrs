@@ -28,7 +28,9 @@
           </svg>
           Live Preview
         </div>
-        <a role="button" @click="toggleCode">Toggle Code</a>
+        <z-button variant="fill.secondary" size="xs" @click="toggleCode"
+          >Toggle Code</z-button
+        >
       </div>
       <div class="flex h-full flex-col justify-between">
         <div class="flex-auto flex justify-center items-center ">
