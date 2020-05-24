@@ -26,8 +26,6 @@
 
 <script>
 import { MultipaneResizer } from "vue-multipane";
-import Theme from "../../../z.theme";
-const { Button } = Theme.elements;
 export default {
   components: { MultipaneResizer },
   data() {

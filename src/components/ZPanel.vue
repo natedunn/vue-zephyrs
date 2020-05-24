@@ -6,7 +6,7 @@
 
 <script>
 import Theme from "../../z.theme";
-const { Panel } = Theme.elements;
+const { Panel } = Theme.components;
 export default {
   data() {
     return {

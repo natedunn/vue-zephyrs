@@ -1,4 +1,4 @@
-const elements = {
+const components = {
   Button: {
     // elements
     button: {
@@ -55,18 +55,17 @@ const elements = {
       shadow: "shadow-lg",
       outline: "border",
       well: "bg-gray-100",
+    },
+  },
+  Spinner: {
+    spinner: {
+      variant: {
+        _default: 'pointer-events-none h-4 w-4 border-2 border-solid border-transparent'
+      }
     }
   }
 }
 
-const components = {
-  Spinner: {
-    spinner: {}
-  }
-}
-
 module.exports = {
-  elements,
-  components,
-  // layouts,
+  components
 }
