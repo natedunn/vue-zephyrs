@@ -25,10 +25,10 @@ Vue.use({
   install () {
     Vue.helpers = Utils;
     Vue.prototype.$utils = Utils;
+    Vue.prototype.$theme = Theme;
   }
 });
 
-Vue.prototype.$theme = Theme;
 Vue.use(Heroicons);
 
 export { install }
