@@ -62,7 +62,7 @@ export default {
   },
   computed: {
     selectClasses() {
-      return ZSelect.select.base;
+      return this.$theme.components.ZSelect.select._default;
     },
     inputId() {
       if (this.id) return this.id;
