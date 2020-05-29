@@ -13,6 +13,7 @@
     "url": "https://twitter.com/natedunn"
   },
   "scripts": {
+    "preinstall": "npx npm-force-resolutions",
     "build": "vue-cli-service build --report --target lib --name vue-zephyrs ./src/index.js",
     "lint": "vue-cli-service lint",
     "docs:build": "vuepress build docs",
@@ -31,33 +32,37 @@
   },
   "dependencies": {
     "@bytegem/vue-heroicons": "^0.3.1",
+    "@tailwindcss/ui": "^0.3.0",
     "lodash": "^4.17.15",
     "postcss-preset-env": "^6.7.0",
     "strip-indent": "^3.0.0",
-    "tailwindcss": "^1.2.0",
+    "tailwindcss": "^1.4.5",
     "vue": "^2.6.11",
     "vue-fragment": "^1.5.1",
     "vue-multipane": "^0.9.5",
-    "vue-prism-component": "^1.1.1"
+    "vue-prism-component": "^1.2.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.9.0",
-    "@vue/babel-preset-app": "^4.2.3",
-    "@vue/cli-plugin-babel": "^4.2.3",
-    "@vue/cli-plugin-eslint": "^4.2.3",
-    "@vue/cli-service": "^4.2.3",
+    "@babel/core": "^7.10.0",
+    "@vue/babel-preset-app": "^4.3.1",
+    "@vue/cli-plugin-babel": "^4.3.1",
+    "@vue/cli-plugin-eslint": "^4.3.1",
+    "@vue/cli-service": "^4.3.1",
     "babel-eslint": "^10.1.0",
     "eslint": "^6.8.0",
     "eslint-plugin-vue": "^6.2.2",
-    "moment": "^2.24.0",
-    "node-sass": "^4.13.1",
+    "moment": "^2.26.0",
+    "node-sass": "^4.14.1",
     "release-it": "^12.6.3",
     "sass-loader": "^8.0.2",
     "tailwindcss-dark-mode": "^1.1.4",
     "vue-template-compiler": "^2.6.11",
-    "vuepress": "^1.4.0"
+    "vuepress": "^1.5.0"
   },
   "peerDependencies": {
     "moment": "^2.24.0"
+  },
+  "resolutions": {
+    "watchpack": "1.6.1"
   }
 }
