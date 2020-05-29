@@ -5,6 +5,7 @@ module.exports = {
     borderColor: ['responsive', 'hover', 'focus', 'active']
   },
   plugins: [
-    require('tailwindcss-dark-mode')()
+    require('@tailwindcss/ui'),
+    require('tailwindcss-dark-mode')(),
   ],
 }
