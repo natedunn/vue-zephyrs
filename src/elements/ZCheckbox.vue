@@ -51,13 +51,13 @@ export default {
   },
   computed: {
     wrapperClasses() {
-      return "py-2 px-4 bg-gray-200 rounded inline-flex items-center hover:bg-gray-300 cursor-pointer";
+      return this.$theme.components.ZCheckbox.wrapper._default;
     },
     checkboxClasses() {
-      return "bg-red-500 mr-2 cursor-pointer";
+      return this.$theme.components.ZCheckbox.input._default;
     },
     labelClasses() {
-      return "block pointer-events-none cursor-pointer";
+      return this.$theme.components.ZCheckbox.label._default;
     },
     inputId() {
       if (this.id) return this.id;

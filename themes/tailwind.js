@@ -34,6 +34,17 @@ const components = {
       },
     }
   },
+  ZCheckbox: {
+    wrapper: {
+      _default: "py-2 px-4 bg-gray-100 rounded inline-flex items-center hover:bg-gray-200 cursor-pointer"
+    },
+    input: {
+      _default: "bg-red-500 mr-2 cursor-pointer",
+    },
+    label: {
+      _default: "block pointer-events-none cursor-pointer",
+    }
+  },
   ZInput: {
     label: {
       _default: '',
