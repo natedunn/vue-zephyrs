@@ -63,8 +63,6 @@ lang: en-US
 
 ### Loading Status
 
-<!-- <z-button :variant="false">Test</z-button> -->
-
 <z-button variant="fill.primary" status="loading" size="sm" loadingText="Custom Loading Message">Loading</z-button>
 <br/>
 <br/>
