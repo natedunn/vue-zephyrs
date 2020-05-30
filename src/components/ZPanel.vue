@@ -5,25 +5,22 @@
 </template>
 
 <script>
-import Theme from "../../z.theme";
-const { Panel } = Theme.components;
 export default {
-  data() {
-    return {
-      events: []
-    };
-  },
   props: {
     className: {
       type: String,
       default: null
     },
-    themeDisabled: {
+    isThemeDisabled: {
       type: Boolean,
       default: false
     },
+    size: {
+      type: String,
+      default: "_default"
+    },
     variant: {
-      type: [String, Object],
+      type: [String, Array],
       default: "_default"
     },
     status: {
@@ -38,19 +35,18 @@ export default {
   },
   computed: {
     panelClasses() {
-      if (this.themeDisabled) return this.className || null;
+      const { $utils, $theme, variant, size, className, removeClass } = this;
+      const { panel } = $theme.components.ZPanel;
 
-      return this.$utils
-        .filterClasses(
-          this.$utils.themeClasses(
-            Panel.panel,
-            this.status,
-            this.variant,
-            this.events
-          ),
-          this.removeClass
-        )
-        .concat(this.className);
+      if (this.isThemeDisabled) return this.className || null;
+
+      const classes = [
+        $utils.getVariantClasses(panel, variant),
+        $utils.getThemeClasses(panel, `size.${size}`),
+        className
+      ];
+
+      return $utils.filterClasses(classes, removeClass);
     }
   }
 };
