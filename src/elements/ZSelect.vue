@@ -34,7 +34,6 @@
 </template>
 
 <script>
-import { ZSelect } from "../../theme";
 export default {
   props: {
     options: {
