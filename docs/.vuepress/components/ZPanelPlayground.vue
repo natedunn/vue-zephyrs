@@ -19,6 +19,9 @@
         <pg-option>
           <z-input label="default (button text)" v-model="text" />
         </pg-option>
+        <pg-option>
+          <z-input label="variant" v-model="variant" />
+        </pg-option>
       </pg-section>
     </template>
   </playground>
