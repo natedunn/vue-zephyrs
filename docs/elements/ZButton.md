@@ -18,10 +18,11 @@ lang: en-US
 | Name            |      Type      | Description                                                 | Default        |
 | --------------- | :------------: | ----------------------------------------------------------- | -------------- |
 | variant         | String, Object | Choose variant and sub-variant                              | `fill.primary` |
-| className       |     String     | Append class to existing class list                         | null           |
+| classAppend     |     String     | Append class to existing class list                         | null           |
 | removeClass     |     String     | Remove class from theme classes                             | null           |
 | status          | String, Array  | Sets component status from options: `loading`, `disabled`   | null           |
 | loadingText     |     String     | Set custom text when component's status is set to `loading` | null           |
+| theme           | String, Array  | Get any theme value for component                           | null           |
 | isThemeDisabled |    Boolean     | Completely turn off theme classes                           | false          |
 
 ## Events
@@ -37,8 +38,8 @@ lang: en-US
 ### With Images
 
 <div class="flex items-center">
-  <z-button variant="fill" className="mr-4" size="lg"><heroicons-external-link-solid class="w-6 h-6 mr-1"/>With Icon</z-button>
-  <z-button variant="outline" className="mr-4"><heroicons-archive-solid class="w-5 h-5 mr-1"/>With Icon</z-button>
+  <z-button variant="fill" classAppend="mr-4" size="lg"><heroicons-external-link-solid class="w-6 h-6 mr-1"/>With Icon</z-button>
+  <z-button variant="outline" classAppend="mr-4"><heroicons-archive-solid class="w-5 h-5 mr-1"/>With Icon</z-button>
   <z-button variant="fill.secondary" size="sm">😎 With Emoji</z-button>
 </div>
 <br/>
@@ -47,11 +48,11 @@ lang: en-US
 // Using vue-heroicons by @bytegem (github.com/bytegem/vue-heroicons)
 
 <div class="flex items-center">
-  <z-button variant="fill" className="mr-4" size="lg">
+  <z-button variant="fill" classAppend="mr-4" size="lg">
     <heroicons-external-link-solid class="w-6 h-6 mr-1" />
     With Icon
   </z-button>
-  <z-button variant="outline" className="mr-4">
+  <z-button variant="outline" classAppend="mr-4">
     <heroicons-archive-solid class="w-5 h-5 mr-1" />
     With Icon
   </z-button>
@@ -115,9 +116,23 @@ lang: en-US
 </div>
 ```
 
-## Default Theme Values
+### Using `theme` prop
 
-<z-theme-default input="components.Button" />
+The `theme` prop can be used to get any Button theme value. This allows for easy access of custom theme values.
+
+<z-button size="lg">Using size prop</z-button>
+<z-button theme="size.lg">Using theme prop</z-button>
+<br/>
+<br/>
+
+```js
+<z-button size="lg">Using size prop</z-button>
+<z-button theme="size.lg">Using theme prop</z-button>
+```
+
+## Default Button Theme Values
+
+<z-theme-default input="components.ZButton" />
 
 ## Quick notes
 

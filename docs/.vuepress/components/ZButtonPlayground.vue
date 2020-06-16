@@ -6,7 +6,7 @@
           <z-button
             :variant="variant"
             :size="size.value"
-            :className="className"
+            :classAppend="classAppend"
             :removeClass="removeClass"
             :status="status.value"
             :loadingText="loadingText"
@@ -16,17 +16,18 @@
             @blur="testBlur"
           >
             {{ text }}
-            <Fragment v-if="count > 0">
-              (clicked {{ count }} time{{ count > 1 ? "s" : "" }})
-            </Fragment>
           </z-button>
         </div>
-        <span
-          v-if="focused"
-          class="inline-block mt-4 border border-gray-300 bg-green-200 py-2 px-4 rounded"
-        >
+        <z-panel v-if="focused" size="sm" class="bg-green-100 mt-2">
           Button is focused!
-        </span>
+        </z-panel>
+        <z-panel
+          v-if="count > 0"
+          size="sm"
+          class="border-gray-300 bg-gray-100 mt-2"
+        >
+          Clicked {{ count }} time{{ count > 1 ? "s" : "" }}
+        </z-panel>
       </div>
     </template>
     <template v-slot:code>
@@ -53,15 +54,10 @@
           <z-input label="variant" v-model="variant" />
         </pg-option>
         <pg-option>
-          <z-input label="className" v-model="className" />
+          <z-input label="classAppend" v-model="classAppend" />
         </pg-option>
         <pg-option>
           <z-input label="removeClass" v-model="removeClass" />
-        </pg-option>
-        <pg-option>
-          <z-checkbox v-model="themeDisabled" id="theme-disabled">
-            themeDisabled
-          </z-checkbox>
         </pg-option>
         <pg-option>
           <z-select label="Button Size" :options="sizeOptions" v-model="size" />
@@ -75,6 +71,11 @@
         </pg-option>
         <pg-option>
           <z-input label="loadingText" v-model="loadingText" />
+        </pg-option>
+        <pg-option>
+          <z-checkbox v-model="themeDisabled" id="theme-disabled">
+            themeDisabled
+          </z-checkbox>
         </pg-option>
       </pg-section>
     </template>
@@ -90,7 +91,7 @@ export default {
     return {
       // Component state
       text: "Button",
-      className: "foo",
+      classAppend: "foo",
       // disabled: false,
       status: { value: null, text: "Default" },
       statusOptions: [
@@ -117,7 +118,7 @@ export default {
     code() {
       return `<z-button
       :variant="${this.variant}"
-      :className="${this.className}"
+      :classAppend="${this.classAppend}"
       :themeDisabled="${this.themeDisabled}"
       :removeClass="${this.removeClass}"
       :status="${this.status.value}"

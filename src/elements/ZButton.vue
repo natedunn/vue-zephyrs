@@ -27,7 +27,6 @@
 import { Fragment } from "vue-fragment";
 import ZSpinner from "../components/ZSpinner";
 export default {
-  // inheritAttrs: false,
   components: {
     Fragment,
     ZSpinner
@@ -42,7 +41,7 @@ export default {
     };
   },
   props: {
-    className: {
+    classAppend: {
       type: String,
       default: null
     },
@@ -55,7 +54,7 @@ export default {
       default: null
     },
     variant: {
-      type: [String, Object],
+      type: [String, Array],
       default: "fill.primary"
     },
     status: {
@@ -108,40 +107,48 @@ export default {
     buttonClasses() {
       const {
         isThemeDisabled,
-        className,
+        classAppend,
         variant,
         $utils,
-        $theme,
         size,
         removeClass,
-        status,
-        statusClasses
-        // events
+        theme,
+        status
       } = this;
-      const { button } = $theme.components.Button;
+      const { filterClasses, themer } = $utils;
 
-      if (isThemeDisabled) return className || null;
+      if (isThemeDisabled) return classAppend || null;
 
       const classes = [
-        statusClasses(button, "disabled"),
-        statusClasses(button, "loading"),
-        !status ? $utils.getThemeClasses(button, `variant.${variant}`) : null,
-        $utils.getThemeClasses(button, `size.${size}`),
-        className
+        status && status.includes("disabled")
+          ? themer("ZButton.button.status.disabled")
+          : null,
+        status && status.includes("loading")
+          ? themer("ZButton.button.status.loading")
+          : null,
+        !status ? themer(`ZButton.button.variant.${variant}`) : null,
+        theme ? themer(`ZButton.button.${theme}`) : null,
+        themer(`ZButton.button.size.${size}`),
+        classAppend
       ];
 
-      return $utils.filterClasses(classes, removeClass);
-    },
-    reducedAttrs() {
-      return Object.assign({}, this.$attrs);
+      return filterClasses(classes, removeClass);
     }
   },
   methods: {
-    statusClasses(element, statusToCheck) {
-      return this.status && this.status.includes(statusToCheck)
-        ? this.$utils.getThemeClasses(element, `status.${statusToCheck}`)
-        : false;
-    },
+    // statusClasses(element, statusToCheck) {
+    //   return this.status && this.status.includes(statusToCheck)
+    //     ? this.$utils.getThemeClasses(element, `status.${statusToCheck}`)
+    //     : false;
+    // },
+    // variantClasses(element, variantToCheck) {
+    //   if (Array.isArray(variantToCheck)) {
+    //     return variantToCheck.map(variant =>
+    //       this.$utils.getThemeClasses(element, `variant.${variant}`)
+    //     );
+    //   }
+    //   return this.$utils.getThemeClasses(element, `variant.${variantToCheck}`);
+    // },
     onBlur(event) {
       this.isFocused = false;
       this.$emit("blur", event);
