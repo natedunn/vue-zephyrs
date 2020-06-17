@@ -35,18 +35,18 @@ export default {
   },
   computed: {
     panelClasses() {
-      const { $utils, $theme, variant, size, className, removeClass } = this;
-      const { panel } = $theme.components.ZPanel;
+      const { $utils, variant, size, className, removeClass } = this;
+      const { themer, filterClasses } = $utils;
 
       if (this.isThemeDisabled) return this.className || null;
 
       const classes = [
-        $utils.getVariantClasses(panel, variant),
-        $utils.getThemeClasses(panel, `size.${size}`),
+        themer(`ZPanel.panel.variant.${variant}`),
+        themer(`ZPanel.panel.size.${size}`),
         className
       ];
 
-      return $utils.filterClasses(classes, removeClass);
+      return filterClasses(classes, removeClass);
     }
   }
 };
