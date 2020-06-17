@@ -10,7 +10,7 @@
             :removeClass="removeClass"
             :status="status.value"
             :loadingText="loadingText"
-            :isThemeDisabled="themeDisabled"
+            :isThemeDisabled="isThemeDisabled"
             @click="!status.value ? testClick() : null"
             @focus="testFocus"
             @blur="testBlur"
@@ -73,8 +73,8 @@
           <z-input label="loadingText" v-model="loadingText" />
         </pg-option>
         <pg-option>
-          <z-checkbox v-model="themeDisabled" id="theme-disabled">
-            themeDisabled
+          <z-checkbox v-model="isThemeDisabled" id="is-theme-disabled">
+            isThemeDisabled
           </z-checkbox>
         </pg-option>
       </pg-section>
@@ -92,7 +92,6 @@ export default {
       // Component state
       text: "Button",
       classAppend: "foo",
-      // disabled: false,
       status: { value: null, text: "Default" },
       statusOptions: [
         { value: null, text: "Default" },
@@ -106,7 +105,7 @@ export default {
         { value: "lg", text: "lg" }
       ],
       removeClass: "",
-      themeDisabled: false,
+      isThemeDisabled: false,
       loadingText: "",
       // Just-for-playgrounds state
       focused: false,
@@ -119,10 +118,10 @@ export default {
       return `<z-button
       :variant="${this.variant}"
       :classAppend="${this.classAppend}"
-      :themeDisabled="${this.themeDisabled}"
       :removeClass="${this.removeClass}"
       :status="${this.status.value}"
       :loadingText="${this.loadingText}"
+      :isThemeDisabled="${this.isThemeDisabled}"
     >
       ${this.text}
     </z-button>`;
