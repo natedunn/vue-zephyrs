@@ -136,19 +136,6 @@ export default {
     }
   },
   methods: {
-    // statusClasses(element, statusToCheck) {
-    //   return this.status && this.status.includes(statusToCheck)
-    //     ? this.$utils.getThemeClasses(element, `status.${statusToCheck}`)
-    //     : false;
-    // },
-    // variantClasses(element, variantToCheck) {
-    //   if (Array.isArray(variantToCheck)) {
-    //     return variantToCheck.map(variant =>
-    //       this.$utils.getThemeClasses(element, `variant.${variant}`)
-    //     );
-    //   }
-    //   return this.$utils.getThemeClasses(element, `variant.${variantToCheck}`);
-    // },
     onBlur(event) {
       this.isFocused = false;
       this.$emit("blur", event);
