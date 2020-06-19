@@ -14,7 +14,7 @@
     "lint": "vue-cli-service lint",
     "docs:build": "vuepress build docs",
     "docs:dev": "vuepress dev docs",
-    "release": "deploy.sh"
+    "release": "sh deploy.sh"
   },
   "main": "dist/vue-zephyrs.umd.min.js",
   "files": [
