@@ -10,7 +10,6 @@
     "url": "https://twitter.com/natedunn"
   },
   "scripts": {
-    "preinstall": "npx npm-force-resolutions",
     "build": "vue-cli-service build --report --target lib --name vue-zephyrs ./src/index.js",
     "lint": "vue-cli-service lint",
     "docs:build": "vuepress build docs",
@@ -59,8 +58,5 @@
   },
   "peerDependencies": {
     "moment": "^2.24.0"
-  },
-  "resolutions": {
-    "watchpack": "1.6.1"
   }
 }
