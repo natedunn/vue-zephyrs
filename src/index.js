@@ -1,4 +1,5 @@
 export * from './elements'
+export * from './components'
 export * from './mixins'
 export * from './constants'
 export * from './utils'

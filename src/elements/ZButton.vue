@@ -3,93 +3,145 @@
     @click="onClick"
     @blur="onBlur"
     @focus="onFocus"
-    :class="classes"
-    :disabled="disabled"
-    :type="type"
+    @mouseover="onMouseOver"
+    @mouseleave="onMouseLeave"
+    @mousedown="onMouseDown"
+    @mouseup="onMouseUp"
+    :class="buttonClasses"
   >
-    <slot></slot>
+    <z-spinner
+      v-if="status ? status.includes('loading') : false"
+      class="mr-2"
+    ></z-spinner>
+    <div v-else-if="hasImage"></div>
+    <Fragment
+      v-if="(status ? status.includes('loading') : false) && loadingText"
+    >
+      {{ loadingText }}
+    </Fragment>
+    <slot v-else></slot>
   </button>
 </template>
 
 <script>
-import { ZButton } from "../../theme";
+import { Fragment } from "vue-fragment";
+import ZSpinner from "../components/ZSpinner";
 export default {
+  components: {
+    Fragment,
+    ZSpinner
+  },
+  data() {
+    return {
+      isClicked: false,
+      isFocused: false,
+      componentVariant: "",
+      variants: {},
+      events: []
+    };
+  },
   props: {
-    className: {
+    classAppend: {
       type: String,
       default: null
     },
-    themeDisabled: {
+    isThemeDisabled: {
       type: Boolean,
       default: false
     },
-    variation: {
+    theme: {
       type: String,
-      default: "primary",
+      default: null
+    },
+    variant: {
+      type: [String, Array],
+      default: "fill.primary"
+    },
+    status: {
+      type: [String, Array],
+      default: null,
       validator: value => {
-        return Object.keys(ZButton.variant).includes(value);
+        const validated = ["disabled", "loading"];
+        return typeof value === "string"
+          ? validated.includes(value)
+          : validated.some(r => value.includes(r));
       }
+    },
+    size: {
+      type: String,
+      default: "_default"
     },
     removeClass: {
       type: [Array, String],
       default: () => []
     },
-    // Built-in HTML attributes
-    disabled: {
-      type: Boolean,
-      default: false
-    },
-    type: {
+    loadingText: {
       type: String,
-      default: null,
-      validator: value => ["submit", "reset", "button", null].includes(value)
+      default: null
     },
-    autocomplete: {
-      type: String,
-      default: "on",
-      validator: value => ["on", "off"].includes(value)
-    },
-    autofocus: {
+    hasImage: {
       type: Boolean,
       default: false
     }
+    // Built-in HTML attributes
+    // disabled: {
+    //   type: Boolean,
+    //   default: false
+    // },
+    // type: {
+    //   type: String,
+    //   default: null,
+    //   validator: value => ["submit", "reset", "button", null].includes(value)
+    // },
+    // autocomplete: {
+    //   type: String,
+    //   default: "on",
+    //   validator: value => ["on", "off"].includes(value)
+    // },
+    // autofocus: {
+    //   type: Boolean,
+    //   default: false
+    // }
   },
   computed: {
-    classes() {
-      if (this.themeDisabled) {
-        return this.className || null;
-      }
+    buttonClasses() {
+      const {
+        isThemeDisabled,
+        classAppend,
+        variant,
+        $utils,
+        size,
+        removeClass,
+        theme,
+        status
+      } = this;
+      const { filterClasses, themer } = $utils;
 
-      const removeClass = Array.isArray(this.removeClass)
-        ? this.removeClass
-        : this.removeClass.split(" ");
+      if (isThemeDisabled) return classAppend || null;
 
-      return [
-        this.checkBase(),
-        this.checkDisabled(),
-        this.checkVariation(),
-        this.className
-      ]
-        .flat(Infinity)
-        .filter(Boolean)
-        .filter(className => !removeClass.includes(className));
+      const classes = [
+        status && status.includes("disabled")
+          ? themer("ZButton.button.status.disabled")
+          : null,
+        status && status.includes("loading")
+          ? themer("ZButton.button.status.loading")
+          : null,
+        !status ? themer(`ZButton.button.variant.${variant}`) : null,
+        theme ? themer(`ZButton.button.${theme}`) : null,
+        themer(`ZButton.button.size.${size}`),
+        classAppend
+      ];
+
+      return filterClasses(classes, removeClass);
     }
   },
   methods: {
-    checkBase() {
-      return ZButton.base.split(" ");
-    },
-    checkDisabled() {
-      return this.disabled ? ZButton.state.disabled.split(" ") : null;
-    },
-    checkVariation() {
-      if (this.checkDisabled()) return null;
-      return ZButton.variant[this.variation] || null;
-    },
     onBlur(event) {
+      this.isFocused = false;
       this.$emit("blur", event);
     },
     onFocus(event) {
+      this.isFocused = true;
       this.$emit("focus", event);
     },
     onClick(event) {
@@ -100,6 +152,18 @@ export default {
     },
     focus() {
       this.$el.focus();
+    },
+    onMouseDown() {
+      this.events.push("click");
+    },
+    onMouseUp() {
+      this.events = this.events.filter(event => event !== "click");
+    },
+    onMouseOver() {
+      this.events.push("hover");
+    },
+    onMouseLeave() {
+      this.events = this.events.filter(event => event !== "hover");
     }
   }
 };

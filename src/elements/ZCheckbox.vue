@@ -24,7 +24,6 @@
 
 <script>
 import { Fragment } from "vue-fragment";
-import Util from "../utils/Util";
 export default {
   components: { Fragment },
   props: {
@@ -52,13 +51,13 @@ export default {
   },
   computed: {
     wrapperClasses() {
-      return "py-2 px-4 bg-gray-200 rounded inline-flex items-center hover:bg-gray-300 cursor-pointer";
+      return this.$theme.components.ZCheckbox.wrapper._default;
     },
     checkboxClasses() {
-      return "bg-red-500 mr-2 cursor-pointer";
+      return this.$theme.components.ZCheckbox.input._default;
     },
     labelClasses() {
-      return "block pointer-events-none cursor-pointer";
+      return this.$theme.components.ZCheckbox.label._default;
     },
     inputId() {
       if (this.id) return this.id;
@@ -71,7 +70,7 @@ export default {
       this.currentValue = !this.currentValue;
     },
     slugify(string) {
-      return Util.slugify(string);
+      return this.$utils.slugify(string);
     }
   },
   watch: {

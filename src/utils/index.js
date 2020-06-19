@@ -1,5 +1,13 @@
-import Util from './Util'
+import slugify from './slugify'
+import splitString from './splitString'
+import stringToDot from './stringToDot';
+import filterClasses from './filterClasses';
+import themer from './themer';
 
 export {
-  Util
+  themer,
+  slugify,
+  splitString,
+  stringToDot,
+  filterClasses
 }

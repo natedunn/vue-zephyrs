@@ -33,3 +33,7 @@ h6,
 .theme-default-content > p {
   padding-bottom: theme("spacing.4");
 }
+
+main li {
+  list-style: disc;
+}

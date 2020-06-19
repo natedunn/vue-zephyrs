@@ -1,22 +1,34 @@
 <template>
   <playground>
     <template v-slot:preview>
-      <z-button
-          @click="testClick"
-          @focus="testFocus"
-          @blur="testBlur"
-          :className="className"
-          :themeDisabled="themeDisabled"
-          :disabled="disabled"
-          :removeClass="removeClass"
+      <div class="flex flex-col items-center w-full">
+        <div>
+          <z-button
+            :variant="variant"
+            :size="size.value"
+            :classAppend="classAppend"
+            :removeClass="removeClass"
+            :status="status.value"
+            :loadingText="loadingText"
+            :isThemeDisabled="isThemeDisabled"
+            @click="!status.value ? testClick() : null"
+            @focus="testFocus"
+            @blur="testBlur"
+          >
+            {{ text }}
+          </z-button>
+        </div>
+        <z-panel v-if="focused" size="sm" class="bg-green-100 mt-2">
+          Button is focused!
+        </z-panel>
+        <z-panel
+          v-if="count > 0"
+          size="sm"
+          class="border-gray-300 bg-gray-100 mt-2"
         >
-          {{ text }}
-        </z-button>
-        <span
-          v-if="focused"
-          class="inline-block mt-4 border border-green-500 bg-green-200 py-2 px-4 rounded"
-          >Button is focused!</span
-        >
+          Clicked {{ count }} time{{ count > 1 ? "s" : "" }}
+        </z-panel>
+      </div>
     </template>
     <template v-slot:code>
       {{ code }}
@@ -34,26 +46,36 @@
       <pg-section>
         <pg-header
           >Component Props
-          <a class="text-base" href="#component-specific-props">Read more</a></pg-header
+          <a class="text-base" href="#component-specific-props"
+            >Read more</a
+          ></pg-header
         >
         <pg-option>
-          <z-input label="className" v-model="className" />
+          <z-input label="variant" v-model="variant" />
+        </pg-option>
+        <pg-option>
+          <z-input label="classAppend" v-model="classAppend" />
         </pg-option>
         <pg-option>
           <z-input label="removeClass" v-model="removeClass" />
         </pg-option>
         <pg-option>
-          <z-checkbox v-model="themeDisabled" id="themeDisabled">
-            themeDisabled
-          </z-checkbox>
+          <z-select label="Button Size" :options="sizeOptions" v-model="size" />
         </pg-option>
-      </pg-section>
-      <pg-section>
-        <pg-header>HTML Props
-          <a class="text-base" href="#html-specific-props">Read more</a></pg-header
-        </pg-header>
         <pg-option>
-          <z-checkbox v-model="disabled" id="disabled">Disabled</z-checkbox>
+          <z-select
+            label="Button Status"
+            :options="statusOptions"
+            v-model="status"
+          />
+        </pg-option>
+        <pg-option>
+          <z-input label="loadingText" v-model="loadingText" />
+        </pg-option>
+        <pg-option>
+          <z-checkbox v-model="isThemeDisabled" id="is-theme-disabled">
+            isThemeDisabled
+          </z-checkbox>
         </pg-option>
       </pg-section>
     </template>
@@ -61,28 +83,45 @@
 </template>
 
 <script>
+import { Fragment } from "vue-fragment";
 import { MultipaneResizer } from "vue-multipane";
 export default {
-  components: { MultipaneResizer },
+  components: { MultipaneResizer, Fragment },
   data() {
     return {
-      // name: "z-button",
+      // Component state
       text: "Button",
-      className: "font-bold",
-      disabled: false,
+      classAppend: "foo",
+      status: { value: null, text: "Default" },
+      statusOptions: [
+        { value: null, text: "Default" },
+        { value: "disabled", text: "Disabled" },
+        { value: "loading", text: "Loading" }
+      ],
+      size: { value: "md", text: "md" },
+      sizeOptions: [
+        { value: "sm", text: "sm" },
+        { value: "md", text: "md" },
+        { value: "lg", text: "lg" }
+      ],
       removeClass: "",
-      themeDisabled: false,
-      // Test purposes
-      focused: false
+      isThemeDisabled: false,
+      loadingText: "",
+      // Just-for-playgrounds state
+      focused: false,
+      variant: "fill.primary",
+      count: 0
     };
   },
   computed: {
     code() {
       return `<z-button
-      :className="${this.className}"
-      :themeDisabled="${this.themeDisabled}"
-      :disabled="${this.disabled}"
+      :variant="${this.variant}"
+      :classAppend="${this.classAppend}"
       :removeClass="${this.removeClass}"
+      :status="${this.status.value}"
+      :loadingText="${this.loadingText}"
+      :isThemeDisabled="${this.isThemeDisabled}"
     >
       ${this.text}
     </z-button>`;
@@ -90,7 +129,7 @@ export default {
   },
   methods: {
     testClick(event) {
-      alert("This is a playground of the @click event working");
+      this.count++;
     },
     testFocus() {
       this.focused = true;

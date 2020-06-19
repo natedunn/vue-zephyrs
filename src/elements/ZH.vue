@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import { ZH } from "../../theme";
+// import { ZH } from "../../theme";
 export default {
   props: {
     level: {
@@ -32,10 +32,10 @@ export default {
   },
   methods: {
     getBase() {
-      return ZH.base;
+      // return ZH.base;
     },
     getVariation() {
-      return ZH.variant[`h${this.level}`];
+      // return ZH.variant[`h${this.level}`];
     }
   }
 };
