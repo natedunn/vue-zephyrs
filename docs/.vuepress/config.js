@@ -59,7 +59,11 @@ module.exports = {
     plugins: [
       require("autoprefixer"),
       require("tailwindcss")("tailwind.config.js"),
-      require("postcss-preset-env")
+      require("postcss-preset-env")({
+        features: {
+          'focus-within-pseudo-class': false
+        }
+      })
     ]
   },
   configureWebpack: {
