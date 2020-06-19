@@ -1,6 +1,6 @@
 {
   "name": "@natedunn/vue-zephyrs",
-  "version": "0.0.10-alpha",
+  "version": "0.1.1",
   "private": false,
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/"
