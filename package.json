@@ -2,6 +2,9 @@
   "name": "@natedunn/vue-zephyrs",
   "version": "0.0.10-alpha",
   "private": false,
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
   "description": "A Vue component library for Vue & Tailwind CSS.",
   "repository": {
     "type": "git",
