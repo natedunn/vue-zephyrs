@@ -1,0 +1,1 @@
+source .env && export GITHUB_TOKEN && npx release-it && npm config set registry https://registry.npmjs.org && npm publish && npm config set registry https://npm.pkg.github.com && npm publish
