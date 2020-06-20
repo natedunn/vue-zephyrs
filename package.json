@@ -1,6 +1,6 @@
 {
   "name": "@natedunn/vue-zephyrs",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "private": false,
   "description": "A Vue component library for Vue & Tailwind CSS.",
   "repository": "git://github.com/natedunn/vue-zephyrs.git",
