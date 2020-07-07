@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import Heroicons from '@bytegem/vue-heroicons';
+import VueFeather from 'vue-feather';
 import Theme from '../z.theme.js';
 import * as elements from './elements'
 import * as components from './components'
@@ -29,6 +29,6 @@ Vue.use({
   }
 });
 
-Vue.use(Heroicons);
+Vue.use(VueFeather);
 
 export { install }

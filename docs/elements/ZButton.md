@@ -38,8 +38,8 @@ lang: en-US
 ### With Images
 
 <div class="flex items-center">
-  <z-button variant="fill" classAppend="mr-4" size="lg"><heroicons-external-link-solid class="w-6 h-6 mr-1"/>With Icon</z-button>
-  <z-button variant="outline" classAppend="mr-4"><heroicons-archive-solid class="w-5 h-5 mr-1"/>With Icon</z-button>
+  <z-button variant="fill" classAppend="mr-4" size="lg"><feather type="alert-circle" class="w-6 h-6 mr-1" />With Icon</z-button>
+  <z-button variant="outline" classAppend="mr-4"><feather type="alert-circle" class="w-6 h-6 mr-1" />With Icon</z-button>
   <z-button variant="fill.secondary" size="sm">😎 With Emoji</z-button>
 </div>
 <br/>
@@ -49,11 +49,11 @@ lang: en-US
 
 <div class="flex items-center">
   <z-button variant="fill" classAppend="mr-4" size="lg">
-    <heroicons-external-link-solid class="w-6 h-6 mr-1" />
+    <feather type="alert-circle" class="w-6 h-6 mr-1" />
     With Icon
   </z-button>
   <z-button variant="outline" classAppend="mr-4">
-    <heroicons-archive-solid class="w-5 h-5 mr-1" />
+    <feather type="alert-circle" class="w-6 h-6 mr-1" />
     With Icon
   </z-button>
   <z-button variant="fill.secondary" size="sm">
@@ -84,7 +84,7 @@ lang: en-US
 <div class="flex justify-start items-center">
   <z-button variant="fill.secondary" removeClass="rounded-r-md">Save</z-button>
   <z-button variant="fill.secondary" removeClass="rounded-l-md rounded-r-md" status="disabled">Delete</z-button>
-  <z-button variant="outline" removeClass="rounded-l-md rounded-r-md"><heroicons-document-add-solid class="w-5 h-5 mr-1" />Add New</z-button>
+  <z-button variant="outline" removeClass="rounded-l-md rounded-r-md"><feather type="alert-circle" class="w-5 h-5 mr-1" />Add New</z-button>
   <z-button variant="fill.secondary" removeClass="rounded-l-md" status="loading" loadingText="Loading profile">Profile</z-button>
 </div>
 <br/>
@@ -102,7 +102,7 @@ lang: en-US
     Delete
   </z-button>
   <z-button variant="outline" removeClass="rounded-l-md rounded-r-md">
-    <heroicons-document-add-solid class="w-5 h-5 mr-1" />
+    <feather type="alert-circle" class="w-6 h-6 mr-1" />
     Add New
   </z-button>
   <z-button
