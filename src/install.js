@@ -1,5 +1,4 @@
 import Vue from 'vue';
-import VueFeather from 'vue-feather';
 import Theme from '../z.theme.js';
 import * as elements from './elements'
 import * as components from './components'
@@ -28,7 +27,5 @@ Vue.use({
     Vue.prototype.$theme = Theme;
   }
 });
-
-Vue.use(VueFeather);
 
 export { install }

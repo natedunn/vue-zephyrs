@@ -37,9 +37,12 @@ lang: en-US
 
 ### With Images
 
+---
+
+<br/>
 <div class="flex items-center">
-  <z-button variant="fill" classAppend="mr-4" size="lg"><feather type="alert-circle" class="w-6 h-6 mr-1" />With Icon</z-button>
-  <z-button variant="outline" classAppend="mr-4"><feather type="alert-circle" class="w-6 h-6 mr-1" />With Icon</z-button>
+  <z-button variant="fill" classAppend="mr-4" size="lg"><svg fill="currentColor" viewBox="0 0 20 20" class="w-6 h-6 mr-2"><path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path></svg>With Icon</z-button>
+  <z-button variant="outline" classAppend="mr-4"><svg fill="currentColor" viewBox="0 0 20 20" class="w-5 h-5 mr-1"><path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path></svg>With Icon</z-button>
   <z-button variant="fill.secondary" size="sm">😎 With Emoji</z-button>
 </div>
 <br/>
@@ -49,11 +52,23 @@ lang: en-US
 
 <div class="flex items-center">
   <z-button variant="fill" classAppend="mr-4" size="lg">
-    <feather type="alert-circle" class="w-6 h-6 mr-1" />
+    <svg fill="currentColor" viewBox="0 0 20 20" class="w-5 h-5 mr-1">
+      <path
+        fill-rule="evenodd"
+        d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
+        clip-rule="evenodd"
+      ></path>
+    </svg>
     With Icon
   </z-button>
   <z-button variant="outline" classAppend="mr-4">
-    <feather type="alert-circle" class="w-6 h-6 mr-1" />
+    <svg fill="currentColor" viewBox="0 0 20 20" class="w-5 h-5 mr-1">
+      <path
+        fill-rule="evenodd"
+        d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
+        clip-rule="evenodd"
+      ></path>
+    </svg>
     With Icon
   </z-button>
   <z-button variant="fill.secondary" size="sm">
@@ -84,7 +99,7 @@ lang: en-US
 <div class="flex justify-start items-center">
   <z-button variant="fill.secondary" removeClass="rounded-r-md">Save</z-button>
   <z-button variant="fill.secondary" removeClass="rounded-l-md rounded-r-md" status="disabled">Delete</z-button>
-  <z-button variant="outline" removeClass="rounded-l-md rounded-r-md"><feather type="alert-circle" class="w-5 h-5 mr-1" />Add New</z-button>
+  <z-button variant="outline" removeClass="rounded-l-md rounded-r-md"><svg fill="currentColor" viewBox="0 0 20 20" class="w-5 h-5 mr-1"><path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path></svg>Add New</z-button>
   <z-button variant="fill.secondary" removeClass="rounded-l-md" status="loading" loadingText="Loading profile">Profile</z-button>
 </div>
 <br/>
@@ -102,7 +117,13 @@ lang: en-US
     Delete
   </z-button>
   <z-button variant="outline" removeClass="rounded-l-md rounded-r-md">
-    <feather type="alert-circle" class="w-6 h-6 mr-1" />
+    <svg fill="currentColor" viewBox="0 0 20 20" class="w-5 h-5 mr-1">
+      <path
+        fill-rule="evenodd"
+        d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
+        clip-rule="evenodd"
+      ></path>
+    </svg>
     Add New
   </z-button>
   <z-button
