@@ -1,8 +1,10 @@
 # Roadmap
 
 ## Alpha
-- Finalize config and theming
+
+- ~~Finalize config, theming, and general API~~
 - Add basic elements
+
   - Button
   - Input(s)
   - Select
@@ -29,4 +31,3 @@
 - Add first layouts
   - Navbar
   - Card
-

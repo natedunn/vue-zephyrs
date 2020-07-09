@@ -1,13 +1,13 @@
 # Installation
 
-> 🚨 This project is in _early_ alpha and it is not recommended to use until a beta is released.
+<draft-warning>This project is in early development. Please do not use in production. <a href="/introduction/roadmap.html">Read More</a></draft-warning>
 
 If you are using module bundlers such as Webpack, you can directly include package into your project via:
 
 NPM:
 
 ```bash
-$ npm install vue-zephyrs@alpha --save
+$ npm install vue-zephyrs --save
 ```
 
 <br/>
@@ -15,7 +15,7 @@ $ npm install vue-zephyrs@alpha --save
 or Yarn:
 
 ```bash
-$ yarn add vue-zephyrs@alpha
+$ yarn add vue-zephyrs
 ```
 
 <br/>

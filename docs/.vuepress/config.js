@@ -33,7 +33,6 @@ module.exports = {
         children: [
           'introduction/about',
           'introduction/guide',
-          'introduction/tips',
           'introduction/roadmap',
         ]
       },
