@@ -17,7 +17,9 @@ const filterClasses = function (arrays, removeClass) {
     .filter(className => {
       const classes = Array.isArray(removeClass)
         ? removeClass
-        : splitString(removeClass);
+        : typeof removeClass === 'string'
+          ? splitString(removeClass)
+          : [removeClass];
       return !classes.includes(className);
     });
 }
