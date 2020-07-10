@@ -45,8 +45,8 @@ export default {
   },
   computed: {
     code() {
-      return `<v-input
-      v-model="value"
+      return `<z-input
+      v-model="${this.value}"
       :label="${this.label}"
       :labelDisabled="${this.labelDisabled}"
       :themeDisabled="${this.themeDisabled}"
