@@ -63,11 +63,11 @@ export default {
       default: null
     },
     classAppend: {
-      type: String,
+      type: [String, Object],
       default: null
     },
     removeClass: {
-      type: [Array, String],
+      type: [Array, String, Object],
       default: () => []
     },
     theme: {
