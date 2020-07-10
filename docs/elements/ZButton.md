@@ -5,7 +5,7 @@ lang: en-US
 
 # Button
 
-> 🚨 This is a working draft.
+<DraftWarning />
 
 ## Playground
 
@@ -15,15 +15,16 @@ lang: en-US
 
 ### Component Props
 
-| Name            |      Type      | Description                                                 | Default        |
-| --------------- | :------------: | ----------------------------------------------------------- | -------------- |
-| variant         | String, Object | Choose variant and sub-variant                              | `fill.primary` |
-| classAppend     |     String     | Append class to existing class list                         | null           |
-| removeClass     |     String     | Remove class from theme classes                             | null           |
-| status          | String, Array  | Sets component status from options: `loading`, `disabled`   | null           |
-| loadingText     |     String     | Set custom text when component's status is set to `loading` | null           |
-| theme           | String, Array  | Get any theme value for component                           | null           |
-| isThemeDisabled |    Boolean     | Completely turn off theme classes                           | false          |
+| Name            |     Type      | Description                                                 | Default          |
+| --------------- | :-----------: | ----------------------------------------------------------- | ---------------- |
+| variant         | String, Array | Choose variant and sub-variant from theme.                  | `"fill.primary"` |
+| size            |    String     | Set component size from theme.                              | `"_default"`     |
+| status          | String, Array | Set component status. Options: `loading`, `disabled`        | `null`           |
+| loadingText     |    String     | Set custom text when component's status is set to `loading` | `null`           |
+| classAppend     |    String     | Append class to existing class list.                        | `null`           |
+| removeClass     |    String     | Remove class from theme classes.                            | `null`           |
+| theme           | String, Array | Get any theme value for component.                          | `null`           |
+| isThemeDisabled |    Boolean    | Completely turn off theme classes.                          | `false`          |
 
 ## Events
 
@@ -48,8 +49,6 @@ lang: en-US
 <br/>
 
 ```js
-// Using vue-heroicons by @bytegem (github.com/bytegem/vue-heroicons)
-
 <div class="flex items-center">
   <z-button variant="fill" classAppend="mr-4" size="lg">
     <svg fill="currentColor" viewBox="0 0 20 20" class="w-5 h-5 mr-1">

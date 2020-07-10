@@ -13,7 +13,6 @@
       v-if="status ? status.includes('loading') : false"
       class="mr-2"
     ></z-spinner>
-    <div v-else-if="hasImage"></div>
     <Fragment
       v-if="(status ? status.includes('loading') : false) && loadingText"
     >
@@ -41,21 +40,13 @@ export default {
     };
   },
   props: {
-    classAppend: {
-      type: String,
-      default: null
-    },
-    isThemeDisabled: {
-      type: Boolean,
-      default: false
-    },
-    theme: {
-      type: String,
-      default: null
-    },
     variant: {
       type: [String, Array],
       default: "fill.primary"
+    },
+    size: {
+      type: String,
+      default: "_default"
     },
     status: {
       type: [String, Array],
@@ -67,41 +58,26 @@ export default {
           : validated.some(r => value.includes(r));
       }
     },
-    size: {
+    loadingText: {
       type: String,
-      default: "_default"
+      default: null
+    },
+    classAppend: {
+      type: String,
+      default: null
     },
     removeClass: {
       type: [Array, String],
       default: () => []
     },
-    loadingText: {
+    theme: {
       type: String,
       default: null
     },
-    hasImage: {
+    isThemeDisabled: {
       type: Boolean,
       default: false
     }
-    // Built-in HTML attributes
-    // disabled: {
-    //   type: Boolean,
-    //   default: false
-    // },
-    // type: {
-    //   type: String,
-    //   default: null,
-    //   validator: value => ["submit", "reset", "button", null].includes(value)
-    // },
-    // autocomplete: {
-    //   type: String,
-    //   default: "on",
-    //   validator: value => ["on", "off"].includes(value)
-    // },
-    // autofocus: {
-    //   type: Boolean,
-    //   default: false
-    // }
   },
   computed: {
     buttonClasses() {
