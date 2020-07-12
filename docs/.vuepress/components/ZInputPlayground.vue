@@ -6,8 +6,8 @@
         <z-input
           v-model="value"
           :label="label"
-          :labelDisabled="labelDisabled"
-          :themeDisabled="themeDisabled"
+          :hasLabel="hasLabel"
+          :isThemeDisabled="isThemeDisabled"
         />
       </div>
     </template>
@@ -24,9 +24,9 @@
         placeholder="No label (removes <label> element)"
       />
       <div class="h-6"></div>
-      <z-checkbox v-model="themeDisabled" id="themeDisabled"
-        >themeDisabled</z-checkbox
-      >
+      <z-checkbox v-model="isThemeDisabled" id="isThemeDisabled">
+        isThemeDisabled
+      </z-checkbox>
     </template>
   </playground>
 </template>
@@ -39,8 +39,8 @@ export default {
       value: "Default Value",
       name: "Default Name",
       label: "Default Label",
-      labelDisabled: false,
-      themeDisabled: false
+      hasLabel: true,
+      isThemeDisabled: false
     };
   },
   computed: {
@@ -48,8 +48,8 @@ export default {
       return `<z-input
       v-model="${this.value}"
       :label="${this.label}"
-      :labelDisabled="${this.labelDisabled}"
-      :themeDisabled="${this.themeDisabled}"
+      :hasLabel="${this.hasLabel}"
+      :isThemeDisabled="${this.isThemeDisabled}"
     />`;
     }
   }
