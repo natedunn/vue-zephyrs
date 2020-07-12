@@ -6,6 +6,5 @@ export default function themer (request) {
   } else if (typeof request === 'string') {
     return fetchThemeClasses(request);
   }
-  console.error('Unrecognized type used.');
-  return false;
+  return null;
 }
