@@ -2,7 +2,7 @@ const components = {
   ZButton: {
     // elements
     button: {
-      _base: 'inline-flex items-center border-2 justify-center rounded-l-md rounded-r-md leading-6 font-bold focus:outline-none',
+      _base: 'inline-flex items-center border-2 justify-center rounded-l-md rounded-r-md font-bold leading-6 focus:outline-none',
       status: {
         _base: 'border-transparent',
         loading: 'bg-cool-gray-200 hover:bg-cool-gray-200 text-cool-gray-500 cursor-wait',
@@ -35,15 +35,9 @@ const components = {
     }
   },
   ZCheckbox: {
-    wrapper: {
-      _default: "py-2 px-4 bg-gray-100 rounded inline-flex items-center hover:bg-gray-200 cursor-pointer"
-    },
-    input: {
-      _default: "bg-red-500 mr-2 cursor-pointer",
-    },
-    label: {
-      _default: "block pointer-events-none cursor-pointer",
-    }
+    wrapper: "py-2 px-4 bg-gray-100 rounded inline-flex items-center hover:bg-gray-200 cursor-pointer",
+    input: "mr-2 cursor-pointer",
+    label: "block pointer-events-none cursor-pointer"
   },
   ZInput: {
     wrapper: {
