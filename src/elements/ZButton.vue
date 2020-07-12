@@ -7,7 +7,7 @@
     @mouseleave="onMouseLeave"
     @mousedown="onMouseDown"
     @mouseup="onMouseUp"
-    :class="buttonClasses"
+    :class="classes.button()"
   >
     <z-spinner
       v-if="status ? status.includes('loading') : false"
@@ -80,6 +80,46 @@ export default {
     }
   },
   computed: {
+    classes() {
+      const {
+        isThemeDisabled,
+        classAppend,
+        variant,
+        $utils,
+        size,
+        removeClass,
+        theme,
+        status
+      } = this;
+      const { filterClasses, themer } = $utils;
+
+      return {
+        button: () => {
+          const className =
+            classAppend &&
+            !Array.isArray(classAppend) &&
+            typeof classAppend === "object"
+              ? classAppend.button
+              : classAppend;
+          if (isThemeDisabled) return className || null;
+          return filterClasses(
+            [
+              status && status.includes("disabled")
+                ? themer("ZButton.button.status.disabled")
+                : null,
+              status && status.includes("loading")
+                ? themer("ZButton.button.status.loading")
+                : null,
+              !status ? themer(`ZButton.button.variant.${variant}`) : null,
+              theme ? themer(`ZButton.button.${theme}`) : null,
+              themer(`ZButton.button.size.${size}`),
+              className
+            ],
+            removeClass
+          );
+        }
+      };
+    },
     buttonClasses() {
       const {
         isThemeDisabled,

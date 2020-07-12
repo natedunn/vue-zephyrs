@@ -1,31 +1,29 @@
 <template>
-  <Fragment>
-    <div :class="wrapperClasses" @click="toggleValue">
-      <z-input
-        :id="inputId"
-        :className="checkboxClasses"
-        v-model="value"
-        type="checkbox"
-        themeDisabled
-        labelDisabled
-      />
-      <label
-        v-if="!labelDisabled && (this.$slots.default || label)"
-        :class="labelClasses"
-        :for="inputId"
-      >
-        <slot>
-          {{ label }}
-        </slot>
-      </label>
-    </div>
-  </Fragment>
+  <div :class="wrapperClasses" @click="toggleValue">
+    <z-input
+      v-model="value"
+      :id="inputId"
+      :classAppend="{
+        input: checkboxClasses
+      }"
+      type="checkbox"
+      :isThemeDisabled="true"
+      :hasLabel="false"
+    />
+    <label
+      v-if="hasLabel && (this.$slots.default || label)"
+      :class="labelClasses"
+      :for="inputId"
+    >
+      <slot>
+        {{ label }}
+      </slot>
+    </label>
+  </div>
 </template>
 
 <script>
-import { Fragment } from "vue-fragment";
 export default {
-  components: { Fragment },
   props: {
     labelDisabled: {
       type: Boolean,
@@ -42,6 +40,14 @@ export default {
     value: {
       type: Boolean,
       default: false
+    },
+    hasLabel: {
+      type: Boolean,
+      default: true
+    },
+    isThemeDisabled: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
@@ -50,14 +56,20 @@ export default {
     };
   },
   computed: {
+    classes() {
+      return {
+        thing: "test this thing",
+        other: "other"
+      };
+    },
     wrapperClasses() {
-      return this.$theme.components.ZCheckbox.wrapper._default;
+      return this.$utils.themer("ZCheckbox.wrapper");
     },
     checkboxClasses() {
-      return this.$theme.components.ZCheckbox.input._default;
+      return this.$utils.themer("ZCheckbox.input");
     },
     labelClasses() {
-      return this.$theme.components.ZCheckbox.label._default;
+      return this.$utils.themer("ZCheckbox.label");
     },
     inputId() {
       if (this.id) return this.id;
