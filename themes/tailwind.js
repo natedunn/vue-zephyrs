@@ -46,11 +46,18 @@ const components = {
     }
   },
   ZInput: {
+    wrapper: {
+      _default: 'focus-within:z-0'
+    },
     label: {
-      _default: '',
+      _default: 'block mb-2 text-sm font-bold text-gray-900',
     },
     input: {
-      _default: 'appearance-none inline-block text-gray-700 border border-gray-300 rounded py-2 px-3 leading-tight focus:outline-none focus:bg-white focus:border-blue-500 focus:outline-none focus:shadow-outline'
+      _default: 'appearance-none inline-flex text-gray-700 leading-6 border-t-2 border-r-2 border-b-2 border-l-2 border-gray-300 rounded-l rounded-r focus:z-0 focus:outline-none focus:bg-white focus:border-blue-500 focus:outline-none focus:shadow-outline',
+      size: {
+        _default: 'py-2 px-3',
+        md: '',
+      }
     }
   },
   ZPanel: {
