@@ -77,7 +77,7 @@ const components = {
   },
   ZSelect: {
     select: {
-      _default: "block appearance-none w-full bg-white border-2 border-gray-300 hover:border-gray-400 hover:bg-blue-50 cursor-pointer py-2 px-3 pr-6 rounded leading-tight focus:outline-none focus:border-blue-500 focus:shadow-outline"
+      _default: "appearance-none w-full bg-white border-2 border-gray-300 hover:border-blue-400 hover:bg-blue-50 cursor-pointer py-2 px-3 pr-6 rounded leading-tight focus:outline-none focus:border-blue-500 focus:shadow-outline"
     }
   },
   Spinner: {
