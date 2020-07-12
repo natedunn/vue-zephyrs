@@ -5,13 +5,58 @@ lang: en-US
 
 # Input
 
-> 🚨 This is a working draft.
+<DraftWarning />
 
 ## Playground
 
 <z-input-playground />
 
-## How to use
+## Props
+
+| Name            |     Type      | Description                                          | Default                                       |
+| --------------- | :-----------: | ---------------------------------------------------- | --------------------------------------------- |
+| v-model         |    String     | Bind input value                                     | `null`                                        |
+| id              |    String     | Set input id attribute                               | `null`                                        |
+| hasLabel        |    Boolean    | Explicitly remove label component                    | `true`                                        |
+| label           |    String     | Edit label text (also sets id attribute if none set) | `null`                                        |
+| classAppend     |    Object     | Append class to existing class list.                 | `{ wrapper: null, label: null, input: null }` |
+| removeClass     |    String     | Remove class from theme classes.                     | `{ wrapper: null, label: null, input: null }` |
+| theme           | String, Array | Get any theme value for component.                   | `{ wrapper: null, label: null, input: null }` |
+| isThemeDisabled |    Boolean    | Completely turn off theme classes.                   | `false`                                       |
+
+## Events
+
+| Name  | Params     | Description |
+| ----- | ---------- | ----------- |
+| input | InputValue |
+
+## More Examples
+
+### Inline Form
+
+<z-panel size="lg" class="inline-flex items-end bg-blue-50">
+  <z-input label="First Name" placeholder="John" :classAppend="{ wrapper: '-mr-1', label: 'text-blue-700' }" :removeClass="{ input: 'rounded-r' }" />
+  <z-input label="Last Name" placeholder="Doe" :classAppend="{ wrapper: '-mr-1', label: 'text-blue-700' }" :removeClass="{ input: 'rounded-l rounded-r' }" />
+  <z-input label="Email" placeholder="john@acme.com" :classAppend="{ label: 'text-blue-700' }" :removeClass="{ input: 'rounded-l rounded-r' }" />
+  <div>
+    <z-button removeClass="rounded-l-md" classAppend="relative z-10">Subscribe</z-button>
+  </div>
+</z-panel>
+<br/>
+<br/>
+
+```js
+<z-panel size="lg" class="inline-flex items-end bg-blue-50">
+  <z-input label="First Name" placeholder="John" :classAppend="{ wrapper: '-mr-1', label: 'text-blue-700' }" :removeClass="{ input: 'rounded-r' }" />
+  <z-input label="Last Name" placeholder="Doe" :classAppend="{ wrapper: '-mr-1', label: 'text-blue-700' }" :removeClass="{ input: 'rounded-l rounded-r' }" />
+  <z-input label="Email" placeholder="john@acme.com" :classAppend="{ label: 'text-blue-700' }" :removeClass="{ input: 'rounded-l rounded-r' }" />
+  <div>
+    <z-button removeClass="rounded-l-md" classAppend="relative z-10">Subscribe</z-button>
+  </div>
+</z-panel>
+```
+
+## Quick Notes
 
 ### Labels
 
@@ -20,32 +65,3 @@ For accessibility reasons, inputs should almost almost always have an included `
 ### Access core input
 
 To use `<input type="checkbox">` please use the component `<z-checkbox>`
-
-## Component-specific Props
-
-| Name          |  Type   | Description                              | Default |
-| ------------- | :-----: | ---------------------------------------- | ------- |
-| className     | String  | Append class to existing class list      | null    |
-| themeDisabled | Boolean | Completely turn off Tailwind CSS classes | false   |
-| v-model       |   Any   |                                          | null    |
-
-## HTML-specific Props
-
-> Each of the follow props are HTML standard attributes that are accessible through props. For more information you can [read more at MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button)
-
-| Name                               |  Type   | Description                             | Default |
-| ---------------------------------- | :-----: | --------------------------------------- | ------- |
-| [disabled](https://mzl.la/2vTstkx) | Boolean | Add HTML attribute 'disabled' to button | false   |
-| [type](https://mzl.la/3bRXh5T)     | String  | The default behavior of the button      | null    |
-
-## Methods
-
-| Name    | Params | Description |
-| ------- | ------ | ----------- |
-| method1 |        |
-
-## Events
-
-| Name  | Params     | Description |
-| ----- | ---------- | ----------- |
-| input | InputValue |
