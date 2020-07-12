@@ -34,7 +34,7 @@ export default {
   data() {
     return {
       text: "Card Content Here",
-      className: "foo",
+      classAppend: "foo",
       status: {},
       classRemove: "",
       themeDisabled: false,
@@ -44,7 +44,7 @@ export default {
   computed: {
     code() {
       return `<z-panel
-      :className="${this.className}"
+      :classAppend="${this.classAppend}"
       :themeDisabled="${this.themeDisabled}"
       :status="${this.status.value}"
       :classRemove="${this.classRemove}"

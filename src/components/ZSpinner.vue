@@ -8,7 +8,7 @@ export default {
     return {};
   },
   props: {
-    className: {
+    classAppend: {
       type: String,
       default: null
     },

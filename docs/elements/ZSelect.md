@@ -27,6 +27,7 @@ const options = [
 
 <z-select :options="options" />
 ```
+
 <br/>
 
 You can also directly pass `<option>` elements into the default slot. Be sure to include an object as the value as exampled:
@@ -45,7 +46,7 @@ You can also directly pass `<option>` elements into the default slot. Be sure to
 
 | Name          |  Type   | Description                              | Default |
 | ------------- | :-----: | ---------------------------------------- | ------- |
-| className     | String  | Append class to existing class list      | null    |
+| classAppend   | String  | Append class to existing class list      | null    |
 | themeDisabled | Boolean | Completely turn off Tailwind CSS classes | false   |
 | v-model       |   Any   |                                          | null    |
 

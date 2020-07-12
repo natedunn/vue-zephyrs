@@ -7,7 +7,7 @@
 <script>
 export default {
   props: {
-    className: {
+    classAppend: {
       type: String,
       default: null
     },
@@ -35,15 +35,15 @@ export default {
   },
   computed: {
     panelClasses() {
-      const { $utils, variant, size, className, classRemove } = this;
+      const { $utils, variant, size, classAppend, classRemove } = this;
       const { themer, filterClasses } = $utils;
 
-      if (this.isThemeDisabled) return this.className || null;
+      if (this.isThemeDisabled) return this.classAppend || null;
 
       const classes = [
         themer(`ZPanel.panel.variant.${variant}`),
         themer(`ZPanel.panel.size.${size}`),
-        className
+        classAppend
       ];
 
       return filterClasses(classes, classRemove);

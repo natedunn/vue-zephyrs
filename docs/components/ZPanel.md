@@ -15,13 +15,13 @@ lang: en-US
 
 ### Badges
 
-<z-panel><z-panel className="inline-block bg-green-500 text-xs uppercase font-bold text-white border-white" size="xs">New!</z-panel><span class="inline-block leading-tight w-full font-bold text-3xl">Exciting Feature</span></z-panel>
+<z-panel><z-panel classAppend="inline-block bg-green-500 text-xs uppercase font-bold text-white border-white" size="xs">New!</z-panel><span class="inline-block leading-tight w-full font-bold text-3xl">Exciting Feature</span></z-panel>
 <br/>
 
 ```js
 <z-panel>
   <z-panel
-    className="inline-block bg-green-500 text-xs uppercase font-bold text-white border-white"
+    classAppend="inline-block bg-green-500 text-xs uppercase font-bold text-white border-white"
     size="xs"
   >
     New!
