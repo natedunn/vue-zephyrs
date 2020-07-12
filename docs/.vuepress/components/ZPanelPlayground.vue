@@ -36,7 +36,7 @@ export default {
       text: "Card Content Here",
       className: "foo",
       status: {},
-      removeClass: "",
+      classRemove: "",
       themeDisabled: false,
       variant: "_default"
     };
@@ -47,7 +47,7 @@ export default {
       :className="${this.className}"
       :themeDisabled="${this.themeDisabled}"
       :status="${this.status.value}"
-      :removeClass="${this.removeClass}"
+      :classRemove="${this.classRemove}"
       :variant="${this.variant}"
     >
       ${this.text}

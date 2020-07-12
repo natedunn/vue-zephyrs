@@ -22,7 +22,7 @@ lang: en-US
 | status          | String, Array | Set component status. Options: `loading`, `disabled`        | `null`           |
 | loadingText     |    String     | Set custom text when component's status is set to `loading` | `null`           |
 | classAppend     |    String     | Append class to existing class list.                        | `null`           |
-| removeClass     |    String     | Remove class from theme classes.                            | `null`           |
+| classRemove     |    String     | Remove class from theme classes.                            | `null`           |
 | theme           | String, Array | Get any theme value for component.                          | `null`           |
 | isThemeDisabled |    Boolean    | Completely turn off theme classes.                          | `false`          |
 
@@ -96,26 +96,26 @@ lang: en-US
 ### Group
 
 <div class="flex justify-start items-center">
-  <z-button variant="fill.secondary" removeClass="rounded-r-md">Save</z-button>
-  <z-button variant="fill.secondary" removeClass="rounded-l-md rounded-r-md" status="disabled">Delete</z-button>
-  <z-button variant="outline" removeClass="rounded-l-md rounded-r-md"><svg fill="currentColor" viewBox="0 0 20 20" class="w-5 h-5 mr-1"><path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path></svg>Add New</z-button>
-  <z-button variant="fill.secondary" removeClass="rounded-l-md" status="loading" loadingText="Loading profile">Profile</z-button>
+  <z-button variant="fill.secondary" classRemove="rounded-r-md">Save</z-button>
+  <z-button variant="fill.secondary" classRemove="rounded-l-md rounded-r-md" status="disabled">Delete</z-button>
+  <z-button variant="outline" classRemove="rounded-l-md rounded-r-md"><svg fill="currentColor" viewBox="0 0 20 20" class="w-5 h-5 mr-1"><path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path></svg>Add New</z-button>
+  <z-button variant="fill.secondary" classRemove="rounded-l-md" status="loading" loadingText="Loading profile">Profile</z-button>
 </div>
 <br/>
 
 ```js
 <div class="flex justify-start items-center">
-  <z-button variant="fill.secondary" removeClass="rounded-r-md">
+  <z-button variant="fill.secondary" classRemove="rounded-r-md">
     Save
   </z-button>
   <z-button
     variant="fill.secondary"
-    removeClass="rounded-l-md rounded-r-md"
+    classRemove="rounded-l-md rounded-r-md"
     status="disabled"
   >
     Delete
   </z-button>
-  <z-button variant="outline" removeClass="rounded-l-md rounded-r-md">
+  <z-button variant="outline" classRemove="rounded-l-md rounded-r-md">
     <svg fill="currentColor" viewBox="0 0 20 20" class="w-5 h-5 mr-1">
       <path
         fill-rule="evenodd"
@@ -127,7 +127,7 @@ lang: en-US
   </z-button>
   <z-button
     variant="fill.secondary"
-    removeClass="rounded-l-md"
+    classRemove="rounded-l-md"
     status="loading"
     loadingText="Loading profile"
   >

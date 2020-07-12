@@ -59,7 +59,7 @@ export default {
         };
       }
     },
-    removeClass: {
+    classRemove: {
       type: Object,
       default: () => {
         return {
@@ -84,7 +84,7 @@ export default {
   },
   computed: {
     classes() {
-      const { $utils, size, removeClass, classAppend, isThemeDisabled } = this;
+      const { $utils, size, classRemove, classAppend, isThemeDisabled } = this;
       const { filterClasses, themer } = $utils;
 
       return {
@@ -95,7 +95,7 @@ export default {
               themer(`ZInput.wrapper`),
               classAppend.wrapper ? classAppend.wrapper : null
             ],
-            removeClass.wrapper ? removeClass.wrapper : null
+            classRemove.wrapper ? classRemove.wrapper : null
           );
         },
         label: () => {
@@ -105,7 +105,7 @@ export default {
               themer(`ZInput.label`),
               classAppend.label ? classAppend.label : null
             ],
-            removeClass.label ? removeClass.label : null
+            classRemove.label ? classRemove.label : null
           );
         },
         input: () => {
@@ -116,7 +116,7 @@ export default {
               themer(`ZInput.input.size.${size}`),
               classAppend.input ? classAppend.input : null
             ],
-            removeClass.input ? removeClass.input : null
+            classRemove.input ? classRemove.input : null
           );
         }
       };

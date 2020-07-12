@@ -20,7 +20,7 @@ lang: en-US
 | hasLabel        |    Boolean    | Explicitly remove label component                    | `true`                                        |
 | label           |    String     | Edit label text (also sets id attribute if none set) | `null`                                        |
 | classAppend     |    Object     | Append class to existing class list.                 | `{ wrapper: null, label: null, input: null }` |
-| removeClass     |    String     | Remove class from theme classes.                     | `{ wrapper: null, label: null, input: null }` |
+| classRemove     |    String     | Remove class from theme classes.                     | `{ wrapper: null, label: null, input: null }` |
 | theme           | String, Array | Get any theme value for component.                   | `{ wrapper: null, label: null, input: null }` |
 | isThemeDisabled |    Boolean    | Completely turn off theme classes.                   | `false`                                       |
 
@@ -35,11 +35,11 @@ lang: en-US
 ### Inline Form
 
 <z-panel size="lg" class="inline-flex items-end bg-blue-50">
-  <z-input label="First Name" placeholder="John" :classAppend="{ wrapper: '-mr-1', label: 'text-blue-700' }" :removeClass="{ input: 'rounded-r' }" />
-  <z-input label="Last Name" placeholder="Doe" :classAppend="{ wrapper: '-mr-1', label: 'text-blue-700' }" :removeClass="{ input: 'rounded-l rounded-r' }" />
-  <z-input label="Email" placeholder="john@acme.com" :classAppend="{ label: 'text-blue-700' }" :removeClass="{ input: 'rounded-l rounded-r' }" />
+  <z-input label="First Name" placeholder="John" :classAppend="{ wrapper: '-mr-1', label: 'text-blue-700' }" :classRemove="{ input: 'rounded-r' }" />
+  <z-input label="Last Name" placeholder="Doe" :classAppend="{ wrapper: '-mr-1', label: 'text-blue-700' }" :classRemove="{ input: 'rounded-l rounded-r' }" />
+  <z-input label="Email" placeholder="john@acme.com" :classAppend="{ label: 'text-blue-700' }" :classRemove="{ input: 'rounded-l rounded-r' }" />
   <div>
-    <z-button removeClass="rounded-l-md" classAppend="relative z-10">Subscribe</z-button>
+    <z-button classRemove="rounded-l-md" classAppend="relative z-10">Subscribe</z-button>
   </div>
 </z-panel>
 <br/>
@@ -47,11 +47,11 @@ lang: en-US
 
 ```js
 <z-panel size="lg" class="inline-flex items-end bg-blue-50">
-  <z-input label="First Name" placeholder="John" :classAppend="{ wrapper: '-mr-1', label: 'text-blue-700' }" :removeClass="{ input: 'rounded-r' }" />
-  <z-input label="Last Name" placeholder="Doe" :classAppend="{ wrapper: '-mr-1', label: 'text-blue-700' }" :removeClass="{ input: 'rounded-l rounded-r' }" />
-  <z-input label="Email" placeholder="john@acme.com" :classAppend="{ label: 'text-blue-700' }" :removeClass="{ input: 'rounded-l rounded-r' }" />
+  <z-input label="First Name" placeholder="John" :classAppend="{ wrapper: '-mr-1', label: 'text-blue-700' }" :classRemove="{ input: 'rounded-r' }" />
+  <z-input label="Last Name" placeholder="Doe" :classAppend="{ wrapper: '-mr-1', label: 'text-blue-700' }" :classRemove="{ input: 'rounded-l rounded-r' }" />
+  <z-input label="Email" placeholder="john@acme.com" :classAppend="{ label: 'text-blue-700' }" :classRemove="{ input: 'rounded-l rounded-r' }" />
   <div>
-    <z-button removeClass="rounded-l-md" classAppend="relative z-10">Subscribe</z-button>
+    <z-button classRemove="rounded-l-md" classAppend="relative z-10">Subscribe</z-button>
   </div>
 </z-panel>
 ```

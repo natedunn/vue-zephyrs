@@ -20,7 +20,7 @@ export default {
       type: [String, Object],
       default: "_default"
     },
-    removeClass: {
+    classRemove: {
       type: [Array, String],
       default: () => []
     }

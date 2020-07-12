@@ -28,14 +28,14 @@ export default {
       default: null,
       validator: value => ["disabled", ""].includes(value)
     },
-    removeClass: {
+    classRemove: {
       type: [Array, String],
       default: () => []
     }
   },
   computed: {
     panelClasses() {
-      const { $utils, variant, size, className, removeClass } = this;
+      const { $utils, variant, size, className, classRemove } = this;
       const { themer, filterClasses } = $utils;
 
       if (this.isThemeDisabled) return this.className || null;
@@ -46,7 +46,7 @@ export default {
         className
       ];
 
-      return filterClasses(classes, removeClass);
+      return filterClasses(classes, classRemove);
     }
   }
 };

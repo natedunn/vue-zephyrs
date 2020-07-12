@@ -7,7 +7,7 @@
             :variant="variant"
             :size="size.value"
             :classAppend="classAppend"
-            :removeClass="removeClass"
+            :classRemove="classRemove"
             :status="status.value"
             :loadingText="loadingText"
             :isThemeDisabled="isThemeDisabled"
@@ -57,7 +57,7 @@
           <z-input label="classAppend" v-model="classAppend" />
         </pg-option>
         <pg-option>
-          <z-input label="removeClass" v-model="removeClass" />
+          <z-input label="classRemove" v-model="classRemove" />
         </pg-option>
         <pg-option>
           <z-select label="Button Size" :options="sizeOptions" v-model="size" />
@@ -104,7 +104,7 @@ export default {
         { value: "md", text: "md" },
         { value: "lg", text: "lg" }
       ],
-      removeClass: "",
+      classRemove: "",
       isThemeDisabled: false,
       loadingText: "",
       // Just-for-playgrounds state
@@ -118,7 +118,7 @@ export default {
       return `<z-button
       :variant="${this.variant}"
       :classAppend="${this.classAppend}"
-      :removeClass="${this.removeClass}"
+      :classRemove="${this.classRemove}"
       :status="${this.status.value}"
       :loadingText="${this.loadingText}"
       :isThemeDisabled="${this.isThemeDisabled}"

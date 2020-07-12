@@ -66,7 +66,7 @@ export default {
       type: [String, Object],
       default: null
     },
-    removeClass: {
+    classRemove: {
       type: [Array, String, Object],
       default: () => []
     },
@@ -87,7 +87,7 @@ export default {
         variant,
         $utils,
         size,
-        removeClass,
+        classRemove,
         theme,
         status
       } = this;
@@ -115,7 +115,7 @@ export default {
               themer(`ZButton.button.size.${size}`),
               className
             ],
-            removeClass
+            classRemove
           );
         }
       };
@@ -127,7 +127,7 @@ export default {
         variant,
         $utils,
         size,
-        removeClass,
+        classRemove,
         theme,
         status
       } = this;
@@ -148,7 +148,7 @@ export default {
         classAppend
       ];
 
-      return filterClasses(classes, removeClass);
+      return filterClasses(classes, classRemove);
     }
   },
   methods: {
