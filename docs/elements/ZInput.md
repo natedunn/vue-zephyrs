@@ -26,9 +26,9 @@ lang: en-US
 
 ## Events
 
-| Name  | Params     | Description |
-| ----- | ---------- | ----------- |
-| input | InputValue |
+| Name | Params | Description |
+| ---- | ------ | ----------- |
+| x    | x      | x           |
 
 ## More Examples
 

@@ -13,8 +13,6 @@ lang: en-US
 
 ## Props
 
-### Component Props
-
 | Name            |     Type      | Description                                                 | Default          |
 | --------------- | :-----------: | ----------------------------------------------------------- | ---------------- |
 | variant         | String, Array | Choose variant and sub-variant from theme.                  | `"fill.primary"` |
