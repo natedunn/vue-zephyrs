@@ -95,13 +95,13 @@ export default {
 
       return {
         button: () => {
-          const className =
+          const classList =
             classAppend &&
             !Array.isArray(classAppend) &&
             typeof classAppend === "object"
               ? classAppend.button
               : classAppend;
-          if (isThemeDisabled) return className || null;
+          if (isThemeDisabled) return classList || null;
           return filterClasses(
             [
               status && status.includes("disabled")
@@ -113,7 +113,7 @@ export default {
               !status ? themer(`ZButton.button.variant.${variant}`) : null,
               theme ? themer(`ZButton.button.${theme}`) : null,
               themer(`ZButton.button.size.${size}`),
-              className
+              classList
             ],
             classRemove
           );
