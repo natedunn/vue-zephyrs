@@ -8,10 +8,19 @@
       {{ label }}
     </label>
     <div class="relative">
-      <select :class="selectClasses" v-model="currentValue" :id="inputId">
-        <slot>
+      <select
+        @change="onChange"
+        :class="selectClasses"
+        v-model="currentValue"
+        :id="inputId"
+      >
+        <slot v-if="options">
           <!-- If passed by `options` prop -->
-          <option v-for="option in options" :key="option.value" :value="option">
+          <option
+            v-for="option in options"
+            :key="option.value"
+            :value="option.value"
+          >
             {{ option.text }}
           </option>
         </slot>
@@ -70,17 +79,33 @@ export default {
       return null;
     }
   },
+  methods: {
+    onChange(event) {
+      // if (event.target.value === this.currentValue) {
+      //   this.currentValue = {
+      //     value: this.currentValue,
+      //     text: event.target.innerText
+      //   };
+      // }
+      this.$emit("change", event);
+    },
+    change() {
+      this.$el.change();
+    }
+  },
   watch: {
     value(value) {
       this.currentValue = value;
     },
+    // TODO: Alter for <option> version
     currentValue(value) {
       this.$emit("input", value);
     }
   },
   created() {
     this.sloted = this.$slots.default ? true : false;
-    this.currentValue = this.value;
+    if (!this.sloted && this.value) this.currentValue = this.value.value;
+    // this.currentValue = this.value;
   }
 };
 </script>
