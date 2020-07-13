@@ -21,7 +21,9 @@
       </div>
     </template>
     <template v-slot:options>
-      Testing
+      <z-panel variant="well" classAppend="text-center italic">
+        Options Coming Soon
+      </z-panel>
     </template>
   </playground>
 </template>
