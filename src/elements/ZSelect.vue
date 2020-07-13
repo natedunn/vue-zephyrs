@@ -81,12 +81,6 @@ export default {
   },
   methods: {
     onChange(event) {
-      // if (event.target.value === this.currentValue) {
-      //   this.currentValue = {
-      //     value: this.currentValue,
-      //     text: event.target.innerText
-      //   };
-      // }
       this.$emit("change", event);
     },
     change() {
@@ -97,7 +91,6 @@ export default {
     value(value) {
       this.currentValue = value;
     },
-    // TODO: Alter for <option> version
     currentValue(value) {
       this.$emit("input", value);
     }
@@ -105,7 +98,7 @@ export default {
   created() {
     this.sloted = this.$slots.default ? true : false;
     if (!this.sloted && this.value) this.currentValue = this.value.value;
-    // this.currentValue = this.value;
+    if (this.sloted && this.value) this.currentValue = this.value;
   }
 };
 </script>
