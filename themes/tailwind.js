@@ -41,7 +41,7 @@ const components = {
   },
   ZInput: {
     wrapper: {
-      _default: 'focus-within:z-0'
+      _default: 'focus-within:z-10'
     },
     label: {
       _default: 'block mb-2 text-sm font-bold text-gray-900',
@@ -76,11 +76,14 @@ const components = {
     },
   },
   ZSelect: {
-    wrapper: "inline-block",
+    wrapper: "inline-block focus-within:z-10",
     label: "block pb-2 text-sm font-bold text-gray-900",
     selectWrapper: "inline-block relative",
     select: {
-      _default: "appearance-none bg-white border-2 border-gray-300 hover:border-blue-400 hover:bg-blue-50 cursor-pointer py-2 px-3 pr-6 rounded leading-tight focus:outline-none focus:border-blue-500 focus:shadow-outline"
+      _default: "appearance-none inline-flex text-gray-700 leading-6 border-t-2 border-r-2 border-b-2 border-l-2 border-gray-300 rounded-l rounded-r hover:border-blue-400 hover:bg-blue-50 focus:outline-none focus:border-blue-500 focus:shadow-outline",
+      size: {
+        _default: 'py-2 pl-3 pr-8'
+      }
     },
     iconWrapper: "pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
   },
