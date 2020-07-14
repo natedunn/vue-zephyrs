@@ -13,11 +13,12 @@ lang: en-US
 
 ## Props
 
-| Name          |  Type   | Description                              | Default |
-| ------------- | :-----: | ---------------------------------------- | ------- |
-| classAppend   | String  | Append class to existing class list      | null    |
-| themeDisabled | Boolean | Completely turn off Tailwind CSS classes | false   |
-| v-model       |   Any   |                                          | null    |
+| Name            |         Type          | Description                          | Default |
+| --------------- | :-------------------: | ------------------------------------ | ------- |
+| classAppend     | String, Array, Object | Append class to existing class list. | `null`  |
+| classRemove     | String, Array, Object | Remove class from theme classes.     | `null`  |
+| theme           | String, Array, Object | Get any theme value for component.   | `null`  |
+| isThemeDisabled |        Boolean        | Completely turn off theme classes.   | `false` |
 
 ## Events
 
@@ -27,57 +28,70 @@ lang: en-US
 
 ## Examples
 
-<z-select label="Example">
-  <option value="test">
-    This is going to be a test
+### Using `<option>` elements
+
+---
+
+<br/>
+<z-select value="one" label="Example 1">
+  <option value="one">
+    Option 1
   </option>
-  <option value="thing">
-    This thing is also a test
+  <option value="two">
+    Option 2
   </option>
 </z-select>
 
-<z-select label="Example 2" :options="[
-  { value: true, text: 'this will be true' },
-  { value: 'a string', text: 'this will be a string' }
-]" />
-
-## Quick notes
-
-There are two ways to pass options to a `<z-select>` element. The best way is to pass an array of options through props:
+<br/>
 
 ```js
-const options = [
-  {
-    text: "Option 1"
-    value: true,
-  }
-  {
-    text: "Option 2"
-    value: 'option 2 value',
-  },
-  {
-    text: "Option 3"
-    value: 'option 3 value'
-  },
-];
-
-<z-select :options="options" />
+<z-select value="one" label="Example 1">
+  <option value="one">Option 1</option>
+  <option value="two">Option 2</option>
+</z-select>
 ```
+
+### Custom icon
+
+---
+
+<br/>
+<z-select
+  value="two"
+  label="Example 2"
+  :options="[
+    {
+      text: 'Option 1',
+      value: 'one',
+    },
+    {
+      text: 'Option 2',
+      value: 'two'
+    }]"
+>
+  <template v-slot:icon>
+    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg>
+  </template>
+</z-select>
 
 <br/>
 
-You can also directly pass `<option>` elements into the default slot.
-
 ```js
-<z-select>
-  <option :value="true">
-    Option 1
-  </option>
-  <option value="option 2 value">
-    Option 2
-  </option>
-  <option value="option 3 value">
-    Option 3
-  </option>
+<z-select
+  value="one"
+  label="Example 2"
+  :options="[
+    {
+      text: 'Option 1',
+      value: 'one',
+    },
+    {
+      text: 'Option 2',
+      value: 'two'
+    }]"
+>
+  <template v-slot:icon>
+    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg>
+  </template>
 </z-select>
 ```
