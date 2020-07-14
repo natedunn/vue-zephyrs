@@ -42,6 +42,7 @@ module.exports = {
         children: [
           'elements/ZButton',
           'elements/ZInput',
+          'elements/ZCheckbox',
           'elements/ZSelect',
         ]
       },
