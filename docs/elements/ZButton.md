@@ -13,16 +13,16 @@ lang: en-US
 
 ## Props
 
-| Name            |     Type      | Description                                                 | Default          |
-| --------------- | :-----------: | ----------------------------------------------------------- | ---------------- |
-| variant         | String, Array | Choose variant and sub-variant from theme.                  | `"fill.primary"` |
-| size            |    String     | Set component size from theme.                              | `"_default"`     |
-| status          | String, Array | Set component status. Options: `loading`, `disabled`        | `null`           |
-| loadingText     |    String     | Set custom text when component's status is set to `loading` | `null`           |
-| classAppend     |    String     | Append class to existing class list.                        | `null`           |
-| classRemove     |    String     | Remove class from theme classes.                            | `null`           |
-| theme           | String, Array | Get any theme value for component.                          | `null`           |
-| isThemeDisabled |    Boolean    | Completely turn off theme classes.                          | `false`          |
+| Name            |         Type          | Description                                                 | Default          |
+| --------------- | :-------------------: | ----------------------------------------------------------- | ---------------- |
+| variant         |     String, Array     | Choose variant and sub-variant from theme.                  | `"fill.primary"` |
+| size            |        String         | Set component size from theme.                              | `"_default"`     |
+| status          |     String, Array     | Set component status. Options: `loading`, `disabled`        | `null`           |
+| loadingText     |        String         | Set custom text when component's status is set to `loading` | `null`           |
+| classAppend     | String, Array, Object | Append class to existing class list.                        | `null`           |
+| classRemove     | String, Array, Object | Remove class from theme classes.                            | `null`           |
+| theme           | String, Array, Object | Get any theme value for component.                          | `null`           |
+| isThemeDisabled |        Boolean        | Completely turn off theme classes.                          | `false`          |
 
 ## Events
 
