@@ -3,7 +3,13 @@
     <template v-slot:preview>
       <div class="py-12">
         <!-- <z-select :options="options" v-model="value" /> -->
-        <z-select v-model="value">
+        <z-select
+          v-model="value"
+          :classAppend="{
+            wrapper: classAppend.wrapper,
+            select: classAppend.select
+          }"
+        >
           <option value="test">
             This is going to be a test
           </option>
@@ -21,9 +27,16 @@
       </div>
     </template>
     <template v-slot:options>
-      <z-panel variant="well" classAppend="text-center italic">
-        Options Coming Soon
-      </z-panel>
+      <pg-header>Component Props</pg-header>
+      <pg-option>
+        <z-input label="classAppend.wrapper" v-model="classAppend.wrapper" />
+      </pg-option>
+      <pg-option>
+        <z-input label="classAppend.select" v-model="classAppend.select" />
+      </pg-option>
+      <pg-option>
+        <z-input label="classRemove" v-model="classRemove" />
+      </pg-option>
     </template>
   </playground>
 </template>
@@ -49,11 +62,12 @@ export default {
           value: "alternate value"
         }
       ],
-      // value: {
-      //   text: "Default Text",
-      //   value: "default value"
-      // }
-      value: "test"
+      value: "test",
+      classAppend: {
+        wrapper: "foo",
+        select: "bar"
+      },
+      classRemove: null
     };
   }
 };
