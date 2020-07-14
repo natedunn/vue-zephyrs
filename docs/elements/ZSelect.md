@@ -20,12 +20,6 @@ lang: en-US
 | theme           | String, Array, Object | Get any theme value for component.   | `null`  |
 | isThemeDisabled |        Boolean        | Completely turn off theme classes.   | `false` |
 
-## Events
-
-| Name | Params | Description |
-| ---- | ------ | ----------- |
-| x    | x      | x           |
-
 ## Examples
 
 ### Using `<option>` elements
@@ -96,4 +90,49 @@ lang: en-US
     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg>
   </template>
 </z-select>
+```
+
+### Inline Form
+
+---
+
+<br/>
+
+<z-panel size="lg" class="inline-flex items-end bg-green-50">
+  <div class="flex items-end">
+    <z-input value="Today I did..." label="Status" :classRemove="{ input: 'rounded-r' }" :classAppend="{ input: '-mr-1' }" />
+    <z-select value="public" label="Audience" :classRemove="{ select: 'rounded-l rounded-r' }">
+      <option value="private">
+        Private
+      </option>
+      <option value="public">
+        Public
+      </option>
+    </z-select>
+    <div>
+      <z-button variant="fill.secondary" classRemove="rounded-l-md">Post</z-button>
+    </div>
+  </div>
+</z-panel>
+
+<br/>
+<br/>
+
+```js
+<z-panel size="lg" class="inline-flex items-end bg-green-50">
+  <div class="flex items-end">
+    <z-input value="Today I saw the craziest thing..." label="Status" :classRemove="{ input: 'rounded-r' }" :classAppend="{ input: '-mr-1' }" />
+    <z-select value="public" label="Audience" :classRemove="{ select: 'rounded-l rounded-r' }">
+      <option value="private">
+        Private
+      </option>
+      <option value="public">
+        Public
+      </option>
+    </z-select>
+    <div>
+      <z-button variant="fill.secondary" classRemove="rounded-l-md">Post</z-button>
+    </div>
+  </div>
+</z-panel>
 ```
