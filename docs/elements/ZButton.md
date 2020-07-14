@@ -5,7 +5,7 @@ lang: en-US
 
 # Button
 
-<DraftWarning />
+> 🚨 This is a working draft.
 
 ## Playground
 

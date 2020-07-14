@@ -5,7 +5,7 @@ lang: en-US
 
 # Input
 
-<DraftWarning />
+> 🚨 This is a working draft.
 
 ## Playground
 

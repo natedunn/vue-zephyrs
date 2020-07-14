@@ -1,5 +1,7 @@
 # Roadmap
 
+> 🚨 Early on, this list is subject to change.
+
 ## Next
 
 - ~~Finalize config, theming, and general API~~

@@ -1,6 +1,6 @@
 # Installation
 
-<draft-warning>This project is in early development. Please do not use in production. <a href="/introduction/roadmap.html">Read More</a></draft-warning>
+> 🚨 This project is in early development. <a href="/introduction/roadmap.html">Read More</a>
 
 If you are using module bundlers such as Webpack, you can directly include package into your project via:
 
