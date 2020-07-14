@@ -76,7 +76,7 @@ const components = {
     },
   },
   ZSelect: {
-    wrapper: "",
+    wrapper: "inline-block",
     label: "block pb-2 text-sm font-bold text-gray-900",
     selectWrapper: "inline-block relative",
     select: {
