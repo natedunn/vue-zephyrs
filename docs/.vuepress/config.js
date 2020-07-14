@@ -7,7 +7,7 @@ module.exports = {
     '/': {
       lang: 'en-US', // this will be set as the lang attribute on <html>
       title: 'Vue Zephyrs',
-      description: 'A beautiful, accessible, standardized UI library for Vue & Tailwind... someday soon.',
+      description: 'An accessible, class-based, customizable UI library. Built with Tailwind.',
     },
     '/zh/': {
       lang: 'zh-CN',

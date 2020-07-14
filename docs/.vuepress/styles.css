@@ -34,6 +34,16 @@ h6,
   padding-bottom: theme("spacing.4");
 }
 
+.hero {
+  margin-top: 6rem;
+}
+
+#main-title {
+  opacity: 0;
+  position: absolute;
+  user-select: none;
+}
+
 main li {
   list-style: disc;
 }
