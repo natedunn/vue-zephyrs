@@ -56,6 +56,10 @@ export default {
       type: null,
       default: null
     },
+    size: {
+      type: String,
+      default: "_default"
+    },
     labelDisabled: {
       type: Boolean,
       default: false
@@ -99,7 +103,7 @@ export default {
   },
   computed: {
     classes() {
-      const { $utils, classAppend, classRemove, isThemeDisabled } = this;
+      const { $utils, size, classAppend, classRemove, isThemeDisabled } = this;
       const { filterClasses, themer } = $utils;
 
       return {
@@ -127,7 +131,11 @@ export default {
         select: () => {
           if (isThemeDisabled) return classAppend.select || null;
           return filterClasses(
-            [themer("ZSelect.select"), classAppend.select],
+            [
+              themer("ZSelect.select"),
+              themer(`ZSelect.select.size.${size}`),
+              classAppend.select
+            ],
             classRemove.select
           );
         },
