@@ -1,16 +1,17 @@
 <template>
-  <div class="inline-block">
+  <div :class="classes.wrapper()">
     <label
+      :class="classes.label()"
       v-if="label && !labelDisabled"
-      class="block mb-2 text-sm font-bold text-gray-900"
+      class=""
       :for="inputId"
     >
       {{ label }}
     </label>
-    <div class="relative">
+    <div :class="classes.selectWrapper()">
       <select
         @change="onChange"
-        :class="selectClasses"
+        :class="classes.select()"
         v-model="currentValue"
         :id="inputId"
       >
@@ -24,19 +25,21 @@
             {{ option.text }}
           </option>
         </slot>
+        <slot v-else></slot>
       </select>
-      <div
-        class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
-      >
-        <svg
-          class="fill-current h-4 w-4"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 20 20"
-        >
-          <path
-            d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
-          />
-        </svg>
+      <div :class="classes.iconWrapper()">
+        <slot name="icon">
+          <svg
+            v-if="!this.$slots.icon"
+            class="fill-current h-4 w-4"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
+          >
+            <path
+              d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
+            />
+          </svg>
+        </slot>
       </div>
     </div>
   </div>
@@ -60,6 +63,32 @@ export default {
     label: {
       type: String,
       required: ""
+    },
+    classAppend: {
+      type: Object,
+      default: () => {
+        return {
+          label: null,
+          input: null
+        };
+      }
+    },
+    classRemove: {
+      type: Object,
+      default: () => {
+        return {
+          label: null,
+          input: null
+        };
+      }
+    },
+    theme: {
+      type: String,
+      default: null
+    },
+    isThemeDisabled: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
@@ -69,8 +98,47 @@ export default {
     };
   },
   computed: {
-    selectClasses() {
-      return this.$theme.components.ZSelect.select._default;
+    classes() {
+      const { $utils, classAppend, classRemove, isThemeDisabled } = this;
+      const { filterClasses, themer } = $utils;
+
+      return {
+        wrapper: () => {
+          if (isThemeDisabled) return classAppend.wrapper || null;
+          return filterClasses(
+            [themer("ZSelect.wrapper"), classAppend.wrapper],
+            classRemove.wrapper
+          );
+        },
+        label: () => {
+          if (isThemeDisabled) return classAppend.label || null;
+          return filterClasses(
+            [themer("ZSelect.label"), classAppend.label],
+            classRemove.label
+          );
+        },
+        selectWrapper: () => {
+          if (isThemeDisabled) return classAppend.selectWrapper || null;
+          return filterClasses(
+            [themer("ZSelect.selectWrapper"), classAppend.selectWrapper],
+            classRemove.selectWrapper
+          );
+        },
+        select: () => {
+          if (isThemeDisabled) return classAppend.select || null;
+          return filterClasses(
+            [themer("ZSelect.select"), classAppend.select],
+            classRemove.select
+          );
+        },
+        iconWrapper: () => {
+          if (isThemeDisabled) return classAppend.iconWrapper || null;
+          return filterClasses(
+            [themer("ZSelect.iconWrapper"), classAppend.iconWrapper],
+            classRemove.iconWrapper
+          );
+        }
+      };
     },
     inputId() {
       if (this.id) return this.id;
@@ -97,8 +165,7 @@ export default {
   },
   created() {
     this.sloted = this.$slots.default ? true : false;
-    if (!this.sloted && this.value) this.currentValue = this.value.value;
-    if (this.sloted && this.value) this.currentValue = this.value;
+    this.currentValue = this.value;
   }
 };
 </script>
