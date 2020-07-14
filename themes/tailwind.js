@@ -76,9 +76,13 @@ const components = {
     },
   },
   ZSelect: {
+    wrapper: "",
+    label: "block pb-2 text-sm font-bold text-gray-900",
+    selectWrapper: "inline-block relative",
     select: {
-      _default: "appearance-none w-full bg-white border-2 border-gray-300 hover:border-blue-400 hover:bg-blue-50 cursor-pointer py-2 px-3 pr-6 rounded leading-tight focus:outline-none focus:border-blue-500 focus:shadow-outline"
-    }
+      _default: "appearance-none bg-white border-2 border-gray-300 hover:border-blue-400 hover:bg-blue-50 cursor-pointer py-2 px-3 pr-6 rounded leading-tight focus:outline-none focus:border-blue-500 focus:shadow-outline"
+    },
+    iconWrapper: "pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
   },
   Spinner: {
     spinner: {
@@ -86,7 +90,7 @@ const components = {
         _default: 'pointer-events-none h-4 w-4 border-2 border-solid border-transparent'
       }
     }
-  }
+  },
 }
 
 module.exports = {
