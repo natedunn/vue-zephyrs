@@ -46,10 +46,8 @@
       <pg-section>
         <pg-header
           >Component Props
-          <a class="text-base" href="#component-specific-props"
-            >Read more</a
-          ></pg-header
-        >
+          <a class="text-base" href="#component-specific-props">Read more</a>
+        </pg-header>
         <pg-option>
           <z-input label="variant" v-model="variant" />
         </pg-option>
