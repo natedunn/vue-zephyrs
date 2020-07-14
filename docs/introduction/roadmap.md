@@ -1,33 +1,43 @@
 # Roadmap
 
-## Alpha
+## Next
 
 - ~~Finalize config, theming, and general API~~
 - Add basic elements
 
-  - Button
-  - Input(s)
-  - Select
+  - ~~Button~~
+  - ~~Text Input~~
+  - ~~Select~~
   - Checkbox
-  - Radio
-  - Details (?)
+  - Details
+  - Spinner
 
 - Add components
-  - Card
-  - Modal
-  - Dropdown
+  - Panel
+  - Breadcrumbs
 
-## Beta
+## Later
 
-- Language support for English, Spanish, and Chinese
-- Improve and/or add customized theme for Vuepress
 - Add more elements
+  - Form elements
+    - Radio
+    - Date/time picker
+    - Autocomplete
+    - Upload
+  - Progress
   - Badges
   - Toggle
 - Add more components
+  - Modal
+  - Tabs
   - Table
-  - Input groups
   - Alerts
-- Add first layouts
+  - Dropdown
+
+## Someday
+
+- Improve and/or add customized theme for Vuepress
+- Language support for English, Spanish, and Chinese
+- Add layouts
   - Navbar
-  - Card
+  - Hero
