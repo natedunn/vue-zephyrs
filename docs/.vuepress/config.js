@@ -7,7 +7,7 @@ module.exports = {
     '/': {
       lang: 'en-US', // this will be set as the lang attribute on <html>
       title: 'Vue Zephyrs',
-      description: 'An accessible, class-based, customizable UI library. Built with Tailwind.',
+      description: 'A simple, accessible, and themeable UI library. Built with Tailwind. Edited by you.',
     },
     '/zh/': {
       lang: 'zh-CN',
@@ -32,7 +32,8 @@ module.exports = {
         collapsable: false,
         children: [
           'introduction/about',
-          'introduction/guide',
+          'introduction/install',
+          'introduction/theme',
           'introduction/roadmap',
         ]
       },

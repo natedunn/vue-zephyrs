@@ -1,6 +1,6 @@
 # Roadmap
 
-> 🚨 Early on, this list is subject to change.
+> 🚨 This list is subject to change.
 
 ## Next
 
