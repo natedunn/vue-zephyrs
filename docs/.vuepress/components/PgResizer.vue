@@ -15,7 +15,8 @@ export default {
 
 <style lang="postcss">
 .multipane-resizer {
-  @apply flex justify-center items-center;
+  @apply justify-center items-center;
+  display: flex !important;
   height: auto !important;
   margin: 0 !important;
   left: 0 !important;
