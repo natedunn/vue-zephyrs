@@ -9,7 +9,7 @@
       >
         <div class="flex items-center">
           <svg
-            class="h-6 w-6 mr-2"
+            class="h-5 w-5 mr-2"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"

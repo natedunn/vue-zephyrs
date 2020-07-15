@@ -8,7 +8,7 @@
       >
         <div class="flex items-center">
           <svg
-            class="h-6 w-6 mr-2"
+            class="h-5 w-5 mr-2"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -28,9 +28,9 @@
           </svg>
           Live Preview
         </div>
-        <z-button variant="fill.secondary" size="xs" @click="toggleCode"
-          >Toggle Code</z-button
-        >
+        <z-button variant="fill.primary" size="xs" @click="toggleCode">
+          {{ codeIsOpen ? "Close code" : "View code" }}
+        </z-button>
       </div>
       <div class="flex h-full flex-col justify-between">
         <div class="flex-auto flex justify-center items-center ">
@@ -59,7 +59,7 @@ export default {
   },
   data() {
     return {
-      codeIsOpen: true
+      codeIsOpen: false
     };
   },
   computed: {
