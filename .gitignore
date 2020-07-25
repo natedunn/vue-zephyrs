@@ -24,3 +24,5 @@ yarn-error.log*
 
 # Personal
 next-steps.md
+# Local Netlify folder
+.netlify
