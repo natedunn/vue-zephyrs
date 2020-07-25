@@ -68,42 +68,42 @@ module.exports = {
       { text: 'Home', link: '/' },
       { text: 'Github', link: 'https://github.com/natedunn/vue-zephyrs' },
     ],
-    sidebar: [
-      {
-        title: 'Introduction',
-        collapsable: false,
-        children: [
-          'introduction/about',
-          'introduction/install',
-          'introduction/theme',
-          'introduction/roadmap',
-        ]
-      },
-      {
-        title: 'Elements',
-        collapsable: false,
-        children: [
-          'elements/ZButton',
-          'elements/ZInput',
-          'elements/ZCheckbox',
-          'elements/ZSelect',
-        ]
-      },
-      {
-        title: 'Components',
-        collapsable: false,
-        children: [
-          'components/ZPanel',
-        ]
-      }
-    ]
+    // sidebar: [
+    //   {
+    //     title: 'Introduction',
+    //     collapsable: false,
+    //     children: [
+    //       'introduction/about',
+    //       'introduction/install',
+    //       'introduction/theme',
+    //       'introduction/roadmap',
+    //     ]
+    //   },
+    //   {
+    //     title: 'Elements',
+    //     collapsable: false,
+    //     children: [
+    //       'elements/ZButton',
+    //       'elements/ZInput',
+    //       'elements/ZCheckbox',
+    //       'elements/ZSelect',
+    //     ]
+    //   },
+    //   {
+    //     title: 'Components',
+    //     collapsable: false,
+    //     children: [
+    //       'components/ZPanel',
+    //     ]
+    //   }
+    // ]
   },
   plugins: [
     [
       'vuepress-plugin-clean-urls',
       {
-        normalSuffix: '',
-        indexSuffix: '',
+        normalSuffix: '/',
+        indexSuffix: '/',
         notFoundPath: '/404.html',
       },
     ],
