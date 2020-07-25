@@ -6,9 +6,9 @@
         Parent: {{ parent.title }}
         <ul v-for="child in parent.children">
           <li>
-            <a :href="`/${child.path}`">
+            <router-link :to="`/${child.path}`">
               {{ child.title }}
-            </a>
+            </router-link>
           </li>
         </ul>
       </li>
