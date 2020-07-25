@@ -13,5 +13,5 @@ export default ({
   for (const [name, component] of Object.entries(pageComponents)) {
     Vue.component(name, component)
   }
-  Vue.use(Zephyrs)
+  [Zephyrs, router].forEach(x => Vue.use(x));
 }
