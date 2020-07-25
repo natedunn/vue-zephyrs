@@ -7,6 +7,7 @@ module.exports = {
   },
   plugins: [
     require('@tailwindcss/ui'),
+    require('@tailwindcss/typography'),
     require('tailwindcss-dark-mode')(),
   ],
 }
