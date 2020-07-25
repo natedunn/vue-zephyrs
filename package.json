@@ -57,7 +57,8 @@
     "sass-loader": "^8.0.2",
     "tailwindcss-dark-mode": "^1.1.4",
     "vue-template-compiler": "^2.6.11",
-    "vuepress": "^1.5.2"
+    "vuepress": "^1.5.2",
+    "vuepress-plugin-clean-urls": "^1.1.1"
   },
   "peerDependencies": {
     "moment": "^2.24.0"
