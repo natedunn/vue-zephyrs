@@ -125,8 +125,9 @@ module.exports = {
   ],
   postcss: {
     plugins: [
-      require("autoprefixer"),
+      require("postcss-easy-import"),
       require("tailwindcss")("tailwind.config.js"),
+      require("autoprefixer"),
       require("postcss-preset-env")({
         features: {
           'focus-within-pseudo-class': false
