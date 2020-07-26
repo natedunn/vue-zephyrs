@@ -9,6 +9,7 @@
       :id="inputId"
       :placeholder="placeholder"
       v-model="currentValue"
+      :disabled="disabled"
     />
   </div>
 </template>
@@ -20,6 +21,10 @@ export default {
       type: String,
       default: "_default"
     },
+    status: {
+      type: [String, Array],
+      default: null
+    },
     hasLabel: {
       type: Boolean,
       default: true
@@ -28,8 +33,11 @@ export default {
       type: String,
       required: ""
     },
-
     // HTML attributes
+    disabled: {
+      type: [String, Boolean],
+      default: false
+    },
     id: {
       type: String,
       required: null
@@ -84,7 +92,14 @@ export default {
   },
   computed: {
     classes() {
-      const { $utils, size, classRemove, classAppend, isThemeDisabled } = this;
+      const {
+        $utils,
+        size,
+        status,
+        classRemove,
+        classAppend,
+        isThemeDisabled
+      } = this;
       const { filterClasses, themer } = $utils;
 
       return {
@@ -114,6 +129,9 @@ export default {
             [
               themer(`ZInput.input`),
               themer(`ZInput.input.size.${size}`),
+              status && status.includes("disabled")
+                ? themer("ZInput.input.status.disabled")
+                : null,
               classAppend.input ? classAppend.input : null
             ],
             classRemove.input ? classRemove.input : null
@@ -141,9 +159,13 @@ export default {
     },
     currentValue(value) {
       this.$emit("input", value);
+    },
+    status(value) {
+      value.includes("disabled") ? (this.disabled = true) : null;
     }
   },
   created() {
+    this.status.includes("disabled") ? (this.disabled = true) : null;
     this.currentValue = this.value;
   }
 };

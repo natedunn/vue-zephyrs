@@ -47,6 +47,9 @@ const components = {
       _default: 'block mb-2 text-sm font-bold text-gray-900',
     },
     input: {
+      status: {
+        disabled: 'bg-gray-100 cursor-not-allowed'
+      },
       _default: 'appearance-none inline-flex text-gray-700 leading-6 border-t-2 border-r-2 border-b-2 border-l-2 border-gray-300 rounded-l rounded-r focus:z-0 focus:outline-none focus:bg-white focus:border-blue-500 focus:outline-none focus:shadow-outline',
       size: {
         _default: 'py-2 px-3',
