@@ -15,18 +15,25 @@
       {{ code }}
     </template>
     <template v-slot:options>
-      <pg-header>Props</pg-header>
-      <z-input label="v-model" v-model="value" />
-      <div class="h-6"></div>
-      <z-input
-        label="label"
-        v-model="label"
-        placeholder="No label (removes <label> element)"
-      />
-      <div class="h-6"></div>
-      <z-checkbox v-model="isThemeDisabled" id="isThemeDisabled">
-        isThemeDisabled
-      </z-checkbox>
+      <pg-section>
+        <pg-header>Props</pg-header>
+        <pg-option>
+          <z-input label="v-model" v-model="value" />
+        </pg-option>
+        <pg-option>
+          <z-input
+            label="label"
+            v-model="label"
+            placeholder="No label (removes <label> element)"
+          />
+        </pg-option>
+        <pg-option>
+          <z-checkbox v-model="isThemeDisabled" id="isThemeDisabled">
+            isThemeDisabled
+          </z-checkbox>
+        </pg-option>
+      </pg-section>
+      <pg-section></pg-section>
     </template>
   </playground>
 </template>
@@ -35,7 +42,6 @@
 export default {
   data() {
     return {
-      componentTag: "v-input",
       value: "Default Value",
       name: "Default Name",
       label: "Default Label",
