@@ -36,17 +36,32 @@ module.exports = {
           title: 'Elements',
           collapsable: false,
           children: [
-            'elements/ZButton',
-            'elements/ZInput',
-            'elements/ZCheckbox',
-            'elements/ZSelect',
+            {
+              title: 'Button',
+              path: 'elements/ZButton'
+            },
+            {
+              title: 'Input',
+              path: 'elements/ZInput',
+            },
+            {
+              title: 'Checkbox',
+              path: 'elements/ZCheckbox',
+            },
+            {
+              title: 'Select',
+              path: 'elements/ZSelect',
+            }
           ]
         },
         {
           title: 'Components',
           collapsable: false,
           children: [
-            'components/ZPanel',
+            {
+              title: 'ZPanel',
+              path: 'components/ZPanel',
+            }
           ]
         }
       ]
