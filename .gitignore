@@ -24,3 +24,4 @@ yarn-error.log*
 
 # Personal
 next-steps.md
+.netlify
