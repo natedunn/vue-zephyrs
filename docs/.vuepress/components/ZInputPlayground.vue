@@ -8,6 +8,7 @@
           :label="label"
           :hasLabel="hasLabel"
           :isThemeDisabled="isThemeDisabled"
+          :status="status"
         />
       </div>
     </template>
@@ -28,6 +29,13 @@
           />
         </pg-option>
         <pg-option>
+          <z-select
+            label="status"
+            v-model="status"
+            :options="statusOptions"
+          ></z-select>
+        </pg-option>
+        <pg-option>
           <z-checkbox v-model="isThemeDisabled" id="isThemeDisabled">
             isThemeDisabled
           </z-checkbox>
@@ -46,6 +54,17 @@ export default {
       name: "Default Name",
       label: "Default Label",
       hasLabel: true,
+      status: null,
+      statusOptions: [
+        {
+          text: "None",
+          value: null
+        },
+        {
+          text: "Disabled",
+          value: "disabled"
+        }
+      ],
       isThemeDisabled: false
     };
   },

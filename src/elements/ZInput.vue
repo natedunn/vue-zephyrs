@@ -4,12 +4,12 @@
       label
     }}</label>
     <input
+      v-model="currentValue"
       :class="classes.input()"
       :type="type"
       :id="inputId"
       :placeholder="placeholder"
-      v-model="currentValue"
-      :disabled="disabled"
+      :disabled="isDisabled"
     />
   </div>
 </template>
@@ -87,7 +87,9 @@ export default {
   },
   data() {
     return {
-      currentValue: ""
+      currentValue: "",
+      isDisabled: false,
+      currentStatus: []
     };
   },
   computed: {
@@ -95,7 +97,7 @@ export default {
       const {
         $utils,
         size,
-        status,
+        currentStatus: status,
         classRemove,
         classAppend,
         isThemeDisabled
@@ -161,11 +163,27 @@ export default {
       this.$emit("input", value);
     },
     status(value) {
-      value.includes("disabled") ? (this.disabled = true) : null;
+      this.currentStatus = !Array.isArray(value) ? [value] : this.status;
+      value && value.includes("disabled")
+        ? (this.isDisabled = true)
+        : (this.isDisabled = false);
     }
   },
   created() {
-    this.status.includes("disabled") ? (this.disabled = true) : null;
+    this.currentStatus =
+      typeof this.status === "string" ? [this.status] : this.status;
+    this.status && this.status.includes("disabled")
+      ? (this.isDisabled = true)
+      : null;
+    this.isDisabled =
+      this.disabled && (this.disabled === true || this.disabled === "disabled")
+        ? true
+        : false;
+    if (this.isDisabled) {
+      !this.currentStatus.includes("disabled")
+        ? this.currentStatus.push("disabled")
+        : null;
+    }
     this.currentValue = this.value;
   }
 };
