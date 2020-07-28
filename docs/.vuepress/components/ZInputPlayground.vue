@@ -54,11 +54,11 @@ export default {
       name: "Default Name",
       label: "Default Label",
       hasLabel: true,
-      status: null,
+      status: "_default",
       statusOptions: [
         {
-          text: "None",
-          value: null
+          text: "Default",
+          value: "_default"
         },
         {
           text: "Disabled",

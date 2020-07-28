@@ -21,9 +21,17 @@ export default {
       type: String,
       default: "_default"
     },
+    variant: {
+      type: [Object, String],
+      default: () => {
+        return {
+          input: "_default"
+        };
+      }
+    },
     status: {
-      type: [String, Array],
-      default: null
+      type: String,
+      default: "_default"
     },
     hasLabel: {
       type: Boolean,
@@ -97,6 +105,7 @@ export default {
       const {
         $utils,
         size,
+        variant,
         currentStatus: status,
         classRemove,
         classAppend,
@@ -131,9 +140,10 @@ export default {
             [
               themer(`ZInput.input`),
               themer(`ZInput.input.size.${size}`),
-              status && status.includes("disabled")
-                ? themer("ZInput.input.status.disabled")
-                : null,
+              themer(`ZInput.input.status.${status}`),
+              typeof variant === "string"
+                ? themer(`ZInput.input.variant.${variant}`)
+                : themer(`ZInput.input.variant.${variant.input}`),
               classAppend.input ? classAppend.input : null
             ],
             classRemove.input ? classRemove.input : null
@@ -170,11 +180,9 @@ export default {
     }
   },
   created() {
-    this.currentStatus =
-      typeof this.status === "string" ? [this.status] : this.status;
-    this.status && this.status.includes("disabled")
-      ? (this.isDisabled = true)
-      : null;
+    this.currentValue = this.value;
+    this.currentStatus = this.status;
+    this.status && this.status === "disabled" ? (this.isDisabled = true) : null;
     this.isDisabled =
       this.disabled && (this.disabled === true || this.disabled === "disabled")
         ? true
@@ -184,7 +192,6 @@ export default {
         ? this.currentStatus.push("disabled")
         : null;
     }
-    this.currentValue = this.value;
   }
 };
 </script>
