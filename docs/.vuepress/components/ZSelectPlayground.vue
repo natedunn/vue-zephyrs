@@ -2,21 +2,15 @@
   <playground>
     <template v-slot:preview>
       <div class="py-12">
-        <!-- <z-select :options="options" v-model="value" /> -->
         <z-select
           v-model="value"
+          :options="options"
           :classAppend="{
             wrapper: classAppend.wrapper,
-            select: classAppend.select
+            select: classAppend.select,
           }"
-        >
-          <option value="test">
-            This is going to be a test
-          </option>
-          <option value="thing">
-            This thing is also a test
-          </option>
-        </z-select>
+          :status="status"
+        />
         <span v-if="value" class="block mt-4">
           <Prism
             class="mt-4"
@@ -37,6 +31,13 @@
       <pg-option>
         <z-input label="classRemove" v-model="classRemove" />
       </pg-option>
+      <pg-option>
+        <z-select
+          label="classRemove"
+          v-model="status"
+          :options="statusOptions"
+        />
+      </pg-option>
     </template>
   </playground>
 </template>
@@ -52,17 +53,28 @@ export default {
   },
   data() {
     return {
+      value: "default",
       options: [
         {
-          text: "Default Text",
-          value: "default value"
+          text: "Default Option",
+          value: "default"
         },
         {
-          text: "Alternate Text",
-          value: "alternate value"
+          text: "Secondary Option",
+          value: "secondary"
         }
       ],
-      value: "test",
+      status: "_default",
+      statusOptions: [
+        {
+          text: "Default",
+          value: "_default"
+        },
+        {
+          text: "Disabled",
+          value: "disabled"
+        }
+      ],
       classAppend: {
         wrapper: "foo",
         select: "bar"

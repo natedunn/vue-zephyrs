@@ -14,6 +14,7 @@
         :class="classes.select()"
         v-model="currentValue"
         :id="inputId"
+        :disabled="isDisabled"
       >
         <slot v-if="options">
           <!-- If passed by `options` prop -->
@@ -60,6 +61,10 @@ export default {
       type: String,
       default: "_default"
     },
+    status: {
+      type: [String, Array],
+      default: "_default"
+    },
     labelDisabled: {
       type: Boolean,
       default: false
@@ -98,12 +103,21 @@ export default {
   data() {
     return {
       currentValue: "",
-      sloted: null
+      sloted: null,
+      isDisabled: false,
+      currentStatus: []
     };
   },
   computed: {
     classes() {
-      const { $utils, size, classAppend, classRemove, isThemeDisabled } = this;
+      const {
+        $utils,
+        size,
+        currentStatus: status,
+        classAppend,
+        classRemove,
+        isThemeDisabled
+      } = this;
       const { filterClasses, themer } = $utils;
 
       return {
@@ -134,6 +148,7 @@ export default {
             [
               themer("ZSelect.select"),
               themer(`ZSelect.select.size.${size}`),
+              themer(`ZSelect.select.status.${status}`),
               classAppend.select
             ],
             classRemove.select
@@ -169,11 +184,31 @@ export default {
     },
     currentValue(value) {
       this.$emit("input", value);
+    },
+    status(value) {
+      this.currentStatus = !Array.isArray(value) ? [value] : this.status;
+      value && value.includes("disabled")
+        ? (this.isDisabled = true)
+        : (this.isDisabled = false);
     }
   },
   created() {
     this.sloted = this.$slots.default ? true : false;
     this.currentValue = this.value;
+    this.currentStatus =
+      typeof this.status === "string" ? [this.status] : this.status;
+    this.status && this.status.includes("disabled")
+      ? (this.isDisabled = true)
+      : null;
+    this.isDisabled =
+      this.disabled && (this.disabled === true || this.disabled === "disabled")
+        ? true
+        : false;
+    if (this.isDisabled) {
+      !this.currentStatus.includes("disabled")
+        ? this.currentStatus.push("disabled")
+        : null;
+    }
   }
 };
 </script>
