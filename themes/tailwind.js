@@ -48,12 +48,19 @@ const components = {
     },
     input: {
       status: {
+        _default: 'focus:z-0 focus:outline-none focus:bg-white focus:border-blue-500 focus:outline-none focus:shadow-outline',
         disabled: 'bg-gray-100 cursor-not-allowed'
       },
-      _default: 'appearance-none inline-flex text-gray-700 leading-6 border-t-2 border-r-2 border-b-2 border-l-2 border-gray-300 rounded-l rounded-r focus:z-0 focus:outline-none focus:bg-white focus:border-blue-500 focus:outline-none focus:shadow-outline',
+      variant: {
+        _base: 'appearance-none inline-flex text-gray-700 leading-6 border-t-2 border-r-2 border-b-2 border-l-2 border-gray-300',
+        _default: 'rounded-l rounded-r',
+        rounded: 'rounded-l-full rounded-r-full'
+      },
       size: {
         _default: 'py-2 px-3',
-        md: '',
+        rounded: {
+          _default: 'py-2 px-4'
+        }
       }
     }
   },
