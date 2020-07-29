@@ -103,10 +103,21 @@ const components = {
       _base: "cursor-pointer",
       _default: "appearance-none inline-flex text-gray-700 leading-6 border-t-2 border-r-2 border-b-2 border-l-2 border-gray-300 rounded-l rounded-r",
       size: {
-        _default: 'py-2 pl-3 pr-8'
+        _default: 'text-base py-2 pl-2 pr-8',
+        sm: 'text-sm font-medium py-1 pl-1 pr-6',
+        md: 'text-base py-2 pl-2 pr-8',
+        lg: 'text-lg py-3 pl-3 pr-10',
       }
     },
-    iconWrapper: "pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
+    iconWrapper: {
+      _default: "pointer-events-none absolute inset-y-0 right-0 flex items-center text-gray-700",
+      size: {
+        _default: 'px-2',
+        sm: 'px-2',
+        md: 'px-2',
+        lg: 'px-3'
+      }
+    }
   },
   Spinner: {
     spinner: {

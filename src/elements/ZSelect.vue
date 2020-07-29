@@ -10,11 +10,11 @@
     </label>
     <div :class="classes.selectWrapper()">
       <select
-        @change="onChange"
-        :class="classes.select()"
         v-model="currentValue"
+        :class="classes.select()"
         :id="inputId"
         :disabled="isDisabled"
+        @change="onChange"
       >
         <slot v-if="options">
           <!-- If passed by `options` prop -->
@@ -157,7 +157,11 @@ export default {
         iconWrapper: () => {
           if (isThemeDisabled) return classAppend.iconWrapper || null;
           return filterClasses(
-            [themer("ZSelect.iconWrapper"), classAppend.iconWrapper],
+            [
+              themer("ZSelect.iconWrapper"),
+              themer(`ZSelect.iconWrapper.size.${size}`),
+              classAppend.iconWrapper
+            ],
             classRemove.iconWrapper
           );
         }

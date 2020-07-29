@@ -22,6 +22,8 @@ lang: en-US
 
 ## Examples
 
+<br/>
+
 ### Using `<option>` elements
 
 ---
@@ -100,8 +102,8 @@ lang: en-US
 
 <z-panel size="lg" class="inline-flex items-end bg-green-50">
   <div class="flex items-end">
-    <z-input value="Today I did..." label="Status" :classRemove="{ input: 'rounded-r' }" :classAppend="{ input: '-mr-1' }" />
-    <z-select value="public" label="Audience" :classRemove="{ select: 'rounded-l rounded-r' }">
+    <z-input value="Today I did..." size="lg" label="Status" :classRemove="{ input: 'rounded-r' }" :classAppend="{ input: '-mr-1' }" />
+    <z-select value="public" size="lg" label="Audience" :classRemove="{ select: 'rounded-l rounded-r' }">
       <option value="private">
         Private
       </option>
@@ -110,7 +112,7 @@ lang: en-US
       </option>
     </z-select>
     <div>
-      <z-button variant="fill.secondary" classRemove="rounded-l-md">Post</z-button>
+      <z-button variant="fill.secondary" size="lg" classRemove="rounded-l-md">Post</z-button>
     </div>
   </div>
 </z-panel>

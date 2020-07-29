@@ -5,6 +5,7 @@
         <z-select
           v-model="value"
           :options="options"
+          :size="size"
           :classAppend="{
             wrapper: classAppend.wrapper,
             select: classAppend.select,
@@ -23,18 +24,32 @@
     <template v-slot:options>
       <pg-header>Component Props</pg-header>
       <pg-option>
-        <z-input label="classAppend.wrapper" v-model="classAppend.wrapper" />
+        <z-select
+          v-model="size"
+          :options="sizeOptions"
+          label="size"
+          size="sm"
+        />
       </pg-option>
       <pg-option>
-        <z-input label="classAppend.select" v-model="classAppend.select" />
+        <z-input
+          v-model="classAppend.wrapper"
+          label="classAppend.wrapper"
+          size="sm"
+        />
       </pg-option>
       <pg-option>
-        <z-input label="classRemove" v-model="classRemove" />
+        <z-input
+          v-model="classAppend.select"
+          label="classAppend.select"
+          size="sm"
+        />
       </pg-option>
       <pg-option>
         <z-select
-          label="classRemove"
+          label="status"
           v-model="status"
+          size="sm"
           :options="statusOptions"
         />
       </pg-option>
@@ -73,6 +88,21 @@ export default {
         {
           text: "Disabled",
           value: "disabled"
+        }
+      ],
+      size: "md",
+      sizeOptions: [
+        {
+          text: "sm",
+          value: "sm"
+        },
+        {
+          text: "md",
+          value: "md"
+        },
+        {
+          text: "lg",
+          value: "lg"
         }
       ],
       classAppend: {
