@@ -34,10 +34,6 @@ lang: en-US
 
 ### Inline Form
 
-<z-input size="rounded.sm" variant="rounded" placeholder="Search" />
-
-<br/>
-
 <z-panel size="lg" class="inline-flex items-end bg-blue-50">
   <z-input size="lg" label="First Name" placeholder="John" :classAppend="{ wrapper: '-mr-1', label: 'text-blue-700' }" :classRemove="{ input: 'rounded-r' }" />
   <z-input size="lg" label="Last Name" placeholder="Doe" :classAppend="{ wrapper: '-mr-1', label: 'text-blue-700' }" :classRemove="{ input: 'rounded-l rounded-r' }" />
