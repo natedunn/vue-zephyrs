@@ -57,9 +57,15 @@ const components = {
         rounded: 'rounded-l-full rounded-r-full'
       },
       size: {
-        _default: 'py-2 px-3',
+        _default: 'text-base py-2 px-3',
+        sm: 'text-sm py-1 px-2',
+        md: 'text-base py-2 px-3',
+        lg: 'text-lg py-3 px-4',
         rounded: {
-          _default: 'py-2 px-4'
+          _default: 'text-base py-2 px-4',
+          sm: 'text-sm font-semibold py-1 px-3',
+          md: 'text-base py-2 px-4',
+          lg: 'text-lg py-3 px-5',
         }
       }
     }

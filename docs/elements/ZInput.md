@@ -34,12 +34,16 @@ lang: en-US
 
 ### Inline Form
 
+<z-input size="rounded.sm" variant="rounded" placeholder="Search" />
+
+<br/>
+
 <z-panel size="lg" class="inline-flex items-end bg-blue-50">
-  <z-input label="First Name" placeholder="John" :classAppend="{ wrapper: '-mr-1', label: 'text-blue-700' }" :classRemove="{ input: 'rounded-r' }" />
-  <z-input label="Last Name" placeholder="Doe" :classAppend="{ wrapper: '-mr-1', label: 'text-blue-700' }" :classRemove="{ input: 'rounded-l rounded-r' }" />
-  <z-input label="Email" placeholder="john@acme.com" :classAppend="{ label: 'text-blue-700' }" :classRemove="{ input: 'rounded-l rounded-r' }" />
+  <z-input size="lg" label="First Name" placeholder="John" :classAppend="{ wrapper: '-mr-1', label: 'text-blue-700' }" :classRemove="{ input: 'rounded-r' }" />
+  <z-input size="lg" label="Last Name" placeholder="Doe" :classAppend="{ wrapper: '-mr-1', label: 'text-blue-700' }" :classRemove="{ input: 'rounded-l rounded-r' }" />
+  <z-input size="lg" label="Email" placeholder="john@acme.com" :classAppend="{ label: 'text-blue-700' }" :classRemove="{ input: 'rounded-l rounded-r' }" />
   <div>
-    <z-button classRemove="rounded-l-md" classAppend="relative z-10">Subscribe</z-button>
+    <z-button size="lg" classRemove="rounded-l-md" classAppend="relative z-10">Subscribe</z-button>
   </div>
 </z-panel>
 <br/>
