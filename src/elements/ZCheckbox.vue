@@ -1,10 +1,10 @@
 <template>
-  <div :class="wrapperClasses" @click="toggleValue">
+  <div :class="classes.wrapper()" @click="toggleValue">
     <z-input
       v-model="value"
       :id="inputId"
       :classAppend="{
-        input: checkboxClasses
+        input: classes.input(),
       }"
       type="checkbox"
       :isThemeDisabled="true"
@@ -25,6 +25,14 @@
 <script>
 export default {
   props: {
+    size: {
+      type: String,
+      default: "_default"
+    },
+    variant: {
+      type: String,
+      default: "_default"
+    },
     labelDisabled: {
       type: Boolean,
       default: false
@@ -45,6 +53,28 @@ export default {
       type: Boolean,
       default: true
     },
+    classAppend: {
+      type: Object,
+      default: () => {
+        return {
+          label: null,
+          input: null
+        };
+      }
+    },
+    classRemove: {
+      type: Object,
+      default: () => {
+        return {
+          label: null,
+          input: null
+        };
+      }
+    },
+    theme: {
+      type: String,
+      default: null
+    },
     isThemeDisabled: {
       type: Boolean,
       default: false
@@ -57,9 +87,41 @@ export default {
   },
   computed: {
     classes() {
+      const {
+        $utils,
+        size,
+        variant,
+        currentStatus: status,
+        classRemove,
+        classAppend,
+        isThemeDisabled
+      } = this;
+      const { filterClasses, themer } = $utils;
+
       return {
-        thing: "test this thing",
-        other: "other"
+        wrapper: () => {
+          if (isThemeDisabled) return classAppend.wrapper || null;
+          return filterClasses(
+            [
+              themer(`ZCheckbox.wrapper`),
+              themer(`ZCheckbox.wrapper.size.${size}`),
+              themer(`ZCheckbox.wrapper.variant.${variant}`),
+              classAppend.wrapper ? classAppend.wrapper : null
+            ],
+            classRemove.wrapper ? classRemove.wrapper : null
+          );
+        },
+        input: () => {
+          if (isThemeDisabled) return classAppend.input || null;
+          return filterClasses(
+            [
+              themer(`ZCheckbox.input`),
+              themer(`ZCheckbox.input.size.${size}`),
+              classAppend.input ? classAppend.input : null
+            ],
+            classRemove.input ? classRemove.input : null
+          );
+        }
       };
     },
     wrapperClasses() {

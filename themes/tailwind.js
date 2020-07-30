@@ -28,15 +28,35 @@ const components = {
       size: {
         _default: 'text-base py-2 px-3', // same as 'md'
         xs: 'text-xs px-1',
-        sm: 'text-sm py-1 px-2',
+        sm: 'text-sm py-1 px-3',
         md: 'text-base py-2 px-3',
         lg: 'text-lg py-3 px-4',
       },
     }
   },
   ZCheckbox: {
-    wrapper: "py-2 px-4 bg-gray-100 rounded inline-flex items-center hover:bg-gray-200 cursor-pointer",
-    input: "mr-2 cursor-pointer",
+    wrapper: {
+      variant: {
+        _base: 'leading-6 rounded inline-flex items-center cursor-pointer',
+        _default: 'border-2 border-cool-gray-100 bg-cool-gray-100 hover:border-cool-gray-200 hover:bg-cool-gray-200',
+        secondary: 'border-2 border-green-50 bg-green-50 hover:border-green-100 hover:bg-green-100'
+      },
+      size: {
+        _default: 'text-base py-2 px-3',
+        sm: 'text-sm font-medium py-1 px-3',
+        md: 'text-base py-2 px-3',
+        lg: 'text-lg py-3 px-4'
+      }
+    },
+    input: {
+      _default: 'mr-2 cursor-pointer',
+      size: {
+        _default: '',
+        sm: 'h-3 w-3',
+        md: '',
+        lg: 'h-4 w-4'
+      }
+    },
     label: "block pointer-events-none cursor-pointer"
   },
   ZInput: {

@@ -26,7 +26,11 @@ lang: en-US
 
 ## More Examples
 
-...
+<div class="flex items-start">
+  <z-checkbox size="sm" label="This is a test" />
+  <z-input size="sm" value="Testing" />
+</div>
+<br/>
 
 ## Quick Notes
 

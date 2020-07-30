@@ -17,22 +17,23 @@
       <pg-header>Component Props</pg-header>
       <pg-option>
         <z-select
-          label="value"
           v-model="value"
+          label="value"
           :options="[
             {
               text: 'True',
-              value: true
+              value: true,
             },
             {
               text: 'False',
-              value: false
-            }
+              value: false,
+            },
           ]"
+          size="sm"
         />
       </pg-option>
       <pg-option>
-        <z-input label="label" v-model="label" />
+        <z-input v-model="label" label="label" size="sm" />
       </pg-option>
     </template>
   </playground>
