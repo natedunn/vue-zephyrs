@@ -1,7 +1,7 @@
 <template>
   <div :class="classes.wrapper()" @click="toggleValue">
     <z-input
-      v-model="value"
+      v-model="currentValue"
       :id="inputId"
       :classAppend="{
         input: classes.input(),
@@ -91,7 +91,7 @@ export default {
         $utils,
         size,
         variant,
-        currentStatus: status,
+        // currentStatus: status,
         classRemove,
         classAppend,
         isThemeDisabled
