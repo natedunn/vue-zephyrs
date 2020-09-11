@@ -4,4 +4,4 @@
 
 # Vue Zephyrs
 
-A flexible component library for Vue.
+An experimental component library for Vue. 
